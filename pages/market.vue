@@ -1,0 +1,840 @@
+<template>
+  <div>
+    <Navbar />
+    <Subbar />
+    <div class="page-wrapper">
+      <!-- Page Content-->
+      <div class="page-content-tab">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-9">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <div class="nifty-50 d-inline-block me-3">
+                            <div class="font-11 fw-semibold">
+                              Sensex
+                            </div>
+                            <div class="d-inline-block font-15 fw-bold">
+                              55,329.32 <span class="text-danger font-11 fw-semibold">-300.18</span> <span class="text-danger font-11 fw-semibold">(0.-39%)</span>
+                            </div>
+                          </div>
+                        </div><!--end col-->
+                        <div class="col-auto">
+                          <div class="toolbar">
+                            <button id="one_month" class="btn btn-sm btn-outline-light">
+                              1M
+                            </button>
+                            <button id="six_months" class="btn btn-sm btn-outline-light">
+                              6M
+                            </button>
+                            <button id="one_year" class="btn btn-sm btn-outline-light active">
+                              1Y
+                            </button>
+                            <button id="ytd" class="btn btn-sm btn-outline-light">
+                              YTD
+                            </button>
+                            <button id="all" class="btn btn-sm btn-outline-light">
+                              ALL
+                            </button>
+                          </div>
+                        </div><!--end col-->
+                      </div>  <!--end row-->
+                    </div><!--end card-header-->
+                    <div class="card-body">
+                      <div class="chart-demo">
+                        <div id="Sensex" class="apex-charts" />
+                      </div>
+                    </div><!--end card-body-->
+                  </div><!--end card-->
+                </div><!--end col-->
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <div class="nifty-50 d-inline-block me-3">
+                            <div class="font-11 fw-semibold">
+                              Nifty 50
+                            </div>
+                            <div class="d-inline-block font-15 fw-bold">
+                              16,538.45 <span class="text-success font-11 fw-semibold">78.00</span> <span class="text-success font-11 fw-semibold">(0.49%)</span>
+                            </div>
+                          </div>
+                        </div><!--end col-->
+                        <div class="col-auto">
+                          <div class="toolbar">
+                            <button id="one_month_2" class="btn btn-sm btn-outline-light">
+                              1M
+                            </button>
+                            <button id="six_months_2" class="btn btn-sm btn-outline-light">
+                              6M
+                            </button>
+                            <button id="one_year_2" class="btn btn-sm btn-outline-light active">
+                              1Y
+                            </button>
+                            <button id="ytd_2" class="btn btn-sm btn-outline-light">
+                              YTD
+                            </button>
+                            <button id="all_2" class="btn btn-sm btn-outline-light">
+                              ALL
+                            </button>
+                          </div>
+                        </div><!--end col-->
+                      </div>  <!--end row-->
+                    </div><!--end card-header-->
+                    <div class="card-body">
+                      <div class="chart-demo">
+                        <div id="Nifty" class="apex-charts" />
+                      </div>
+                    </div><!--end card-body-->
+                  </div><!--end card-->
+                </div><!--end col-->
+              </div><!--end row-->
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <h4 class="card-title">
+                            Top 5 Gainers
+                          </h4>
+                        </div><!--end col-->
+                        <div class="col-auto">
+                          <ul class="nav nav-tabs tab-nagative-m" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#NSE_Gainers" role="tab" aria-selected="true">NSE</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#BSE_Gainers" role="tab" aria-selected="false">BSE</a>
+                            </li>
+                          </ul>
+                        </div><!--end col-->
+                      </div>  <!--end row-->
+                    </div><!--end card-header-->
+                    <div class="card-body">
+                      <div class="table-responsive dash-social">
+                        <table id="Top_Gainer" class="table table-striped table-bordered">
+                          <thead class="thead-light">
+                            <tr>
+                              <th>Company Name</th>
+                              <th class="text-end">
+                                Stock Price
+                              </th>
+                              <th class="text-end">
+                                Change
+                              </th>
+                              <th class="text-end">
+                                % Change
+                              </th>
+                              <th class="text-end">
+                                Volume
+                              </th>
+                            </tr><!--end tr-->
+                          </thead>
+
+                          <tbody>
+                            <tr>
+                              <td>Apple Inc <span class="text-muted font-10">NASDAQ</span></td>
+                              <td class="text-end">
+                                $147.95 <i class="ti ti-trending-up text-success" />
+                              </td>
+                              <td class="text-success text-end">
+                                $1.60
+                              </td>
+                              <td class="text-success text-end">
+                                1.5%
+                              </td>
+                              <td class="text-end">
+                                52,56,333
+                              </td>
+                            </tr><!--end tr-->
+                            <tr>
+                              <td>Tesla Inc <span class="text-muted font-10">NASDAQ</span></td>
+                              <td class="text-end">
+                                $680.95 <i class="ti ti-trending-up text-success" />
+                              </td>
+                              <td class="text-success text-end">
+                                $6.60
+                              </td>
+                              <td class="text-success text-end">
+                                1.01%
+                              </td>
+                              <td class="text-end">
+                                56,254
+                              </td>
+                            </tr><!--end tr-->
+                            <tr>
+                              <td>Amazon.com, Inc. <span class="text-muted font-10">NASDAQ</span></td>
+                              <td class="text-end">
+                                $3199.95 <i class="ti ti-trending-up text-success" />
+                              </td>
+                              <td class="text-success text-end">
+                                $12.60
+                              </td>
+                              <td class="text-success text-end">
+                                0.35%
+                              </td>
+                              <td class="text-end">
+                                72,654
+                              </td>
+                            </tr><!--end tr-->
+                            <tr>
+                              <td>Microsoft Corporation <span class="text-muted font-10">NASDAQ</span></td>
+                              <td class="text-end">
+                                $304.95 <i class="ti ti-trending-up text-success" />
+                              </td>
+                              <td class="text-success text-end">
+                                $7.60
+                              </td>
+                              <td class="text-success text-end">
+                                2.56%
+                              </td>
+                              <td class="text-end">
+                                12,321
+                              </td>
+                            </tr><!--end tr-->
+                            <tr>
+                              <td>Dell Technologies Inc <span class="text-muted font-10">NYSE</span></td>
+                              <td class="text-end">
+                                $98.95 <i class="ti ti-trending-up text-success" />
+                              </td>
+                              <td class="text-success text-end">
+                                $2.28
+                              </td>
+                              <td class="text-success text-end">
+                                2.35%
+                              </td>
+                              <td class="text-end">
+                                10,652
+                              </td>
+                            </tr><!--end tr-->
+                          </tbody>
+                        </table>
+                      </div>
+                      <nav aria-label="..." class="float-end">
+                        <ul class="pagination pagination-sm mb-0">
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                          </li>
+                          <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                          </li>
+                        </ul><!--end pagination-->
+                      </nav><!--end nav-->
+                    </div> <!--end card-body-->
+                  </div><!--end card-->
+                </div><!--end col-->
+
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <h4 class="card-title">
+                            Top 5 Losers
+                          </h4>
+                        </div><!--end col-->
+                        <div class="col-auto">
+                          <ul class="nav nav-tabs tab-nagative-m" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#NSE_Losers" role="tab" aria-selected="true">NSE</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#BSE_Losers" role="tab" aria-selected="false">BSE</a>
+                            </li>
+                          </ul>
+                        </div><!--end col-->
+                      </div>  <!--end row-->
+                    </div><!--end card-header-->
+                    <div class="card-body">
+                      <div class="table-responsive dash-social">
+                        <table id="Top_Losers" class="table table-striped table-bordered">
+                          <thead class="thead-light">
+                            <tr>
+                              <th>Company Name</th>
+                              <th class="text-end">
+                                Stock Price
+                              </th>
+                              <th class="text-end">
+                                Change
+                              </th>
+                              <th class="text-end">
+                                % Change
+                              </th>
+                              <th class="text-end">
+                                Volume
+                              </th>
+                            </tr><!--end tr-->
+                          </thead>
+
+                          <tbody>
+                            <tr>
+                              <td>Apple Inc <span class="text-muted font-10">NASDAQ</span></td>
+                              <td class="text-end">
+                                $147.95 <i class="ti ti-trending-down text-danger" />
+                              </td>
+                              <td class="text-danger text-end">
+                                $1.60
+                              </td>
+                              <td class="text-danger text-end">
+                                1.5%
+                              </td>
+                              <td class="text-end">
+                                52,56,333
+                              </td>
+                            </tr><!--end tr-->
+                            <tr>
+                              <td>Tesla Inc <span class="text-muted font-10">NASDAQ</span></td>
+                              <td class="text-end">
+                                $680.95 <i class="ti ti-trending-down text-danger" />
+                              </td>
+                              <td class="text-danger text-end">
+                                $6.60
+                              </td>
+                              <td class="text-danger text-end">
+                                1.01%
+                              </td>
+                              <td class="text-end">
+                                56,254
+                              </td>
+                            </tr><!--end tr-->
+                            <tr>
+                              <td>Amazon.com, Inc. <span class="text-muted font-10">NASDAQ</span></td>
+                              <td class="text-end">
+                                $3199.95 <i class="ti ti-trending-down text-danger" />
+                              </td>
+                              <td class="text-danger text-end">
+                                $12.60
+                              </td>
+                              <td class="text-danger text-end">
+                                0.35%
+                              </td>
+                              <td class="text-end">
+                                72,654
+                              </td>
+                            </tr><!--end tr-->
+                            <tr>
+                              <td>Microsoft Corporation <span class="text-muted font-10">NASDAQ</span></td>
+                              <td class="text-end">
+                                $304.95 <i class="ti ti-trending-down text-danger" />
+                              </td>
+                              <td class="text-danger text-end">
+                                $7.60
+                              </td>
+                              <td class="text-danger text-end">
+                                2.56%
+                              </td>
+                              <td class="text-end">
+                                12,321
+                              </td>
+                            </tr><!--end tr-->
+                            <tr>
+                              <td>Dell Technologies Inc <span class="text-muted font-10">NYSE</span></td>
+                              <td class="text-end">
+                                $98.95 <i class="ti ti-trending-down text-danger" />
+                              </td>
+                              <td class="text-danger text-end">
+                                $2.28
+                              </td>
+                              <td class="text-danger text-end">
+                                2.35%
+                              </td>
+                              <td class="text-end">
+                                10,652
+                              </td>
+                            </tr><!--end tr-->
+                          </tbody>
+                        </table>
+                      </div>
+                      <nav aria-label="..." class="float-end">
+                        <ul class="pagination pagination-sm mb-0">
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                          </li>
+                          <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                          </li>
+                        </ul><!--end pagination-->
+                      </nav><!--end nav-->
+                    </div> <!--end card-body-->
+                  </div><!--end card-->
+                </div><!--end col-->
+              </div><!--end row-->
+            </div><!--end col-->
+            <div class="col-lg-3">
+              <div class="position-sticky" style="top: 120px">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="stock-search">
+                      <form action="#" method="get">
+                        <input type="search" name="search" class="form-control top-search mb-0" placeholder="Search Stock">
+                        <div class="search-icon">
+                          <i class="ti ti-search" />
+                        </div>
+                      </form>
+                    </div>
+                  </div><!--end card-body-->
+                </div><!--end card-->
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <h4 class="card-title">
+                          My Watchlist <span class="stocks-list-badge bg-soft-primary ms-1">15</span>
+                        </h4>
+                      </div><!--end col-->
+                      <div class="col-auto">
+                        <div class="watchlist">
+                          <select id="Watchlist" class="form-select">
+                            <option value="value-1" class="px-5">
+                              My Watchlist
+                            </option>
+                            <option value="value-2">
+                              F & O
+                            </option>
+                            <option value="value-3">
+                              Delivery
+                            </option>
+                            <option value="value-3">
+                              Crypto
+                            </option>
+                            <option value="value-3">
+                              Commodity
+                            </option>
+                            <option value="value-3">
+                              Add New +
+                            </option>
+                          </select>
+                        </div>
+                      </div><!--end col-->
+                    </div>  <!--end row-->
+                  </div><!--end card-header-->
+                  <div class="card-body p-0">
+                    <div class="watchlist-body" data-simplebar>
+                      <div id="watchlist_2" class="accordion">
+                        <div class="accordion-item border-top-0">
+                          <div id="headingOne" class="accordion-header">
+                            <a class="accordion-button d-block py-2 px-3 collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              <div class="d-flex justify-content-between">
+                                <div class="align-self-center">
+                                  <h6 class="m-0 text-uppercase font-11">Apple Inc</h6>
+                                  <p class="text-uppercase font-10 mb-0">nasdaq</p>
+                                </div>
+                                <div>
+                                  <h6 class="m-0 text-uppercase font-11">$147.95 <i class="ti ti-trending-down text-danger" /></h6>
+                                  <div class="d-inline-block font-10"><span class="text-danger">-110.60</span> <span class="text-danger">(30.52%)</span></div>
+                                </div>
+                              </div><!-- end /div -->
+                            </a>
+                          </div>
+                          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#watchlist_2">
+                            <div class="accordion-body">
+                              <div class="d-flex justify-content-between">
+                                <div class="action-icons">
+                                  <ul class="list-inline">
+                                    <li class="list-inline-item align-self-center mx-0 bg-success">
+                                      <a href="javascript: void(0);" data-bs-toggle="modal" data-bs-target="#BuyStocks"><i class="ti ti-letter-b text-white email-action-icons-item" /></a>
+                                    </li><!--end /li-->
+                                    <li class="list-inline-item align-self-center mx-0 bg-danger">
+                                      <a href="javascript: void(0);" data-bs-toggle="modal" data-bs-target="#SellStocks"><i class="ti ti-letter-s text-white email-action-icons-item" /></a>
+                                    </li><!--end /li-->
+                                    <li class="list-inline-item align-self-center mx-0">
+                                      <a href="details.html"><i class="ti ti-chart-candle email-action-icons-item" /></a>
+                                    </li><!--end /li-->
+                                    <li class="list-inline-item align-self-center mx-0">
+                                      <a href="javascript: void(0);"><i class="ti ti-trash email-action-icons-item" /></a>
+                                    </li><!--end /li-->
+                                  </ul><!--end /ul-->
+                                </div> <!--end action-icons-->
+                                <div>
+                                  <p class="mb-0 text-muted">
+                                    Avg. Traded Price : <span class="fw-semibold text-dark">$148.00</span>
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                  <div class="row align-items-center">
+                                    <div class="col">
+                                      <h6 class="text-success">
+                                        Bid Price
+                                      </h6>
+                                    </div><!--end col-->
+                                    <div class="col-auto">
+                                      <p class="mb-0">
+                                        Quantity
+                                      </p>
+                                    </div><!--end col-->
+                                  </div>  <!--end row-->
+                                  <ul class="list-unstyled mb-0">
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          140.50
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-success px-1 rounded">1523</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          139.50
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-success px-1 rounded">1823</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          136.00
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-success px-1 rounded">1101</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          133.50
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-success px-1 rounded">182</span>
+                                    </li>
+                                  </ul>
+                                </div><!--end col-->
+                                <div class="col">
+                                  <div class="row align-items-center">
+                                    <div class="col">
+                                      <h6 class="text-danger">
+                                        Ask Price
+                                      </h6>
+                                    </div><!--end col-->
+                                    <div class="col-auto">
+                                      <p class="mb-0">
+                                        Quantity
+                                      </p>
+                                    </div><!--end col-->
+                                  </div>  <!--end row-->
+                                  <ul class="list-unstyled mb-0">
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          146.50
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-danger px-1 rounded">1523</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          148.00
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-danger px-1 rounded">1823</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          150.00
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-danger px-1 rounded">1101</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          153.00
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-danger px-1 rounded">182</span>
+                                    </li>
+                                  </ul>
+                                </div><!--end col-->
+                              </div><!--end row-->
+                            </div><!--end accordion-body-->
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <div id="headingTwo" class="accordion-header">
+                            <a class="accordion-button  d-block py-2 px-3 collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              <div class="d-flex justify-content-between">
+                                <div class="align-self-center">
+                                  <h6 class="m-0 text-uppercase font-11">Tesla Inc</h6>
+                                  <p class="text-uppercase font-10 mb-0">nasdaq</p>
+                                </div>
+                                <div>
+                                  <h6 class="m-0 text-uppercase font-11">$680.35 <i class="ti ti-trending-up text-success" /></h6>
+                                  <div class="d-inline-block font-10"><span class="text-success">50.10</span> <span class="text-success">(5.52%)</span></div>
+                                </div>
+                              </div><!-- end /div -->
+                            </a>
+                          </div>
+                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#watchlist_2">
+                            <div class="accordion-body">
+                              <div class="d-flex justify-content-between">
+                                <div class="action-icons">
+                                  <ul class="list-inline">
+                                    <li class="list-inline-item align-self-center mx-0 bg-success">
+                                      <a href="javascript: void(0);" data-bs-toggle="modal" data-bs-target="#BuyStocks"><i class="ti ti-letter-b text-white email-action-icons-item" /></a>
+                                    </li><!--end /li-->
+                                    <li class="list-inline-item align-self-center mx-0 bg-danger">
+                                      <a href="javascript: void(0);" data-bs-toggle="modal" data-bs-target="#SellStocks"><i class="ti ti-letter-s text-white email-action-icons-item" /></a>
+                                    </li><!--end /li-->
+                                    <li class="list-inline-item align-self-center mx-0">
+                                      <a href="javascript: void(0);"><i class="ti ti-chart-candle email-action-icons-item" /></a>
+                                    </li><!--end /li-->
+                                    <li class="list-inline-item align-self-center mx-0">
+                                      <a href="javascript: void(0);"><i class="ti ti-trash email-action-icons-item" /></a>
+                                    </li><!--end /li-->
+                                  </ul><!--end /ul-->
+                                </div> <!--end action-icons-->
+                                <div>
+                                  <p class="mb-0 text-muted">
+                                    Avg. Traded Price : <span class="fw-semibold text-dark">$682.00</span>
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                  <div class="row align-items-center">
+                                    <div class="col">
+                                      <h6 class="text-success">
+                                        Bid Price
+                                      </h6>
+                                    </div><!--end col-->
+                                    <div class="col-auto">
+                                      <p class="mb-0">
+                                        Quantity
+                                      </p>
+                                    </div><!--end col-->
+                                  </div>  <!--end row-->
+                                  <ul class="list-unstyled mb-0">
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          680.50
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-success px-1 rounded">1523</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          679.50
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-success px-1 rounded">1823</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          676.00
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-success px-1 rounded">1101</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          673.50
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-success px-1 rounded">182</span>
+                                    </li>
+                                  </ul>
+                                </div><!--end col-->
+                                <div class="col">
+                                  <div class="row align-items-center">
+                                    <div class="col">
+                                      <h6 class="text-danger">
+                                        Ask Price
+                                      </h6>
+                                    </div><!--end col-->
+                                    <div class="col-auto">
+                                      <p class="mb-0">
+                                        Quantity
+                                      </p>
+                                    </div><!--end col-->
+                                  </div>  <!--end row-->
+                                  <ul class="list-unstyled mb-0">
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          686.50
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-danger px-1 rounded">1523</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          688.00
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-danger px-1 rounded">1823</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          690.00
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-danger px-1 rounded">1101</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-start">
+                                      <div class="me-auto">
+                                        <p class="mb-0 ">
+                                          693.00
+                                        </p>
+                                      </div>
+                                      <span class="bg-soft-danger px-1 rounded">182</span>
+                                    </li>
+                                  </ul>
+                                </div><!--end col-->
+                              </div><!--end row-->
+                            </div><!--end accordion-body-->
+                          </div>
+                        </div>
+                      </div>
+                    </div><!--end watchlist-body-->
+                  </div><!--end card-body-->
+                </div><!--end card-->
+              </div><!--end sticky-->
+            </div><!--end col-->
+          </div><!--end row-->
+        </div><!-- container -->
+
+        <!--Start Rightbar-->
+        <!--Start Rightbar/offcanvas-->
+        <div id="Appearance" class="offcanvas offcanvas-end" tabindex="-1" aria-labelledby="AppearanceLabel">
+          <div class="offcanvas-body">
+            <button type="button" class="btn-close text-reset p-0 m-0 align-self-center float-end" data-bs-dismiss="offcanvas" aria-label="Close" />
+            <div class="media">
+              <div class="ipo_logo d-inline-block" style="height: 70px; width: 90px; line-height: 68px;">
+                <img src="assets/images/ipo/ipo-1.png" alt="" class="" height="36">
+              </div>
+              <div class="media-body align-self-center ms-2">
+                <h5 class="fw-semibold mt-0 font-16 mb-1">
+                  Registered Clients
+                </h5>
+                <p class="text-success mb-0 font-12">
+                  Application Successful
+                </p>
+              </div>
+            </div><!--end media-->
+            <hr class="hr-dashed">
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Applic. No
+                <span class="font-12 fw-semibold">236568546</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Amount to be Blocked
+                <span class="font-12 fw-semibold">$250.00</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Bid
+                <span class="font-12 fw-semibold">01</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Market Lot
+                <span class="font-12 fw-semibold">40 Shares</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Price
+                <span class="font-12 fw-semibold">$25.00</span>
+              </li>
+            </ul>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                IPO Open Date
+                <span class="font-12 fw-semibold">14/09/2021</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Allotment Date
+                <span class="font-12 fw-semibold">18/09/2021</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Refunds
+                <span class="font-12 fw-semibold">19/09/2021</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Credit Demat Ac.
+                <span class="font-12 fw-semibold">20/09/2021</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                IPO Listing Date
+                <span class="font-12 fw-semibold">21/09/2021</span>
+              </li>
+            </ul>
+            <p class="p-2 bg-soft-info rounded font-15 fw-semibold">
+              Upcoming IPOs 2021
+            </p>
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">
+                    Name
+                  </th>
+                  <th scope="col" class="text-end">
+                    Size
+                  </th>
+                  <th scope="col" class="text-end">
+                    Date
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="../ipo.html" class="text-dark">Apple <span class="text-muted font-10">NASDAQ</span></a></td>
+                  <td class="text-end">
+                    2542cr.
+                  </td>
+                  <td class="text-end">
+                    12 Nov.2021
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="../ipo.html">Panasonic</a></td>
+                  <td class="text-end">
+                    1302cr.
+                  </td>
+                  <td class="text-end">
+                    18 Nov.2021
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!--end offcanvas-body-->
+        </div>
+        <!--end Rightbar/offcanvas-->
+        <!--end Rightbar-->
+
+        <Footer />
+      </div>
+    <!-- end page content -->
+    </div>
+  </div>
+</template>
