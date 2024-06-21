@@ -76,7 +76,7 @@ export default {
   publicRuntimeConfig: {
     baseURL: process.env.NODE_ENV === 'production' ? 'https://imtftrade.vercel.app' : 'http://localhost:3000',
     env: process.env.NODE_ENV,
-    API_URL: "https://www.imtftrade.com/scanner/API2/index.php"
+    API_URL: "https://www.imtftrade.com/scanner/api1/index.php"
   },
   privateRuntimeConfig: {},
 
