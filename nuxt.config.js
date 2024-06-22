@@ -76,7 +76,7 @@ export default {
   publicRuntimeConfig: {
     baseURL: "",
     env: process.env.NODE_ENV,
-    API_URL: "http://54.208.212.201"
+    API_URL: "https://yikfxmc858.execute-api.us-east-1.amazonaws.com"
   },
   privateRuntimeConfig: {},
 
