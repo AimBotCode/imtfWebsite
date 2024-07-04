@@ -5,8 +5,32 @@
         <div class="stock-search">
           <form action="#" method="get">
             <select v-model="market" class="form-control" @change="marketChange">
-              <option v-for="(m,i) in markets" :key="i" :value="m.key">
-                {{ m.val }}
+              <option value="Currencyheatmap">
+                Currency
+              </option>
+              <option value="" disabled="">
+                US Stock
+              </option>
+              <option value="SP500Heatmap">
+                &nbsp;&nbsp;SP500
+              </option>
+              <option value="NASDAQ100Heatmap">
+                &nbsp;&nbsp;NASDAQ
+              </option>
+              <option value="DOW30Heatmap">
+                &nbsp;&nbsp;DOW
+              </option>
+              <option value="ETFHeatmap">
+                &nbsp;&nbsp;ETF
+              </option>
+              <option value="dax30Heatmap">
+                German DAX
+              </option>
+              <option value="FTSEHeatmap">
+                UK FTSE
+              </option>
+              <option value="BSE200Heatmap">
+                Indian NIFTY
               </option>
               <option value="custom">
                 Custom
@@ -107,15 +131,14 @@ export default {
       market: 'SP500Heatmap',
       marketName: 'SP500',
       markets: [
-        { key: 'BSE200Heatmap', val: 'BSE200' },
-        { key: 'SP500Heatmap', val: 'SP500' },
-        { key: 'cryptoHeatmap', val: 'Crypto' },
-        { key: 'WorldHeatmap', val: 'World Indice' },
-        { key: 'FTSEHeatmap', val: 'FTSE' },
-        { key: 'dax30Heatmap', val: 'DAX30' },
         { key: 'Currencyheatmap', val: 'Currency' },
-        { key: 'Nasdaq100Heatmap', val: 'Nasdaq 100' },
-        { key: 'FuturesHeatmap', val: 'Futures' }
+        { key: 'SP500Heatmap', val: 'SP500' },
+        { key: 'NASDAQ100Heatmap', val: 'NASDAQ' },
+        { key: 'DOW30Heatmap', val: 'DOW' },
+        { key: 'ETFHeatmap', val: 'ETF' },
+        { key: 'dax30Heatmap', val: 'German DAX' },
+        { key: 'FTSEHeatmap', val: 'UK FTSE' },
+        { key: 'BSE200Heatmap', val: 'Indian NIFTY' }
       ]
     }
   },
