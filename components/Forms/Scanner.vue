@@ -291,7 +291,7 @@
         </div>
         <div class="col-md-3">
           <div v-if="isSubscribed" class="mb-3">
-            <label>Over Extension</label>
+            <label for="subject">Over Extension</label>
             <select v-model="forms[timeframe].overextension" class="form-select" @change="formChanged">
               <option selected="" value="0">
                 Off
@@ -312,7 +312,7 @@
           <div v-if="isSubscribed" class="mb-3">
             <label>CT</label>
             <select v-model="forms[timeframe].ct" class="form-select" @change="formChanged">
-              <option value="0">
+              <option selected="" value="0">
                 Off
               </option>                  <option value="" disabled="">
                 &nbsp;Price
@@ -481,13 +481,13 @@
           <div v-if="isSubscribed" class="mb-3">
             <label for="subject">vOpt</label>
             <select v-model="forms[timeframe].vopt" class="form-select" multiple="true" @change="formChanged">
-              <option value="0">
+              <option selected="" value="">
                 Off
               </option>                  <option value="1">
                 &nbsp;&nbsp;Bull Shade
               </option>                  <option value="2">
                 &nbsp;&nbsp;Bear Shade
-              </option>                 <option value="" disabled="">
+              </option>                 <option disabled="">
                 vTrend
               </option>                  <option value="3">
                 &nbsp;&nbsp;Bull
@@ -501,7 +501,7 @@
                 &nbsp;&nbsp;UpRealFlip
               </option>                   <option value="8">
                 &nbsp;&nbsp;DnRealFlip
-              </option>                <option value="" disabled="">
+              </option>                <option disabled="">
                 Arrow
               </option>                  <option value="9">
                 &nbsp;&nbsp;Bull
@@ -511,19 +511,19 @@
                 &nbsp;&nbsp;pBull
               </option>                  <option value="12">
                 &nbsp;&nbsp;pBear
-              </option>                <option value="" disabled="">
+              </option>                <option disabled="">
                 Touch
               </option>                  <option value="13">
                 &nbsp;&nbsp;T1
-              </option>                 <option value="" disabled="">
+              </option>                 <option disabled="">
                 Bull Wick
               </option>                  <option value="14">
                 &nbsp;&nbsp;Bull
-              </option>                  <option value="" disabled="">
+              </option>                  <option disabled="">
                 Bear Wick
               </option>                  <option value="15">
                 &nbsp;&nbsp;Bear
-              </option>                  <option value="" disabled="">
+              </option>                  <option disabled="">
                 Bull Wick
               </option>                  <option value="16">
                 &nbsp;&nbsp;PB
@@ -535,7 +535,7 @@
                 &nbsp;&nbsp;Fail PB
               </option>                   <option value="20">
                 &nbsp;&nbsp;Fail
-              </option>                   <option value="" disabled="">
+              </option>                   <option disabled="">
                 Bear Wick
               </option>                  <option value="21">
                 &nbsp;&nbsp;PB
@@ -547,7 +547,7 @@
                 &nbsp;&nbsp;Fail PB
               </option>                   <option value="25">
                 &nbsp;&nbsp;Fail
-              </option>                   <option value="" disabled="">
+              </option>                   <option disabled="">
                 Ideal PB
               </option>                  <option value="26">
                 &nbsp;&nbsp;TS
@@ -555,7 +555,7 @@
                 &nbsp;&nbsp;KS
               </option>                     <option value="28">
                 &nbsp;&nbsp;SKB
-              </option>                      <option value="" disabled="">
+              </option>                      <option disabled="">
                 Closed Bar Ideal PB
               </option>                  <option value="29">
                 &nbsp;&nbsp;TS
@@ -563,7 +563,7 @@
                 &nbsp;&nbsp;KS
               </option>                     <option value="31">
                 &nbsp;&nbsp;ALL
-              </option>                <option value="" disabled="">
+              </option>                <option disabled="">
                 C Div
               </option>                  <option value="32">
                 &nbsp;&nbsp;Bull
@@ -573,7 +573,7 @@
                 &nbsp;&nbsp;pBull
               </option>                  <option value="35">
                 &nbsp;&nbsp;pBear
-              </option>                  <option value="" disabled="">
+              </option>                  <option disabled="">
                 Bleep
               </option>                  <option value="36">
                 &nbsp;&nbsp;Bull
@@ -581,7 +581,7 @@
                 &nbsp;&nbsp;Bear
               </option>                    <option value="38">
                 &nbsp;&nbsp;all
-              </option>        <option value="" disabled="">
+              </option>        <option disabled="">
                 Volatility
               </option>                  <option value="39">
                 &nbsp;&nbsp;Bull
@@ -597,7 +597,7 @@
         </div>
         <div class="col-md-3">
           <div v-if="isSubscribed" class="mb-3">
-            <label>Shortcut</label>
+            <label for="subject">Shortcut</label>
             <select v-model="forms[timeframe].shortcut" class="form-select" @change="formChanged">
               <option selected="" value="0">
                 Off
@@ -660,7 +660,7 @@
       <div class="row">
         <div class="col-md-3">
           <div v-if="isSubscribed" class="mb-3">
-            <label>Forecast</label>
+            <label for="subject">Forecast</label>
             <select v-model="forms[timeframe].forecast" class="form-select" @change="formChanged">
               <option selected="" value="0">
                 Off
@@ -709,7 +709,7 @@
         </div>
         <div class="col-md-3">
           <div v-if="isSubscribed" class="mb-3">
-            <label>Forecast Adv</label>
+            <label for="subject">Forecast Adv</label>
             <select v-model="forms[timeframe].forecastadv" class="form-select" @change="formChanged">
               <option selected="" value="0">
                 Off
@@ -861,11 +861,14 @@ export default {
         let equal = true
         Object.keys(blank).forEach(function (key) {
           /* eslint eqeqeq: "off" */
-          if (form[key] != blank[key]) {
+          if (form[key] instanceof Array) {
+            if (JSON.stringify(form[key]) != JSON.stringify(blank[key])) {
+              equal = false
+            }
+          } else if (form[key] != blank[key]) {
             equal = false
           }
         })
-
         if (equal === true) {
           const idx = this.changed.indexOf(this.timeframe)
           this.changed.splice(idx, 1)
