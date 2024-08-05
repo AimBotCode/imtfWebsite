@@ -2,34 +2,34 @@
   <div>
     <form class="">
       <div class="mx-6">
-            <label>Timeframe</label>
-            <div class="toolbar">
-              <button type="button" :class="getClass(10)" @click="setTimeframe(10)">
-                10
-              </button>
-              <button type="button" :class="getClass(30)" @click="setTimeframe(30)">
-                30
-              </button>
-              <button type="button" :class="getClass(60)" @click="setTimeframe(60)">
-                60
-              </button>
-              <button type="button" :class="getClass(120)" @click="setTimeframe(120)">
-                120
-              </button>
-              <button type="button" :class="getClass(240)" @click="setTimeframe(240)">
-                240
-              </button>
-              <button type="button" :class="getClass('D')" @click="setTimeframe('D')">
-                D
-              </button>
-              <button type="button" :class="getClass('W')" @click="setTimeframe('W')">
-                W
-              </button>
-              <button type="button" :class="getClass('M')" @click="setTimeframe('M')">
-                M
-              </button>
-          </div>
+        <label>Timeframe</label>
+        <div class="toolbar">
+          <button type="button" :class="getClass(10)" @click="setTimeframe(10)">
+            10
+          </button>
+          <button type="button" :class="getClass(30)" @click="setTimeframe(30)">
+            30
+          </button>
+          <button type="button" :class="getClass(60)" @click="setTimeframe(60)">
+            60
+          </button>
+          <button type="button" :class="getClass(120)" @click="setTimeframe(120)">
+            120
+          </button>
+          <button type="button" :class="getClass(240)" @click="setTimeframe(240)">
+            240
+          </button>
+          <button type="button" :class="getClass('D')" @click="setTimeframe('D')">
+            D
+          </button>
+          <button type="button" :class="getClass('W')" @click="setTimeframe('W')">
+            W
+          </button>
+          <button type="button" :class="getClass('M')" @click="setTimeframe('M')">
+            M
+          </button>
         </div>
+      </div>
       <div class="row">
         <div class="col-md-3">
           <div class="mb-3">
@@ -795,11 +795,11 @@
             </select>
           </div>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-3" />
         <div class="col-md-3">
           <div v-if="isSubscribed" class="mb-3">
             <button class=" resetButton btn btn-secondary" type="button" @click="reset()">
-                Reset Filters
+              Reset Filters
             </button>
           </div>
         </div>
