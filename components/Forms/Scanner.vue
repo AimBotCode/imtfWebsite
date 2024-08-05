@@ -881,6 +881,7 @@ export default {
     },
     reset () {
       this.forms[this.timeframe] = this.getEmptyForm(this.timeframe)
+      this.formChanged()
       this.emitForm()
     },
     setTimeframe (t) {
