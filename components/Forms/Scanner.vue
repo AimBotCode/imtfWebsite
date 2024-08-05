@@ -798,7 +798,7 @@
         <div class="col-md-3"></div>
         <div class="col-md-3">
           <div v-if="isSubscribed" class="mb-3">
-            <button type="button" class="resetButton" @click="reset()">
+            <button class=" resetButton btn btn-secondary" type="button" @click="reset()">
                 Reset Filters
             </button>
           </div>
