@@ -92,6 +92,10 @@
                             <input v-model="meta.page" type="text" class="form-control form-control-sm" placeholder="Page" @input="goto">
                             <span id="basic-addon2" class="input-group-text">{{ meta.pages }}</span>
                           </div>
+                          <div class="input-group input-group-sm mb-3-mod" style="max-width:100px;">
+                            <input v-model="meta.perpage" type="text" class="form-control form-control-sm" placeholder="Limit" @input="limit">
+                            <span id="basic-addon2" class="input-group-text">Limit</span>
+                          </div>
                         </nav>
                       </div>
                     </div>
@@ -229,8 +233,20 @@ export default {
       this.formData.limit = [offset, this.meta.perpage]
       this.getData()
     },
+    limitChange (page) {
+      this.meta.page = page
+      const offset = this.meta.perpage * (page - 1)
+      if (this.meta.perpage > 20) {
+        this.meta.perpage = 20
+      }
+      this.formData.limit = [offset, this.meta.perpage]
+      this.getData()
+    },
     goto () {
       this.paginate(this.meta.page)
+    },
+    limit () {
+      this.limitChange(this.meta.page)
     },
     showSymbol (sym) {
       this.$router.push({ name: 'seasonality', query: { sym } })
