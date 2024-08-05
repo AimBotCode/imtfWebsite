@@ -795,14 +795,14 @@
             </select>
           </div>
         </div>
-        <!-- <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
         <div class="col-md-3">
           <div v-if="isSubscribed" class="mb-3">
-            <button type="button">
-                Reset
+            <button type="button" class="resetButton" @click="reset()">
+                Reset Filters
             </button>
           </div>
-        </div> -->
+        </div>
       </div>
     </form>
   </div>
@@ -879,6 +879,10 @@ export default {
 
       this.emitForm()
     },
+    reset () {
+      this.forms[this.timeframe] = this.getEmptyForm(this.timeframe)
+      this.emitForm()
+    },
     setTimeframe (t) {
       this.timeframe = t
       this.$emit('timeframe', this.timeframe)
@@ -900,7 +904,7 @@ export default {
         vbar: 0,
         vtnt: 0,
         ct: 0,
-        vopt: []
+        vopt: ['']
       }
     },
     getClass (tf) {
