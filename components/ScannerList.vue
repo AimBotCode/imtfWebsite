@@ -4,11 +4,11 @@
       <div class="card-body">
         <div class="stock-search">
           <form action="#" method="get">
-            <select v-model="market" class="form-control" @change="marketChange">
+            <select v-model="market" class="form-control" multiple="true" @change="marketChange">
               <option value="Currencyheatmap">
                 Currency
               </option>
-              <option value="" disabled="">
+              <option disabled="">
                 US Stock
               </option>
               <option value="SP500Heatmap">
@@ -73,7 +73,7 @@
         <div class="row align-items-center">
           <div class="col">
             <h4 class="card-title">
-              {{ market === 'custom' ? 'Custom List' : marketName }}
+              {{ market === 'custom' ? 'Custom List' : marketNameFormat() }}
             </h4>
           </div>
           <div class="col-auto">
@@ -128,8 +128,8 @@ export default {
       wlindex: 0,
       watchlist: {},
       show: { symbols: false, addWatchlist: false, search: false },
-      market: 'SP500Heatmap',
-      marketName: 'SP500',
+      market: ['', 'SP500Heatmap'],
+      marketName: ['SP500'],
       markets: [
         { key: 'Currencyheatmap', val: 'Currency' },
         { key: 'SP500Heatmap', val: 'SP500' },
@@ -147,13 +147,19 @@ export default {
   },
   methods: {
     marketChange () {
-      if (this.market === 'custom') {
+      if (this.market[0] === 'custom') {
         this.show.search = true
         const slist = JSON.parse(JSON.stringify(this.$store.state.app.scanlist))
         this.getWatchlistData(slist)
       } else {
-        let name = ''
-        this.markets.forEach((obj) => { if (obj.key === this.market) { name = obj.val } })
+        const name = []
+        for (let i = 0; i < this.market.length; i++) {
+          this.markets.forEach((obj) => {
+            if (obj.key === this.market[i]) {
+              name[i] = obj.val
+            }
+          })
+        }
         this.marketName = name
         if (this.market !== 'custom') {
           this.getSymbolsByMarket()
@@ -161,6 +167,15 @@ export default {
       }
 
       this.$emit('market', this.market)
+    },
+    marketNameFormat () {
+      let name = this.marketName[0]
+      if (this.marketName.length > 1) {
+        for (let i = 1; i < this.marketName.length; i++) {
+          name += ' or ' + this.marketName[i]
+        }
+      }
+      return name
     },
     getSymbolsByMarket () {
       this.$xhr.api.post('/api/seasonality', { action: 'getSymbolsByMarket', market: this.market }).then((response) => {
