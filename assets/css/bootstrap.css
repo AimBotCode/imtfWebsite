@@ -290,10 +290,10 @@ button {
 
 .resetButton {
   display: block;
+  float: right;
+  margin-right: 0.2rem;
   /* background-color: #98a5cd;
   border-color: #98a5cd; */
-  width: 100%;
-  margin-top: 1.05rem;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   -moz-padding-start: calc(0.75rem - 3px);
 }

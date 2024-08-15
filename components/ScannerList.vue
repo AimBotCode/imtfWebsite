@@ -131,7 +131,7 @@ export default {
       market: ['', 'SP500Heatmap'],
       marketName: ['SP500'],
       markets: [
-        { key: 'Currencyheatmap', val: 'Currency' },
+        { key: 'CurrencyHeatmap', val: 'Currency' },
         { key: 'SP500Heatmap', val: 'SP500' },
         { key: 'NASDAQ100Heatmap', val: 'NASDAQ' },
         { key: 'DOW30Heatmap', val: 'DOW' },
