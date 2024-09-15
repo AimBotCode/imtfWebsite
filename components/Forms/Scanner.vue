@@ -888,7 +888,7 @@ export default {
       this.forms.D = this.getEmptyForm('D')
       this.forms.W = this.getEmptyForm('W')
       this.forms.M = this.getEmptyForm('M')
-      this.formChanged()
+      this.changed.splice(0, 8)
       this.emitForm()
     },
     setTimeframe (t) {
