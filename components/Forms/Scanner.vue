@@ -880,7 +880,14 @@ export default {
       this.emitForm()
     },
     reset () {
-      this.forms[this.timeframe] = this.getEmptyForm(this.timeframe)
+      this.forms[10] = this.getEmptyForm(10)
+      this.forms[30] = this.getEmptyForm(30)
+      this.forms[60] = this.getEmptyForm(60)
+      this.forms[120] = this.getEmptyForm(120)
+      this.forms[240] = this.getEmptyForm(240)
+      this.forms.D = this.getEmptyForm('D')
+      this.forms.W = this.getEmptyForm('W')
+      this.forms.M = this.getEmptyForm('M')
       this.formChanged()
       this.emitForm()
     },
