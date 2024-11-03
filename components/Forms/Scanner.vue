@@ -4,7 +4,12 @@
       <div class="mx-6">
         <label>Timeframe</label>
         <div class="toolbar row">
-          <div class="col-md-4" />
+          <div class="col-md-4" >
+            <label for="fileInput" id="profileButton" style="float: left;" class="btn-outline-dark btn btn-sm" @input="profileOpenButton()">
+              <span>Open Profile</span>
+            </label>
+            <input type="file" id="fileInput" accept=".json" style="display: none; float: left" @input="profileOpen()">
+          </div>
           <div class="col-md-4">
             <button type="button" :class="getClass(10)" @click="setTimeframe(10)">
               10
@@ -878,6 +883,40 @@ export default {
       }
 
       this.emitForm()
+    },
+    profileOpenButton () {
+      const fileInput = document.getElementById('fileInput')
+      const customButton = document.getElementById('profileButton')
+
+      customButton.addEventListener('click', () => {
+        fileInput.click()
+      })
+    },
+    profileOpen () {
+      const fileInput = document.getElementById('fileInput')
+
+      fileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0]
+
+        const reader = new FileReader()
+
+        reader.onload = (event) => {
+          try {
+            // const form = JSON.parse(event.target.result)
+            this.forms[10] = this.getEmptyForm(10)
+            this.forms[30] = this.getEmptyForm(30)
+            this.forms[60] = this.getEmptyForm(60)
+            this.forms[120] = this.getEmptyForm(120)
+            this.forms[240] = this.getEmptyForm(240)
+            this.forms.D = this.getEmptyForm('D')
+            this.forms.W = this.getEmptyForm('W')
+            this.forms.M = this.getEmptyForm('M')
+          } catch (error) {
+            console.error('Error parsing JSON:', error)
+          }
+        }
+        reader.readAsText(file)
+      })
     },
     reset () {
       this.forms[10] = this.getEmptyForm(10)
