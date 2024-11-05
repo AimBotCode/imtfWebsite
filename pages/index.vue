@@ -125,11 +125,11 @@ export default {
   methods: {
     tryLogin () {
       this.$store.commit('app/showLottie')
-      this.$xhr.wordpress.post('https://www.imtftrade.com/wp-json/custom-plugin/login', this.form).then((resp) => {
+      this.$xhr.wordpress.post('https://www.imtftrade.com/index.php/wp-json/custom-plugin/login', this.form).then((resp) => {
         if (resp.ID) {
           this.$cookies.set('imtftkn', 'Pxw5JSEDu7KVgT2', {
             path: '/',
-            maxAge: 60 * 60 * 24 * 7,
+            maxAge: 60 * 30,
             httpOnly: false,
             sameSite: true,
             secure: process.env.NODE_ENV !== 'development'

@@ -8,7 +8,13 @@
             <label for="fileInput" id="profileButton" style="float: left;" class="btn-outline-dark btn btn-sm" @input="profileOpenButton()">
               <span>Open Profile</span>
             </label>
-            <input type="file" id="fileInput" accept=".json" style="display: none; float: left" @input="profileOpen()">
+            <input type="file" id="fileInput" style="display: none;" class="form-control"  @input="profileOpen()">
+            <div class="createFileBorder marginalmove" style="border-radius: 0.2rem;">
+              <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn-sm" @input="createProfileOpen()">
+                Create Profile
+              </label>
+              <input id="textInput" type="text" class="btn-sm smaller" style="border: transparent; border-left: 1px solid; border-radius: 1px;" @click="createProfile()">
+            </div>
           </div>
           <div class="col-md-4">
             <button type="button" :class="getClass(10)" @click="setTimeframe(10)">
@@ -884,6 +890,32 @@ export default {
 
       this.emitForm()
     },
+    formChanges (timeframe) {
+      if (this.changed.includes(timeframe)) {
+        const form = JSON.parse(JSON.stringify(this.forms[timeframe]))
+        const blank = this.getEmptyForm(timeframe)
+
+        let equal = true
+        Object.keys(blank).forEach(function (key) {
+          /* eslint eqeqeq: "off" */
+          if (form[key] instanceof Array) {
+            if (JSON.stringify(form[key]) != JSON.stringify(blank[key])) {
+              equal = false
+            }
+          } else if (form[key] != blank[key]) {
+            equal = false
+          }
+        })
+        if (equal === true) {
+          const idx = this.changed.indexOf(timeframe)
+          this.changed.splice(idx, 1)
+        }
+      } else {
+        this.changed.push(timeframe)
+      }
+
+      this.emitForm()
+    },
     profileOpenButton () {
       const fileInput = document.getElementById('fileInput')
       const customButton = document.getElementById('profileButton')
@@ -894,7 +926,6 @@ export default {
     },
     profileOpen () {
       const fileInput = document.getElementById('fileInput')
-
       fileInput.addEventListener('change', (event) => {
         const file = event.target.files[0]
 
@@ -902,21 +933,53 @@ export default {
 
         reader.onload = (event) => {
           try {
-            // const form = JSON.parse(event.target.result)
-            this.forms[10] = this.getEmptyForm(10)
-            this.forms[30] = this.getEmptyForm(30)
-            this.forms[60] = this.getEmptyForm(60)
-            this.forms[120] = this.getEmptyForm(120)
-            this.forms[240] = this.getEmptyForm(240)
-            this.forms.D = this.getEmptyForm('D')
-            this.forms.W = this.getEmptyForm('W')
-            this.forms.M = this.getEmptyForm('M')
+            const filters = JSON.parse(event.target.result)
+            console.log(filters)
+            Object.entries(filters).forEach(([key, value]) => {
+              const input = JSON.stringify(key)
+              this.forms[key] = value
+              console.log(key)
+              this.formChanges(input)
+            })
+            this.emitForm()
           } catch (error) {
             console.error('Error parsing JSON:', error)
           }
         }
         reader.readAsText(file)
+        fileInput.value = null
       })
+    },
+    createProfileOpen () {
+      const textInput = document.getElementById('textInput')
+      const customButton = document.getElementById('createProfileButton')
+
+      customButton.addEventListener('click', () => {
+        textInput.click()
+      }, { once: true })
+    },
+    createProfile () {
+      const textInput = document.getElementById('textInput')
+      textInput.addEventListener('change', () => {
+        const filters = JSON.stringify(this.forms)
+        if (textInput.value != null) {
+          const file = new File([filters], textInput.value + '.json', { type: 'text/plain:charset=UTF-8' })
+
+          //  create a ObjectURL in order to download the created file
+          const url = window.URL.createObjectURL(file)
+
+          //  create a hidden link and set the href and click it
+          const a = document.createElement('a')
+          a.style = 'display: none'
+          a.href = url
+          a.download = file.name
+          a.click()
+          window.URL.revokeObjectURL(url)
+        }
+      }, { once: true })
+      textInput.addEventListener('mouseover', () => {
+        textInput.removeEventListener('click', textInput)
+      }, { once: true })
     },
     reset () {
       this.forms[10] = this.getEmptyForm(10)
