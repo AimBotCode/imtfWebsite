@@ -134,7 +134,7 @@ export default {
         { key: 'CurrencyHeatmap', val: 'Currency' },
         { key: 'SP500Heatmap', val: 'SP500' },
         { key: 'NASDAQ100Heatmap', val: 'NASDAQ' },
-        { key: 'DOW30Heatmap', val: 'DOW' },
+        { key: 'DOWHeatmap', val: 'DOW' },
         { key: 'ETFHeatmap', val: 'ETF' },
         { key: 'dax30Heatmap', val: 'German DAX' },
         { key: 'FTSEHeatmap', val: 'UK FTSE' },
