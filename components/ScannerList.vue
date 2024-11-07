@@ -5,7 +5,7 @@
         <div class="stock-search">
           <form action="#" method="get">
             <select v-model="market" class="form-control" multiple="true" @change="marketChange">
-              <option value="Currencyheatmap">
+              <option value="CurrencyHeatmap">
                 Currency
               </option>
               <option disabled="">

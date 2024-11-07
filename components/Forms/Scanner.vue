@@ -685,43 +685,34 @@
                 Off
               </option>
               <option value="" disabled="">
-                &nbsp;Major Pull Back
+                &nbsp;Live Bar
               </option>
               <option value="1">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bull
-              </option>
-              <option value="2">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bear
-              </option>
-              <option value="3">
-                &nbsp;&nbsp;&nbsp;&nbsp;All
-              </option>
-              <option value="" disabled="">
-                &nbsp;Minor Pull Back
-              </option>
-              <option value="4">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bull
-              </option>
-              <option value="5">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bear
-              </option>
-              <option value="6">
-                &nbsp;&nbsp;&nbsp;&nbsp;All
-              </option>
-              <option value="" disabled="">
-                &nbsp;Break High-Low
-              </option>
-              <option value="7">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bull PB
               </option>
-              <option value="8">
+              <option value="2">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull Break
+              </option>
+              <option value="3">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear PB
               </option>
-              <option value="9">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bull
+              <option value="4">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear Break
               </option>
-              <option value="10">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bear
+              <option value="" disabled="">
+                &nbsp;Closed Bar
+              </option>
+              <option value="5">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull PB
+              </option>
+              <option value="6">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull Break
+              </option>
+              <option value="7">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear PB
+              </option>
+              <option value="8">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear Break
               </option>
             </select>
           </div>
@@ -737,10 +728,10 @@
                 &nbsp;Bull Forecast
               </option>
               <option value="1">
-                &nbsp;&nbsp;&nbsp;&nbsp;Major PB Done
+                &nbsp;&nbsp;&nbsp;&nbsp;Gap
               </option>
               <option value="2">
-                &nbsp;&nbsp;&nbsp;&nbsp;Minor PB
+                &nbsp;&nbsp;&nbsp;&nbsp;PB
               </option>
               <option value="3">
                 &nbsp;&nbsp;&nbsp;&nbsp;Violation
@@ -749,66 +740,48 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;Real
               </option>
               <option value="5">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bull PB Success
+                &nbsp;&nbsp;&nbsp;&nbsp;PB, Broke, Real
+              </option>
+              <option value="6">
+                &nbsp;&nbsp;&nbsp;&nbsp;PB and Broke
+              </option>
+              <option value="7">
+                &nbsp;&nbsp;&nbsp;&nbsp;Minor Violation
               </option>
               <option value="" disabled="">
                 &nbsp;Bear Forecast
               </option>
-              <option value="6">
-                &nbsp;&nbsp;&nbsp;&nbsp;Major PB
-              </option>
-              <option value="7">
-                &nbsp;&nbsp;&nbsp;&nbsp;Minor PB
-              </option>
               <option value="8">
-                &nbsp;&nbsp;&nbsp;&nbsp;Violation
+                &nbsp;&nbsp;&nbsp;&nbsp;Gap
               </option>
               <option value="9">
-                &nbsp;&nbsp;&nbsp;&nbsp;Real
+                &nbsp;&nbsp;&nbsp;&nbsp;PB
               </option>
               <option value="10">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bear PB Success
-              </option>
-              <option value="" disabled="">
-                &nbsp;Closed Bull
+                &nbsp;&nbsp;&nbsp;&nbsp;Violation
               </option>
               <option value="11">
-                &nbsp;&nbsp;&nbsp;&nbsp;Major PB
+                &nbsp;&nbsp;&nbsp;&nbsp;Real
               </option>
               <option value="12">
-                &nbsp;&nbsp;&nbsp;&nbsp;Minor PB
+                &nbsp;&nbsp;&nbsp;&nbsp;PB, Broke, Real
               </option>
               <option value="13">
-                &nbsp;&nbsp;&nbsp;&nbsp;Break High PB
+                &nbsp;&nbsp;&nbsp;&nbsp;PB and Broke
               </option>
               <option value="14">
-                &nbsp;&nbsp;&nbsp;&nbsp;Break High
-              </option>
-              <option value="" disabled="">
-                &nbsp;Closed Bear
-              </option>
-              <option value="15">
-                &nbsp;&nbsp;&nbsp;&nbsp;Major PB
-              </option>
-              <option value="16">
-                &nbsp;&nbsp;&nbsp;&nbsp;Minor PB
-              </option>
-              <option value="17">
-                &nbsp;&nbsp;&nbsp;&nbsp;Break Low PB
-              </option>
-              <option value="18">
-                &nbsp;&nbsp;&nbsp;&nbsp;Break low
+                &nbsp;&nbsp;&nbsp;&nbsp;Minor Violation
               </option>
               <option value="" disabled="">
                 &nbsp;PB Bar
               </option>
-              <option value="19">
+              <option value="15">
                 &nbsp;&nbsp;&nbsp;&nbsp;All
               </option>
-              <option value="20">
+              <option value="16">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bull
               </option>
-              <option value="21">
+              <option value="17">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
             </select>
