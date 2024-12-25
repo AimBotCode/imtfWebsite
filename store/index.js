@@ -5,7 +5,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  me (appstate, meData) {
+  me(appstate, meData) {
     appstate.me = meData
   }
 }
@@ -15,14 +15,14 @@ export const getters = {
 }
 
 export const actions = {
-  parseCookie (str) {
+  parseCookie(str) {
     return str.split(';').map(v => v.split('='))
       .reduce((acc, v) => {
         acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim())
         return acc
       }, {})
   },
-  async nuxtServerInit ({ commit }, { app, req, redirect }) {
+  async nuxtServerInit({ commit }, { app, req, redirect }) {
     const ck = app.$cookies.get('imtftkn')
     if (!ck || ck !== 'Pxw5JSEDu7KVgT2') {
       redirect('/')

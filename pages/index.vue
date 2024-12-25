@@ -105,6 +105,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import VueCookies from 'vue-cookies'
 
 export default {
   data () {
@@ -127,9 +129,10 @@ export default {
       this.$store.commit('app/showLottie')
       this.$xhr.wordpress.post('https://www.imtftrade.com/index.php/wp-json/custom-plugin/login', this.form).then((resp) => {
         if (resp.ID) {
-          this.$cookies.set('imtftkn', 'Pxw5JSEDu7KVgT2', {
+          Vue.use(VueCookies, { expires: '1d' })
+          this.$cookies.set('imtftkn', 'Pxw5JSEDu7KVgT2v', {
             path: '/',
-            maxAge: 60 * 30,
+            maxAge: 60 * 60 * 24,
             httpOnly: false,
             sameSite: true,
             secure: process.env.NODE_ENV !== 'development'
