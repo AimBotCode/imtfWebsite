@@ -130,7 +130,7 @@ export default {
       this.$xhr.wordpress.post('https://www.imtftrade.com/index.php/wp-json/custom-plugin/login', this.form).then((resp) => {
         if (resp.ID) {
           Vue.use(VueCookies, { expires: '1d' })
-          this.$cookies.set('imtftkn', 'Pxw5JSEDu7KVgT2v', {
+          this.$cookies.set('imtftkn', 'Pxw5JSEDu7KVgT2', {
             path: '/',
             maxAge: 60 * 60 * 24,
             httpOnly: false,
