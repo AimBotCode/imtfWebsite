@@ -1,6 +1,15 @@
 <template>
   <div>
     <div class="card">
+      <div class="card-header bg-dark text-white">
+        <div class="row align-items-center">
+          <div class="col">
+            <button class="btn btn-warning" type="button" @click="back">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="card-body p-0" style="min-height: 720px;">
         <!-- <VueTradingView
           :options="{
