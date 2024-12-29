@@ -15,6 +15,10 @@
 <script>
 export default {
   props: {
+    symbol: {
+      type: String,
+      required: true
+    },
     sym: {
       type: Function,
       required: true

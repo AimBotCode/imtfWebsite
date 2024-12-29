@@ -1,15 +1,6 @@
 <template>
   <div>
     <div class="card">
-      <div class="card-header bg-dark text-white">
-        <div class="row align-items-center">
-          <div class="col">
-            <button class="btn btn-warning" type="button" @click="back">
-              Back
-            </button>
-          </div>
-        </div>
-      </div>
       <div class="card-body p-0" style="min-height: 720px;">
         <!-- <VueTradingView
           :options="{
@@ -26,34 +17,6 @@
           <!-- end page title end breadcrumb -->
           <div class="row">
             <div class="col-12">
-              <div class="card">
-                <div class="card-body bg-dark">
-                  <div>
-                    <div class="input-group">
-                      <input v-model="query.code" type="hidden" @change="getResults">
-                      <input v-model="query.text" type="text" class="form-control" placeholder="Stock Search" @input="getSymbols">
-                      <select v-model="query.month" class="form-control" style="background-color: rgba(204, 209, 224, 0.3); color:white;">
-                        <optgroup v-for="(y,i) in dates.years" :key="i" :label="y">
-                          <option v-for="(m, idx) in dates.months" :key="idx" :value="y+''+(idx+1)">
-                            {{ m }}
-                          </option>
-                        </optgroup>
-                      </select>
-                      <button id="button-addon2" class="btn btn-secondary" type="button" @click="getResults">
-                        Go!
-                      </button>
-                    </div>
-                  </div>
-                  <div v-if="show.symbols">
-                    <ul class="list-group list-group-flush border symbolsList">
-                      <li v-for="(s,i) in symbols" :key="i" class="list-group-item" @click="chooseSymbol(s.sym)">
-                        {{ s.sym }} | {{ s.description }}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              <!--end card-body-->
-              </div>
               <div v-if="show.results" class="card">
                 <!-- TradingView Widget BEGIN -->
 
@@ -494,6 +457,7 @@ export default {
       this.chart.pieDatas[qtext].datasets[0].backgroundColor = [color, 'rgba(0, 99, 132, .8)']
     },
     back () {
+      console.log('back called')
       this.$emit('back')
     }
   }

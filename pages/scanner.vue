@@ -7,10 +7,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-9">
-              <div v-if="show.symbol">
-                <SymbolDetails :symbol-code="symbol" @back="show.symbol=false" />
-              </div>
-              <div v-else class="card">
+              <div class="card">
                 <div class="card-header bg-dark text-white">
                   <div class="row align-items-center">
                     <div class="col d-flex justify-content-start">
@@ -99,9 +96,11 @@
                         </nav>
                       </div>
                     </div>
-
                     <div :class="'show '+(show.as==='heatmap'?'d-block':'d-none')">
-                      <Heatmap :series="series" :sym="showSymbol"/>
+                      <Heatmap :series="series" :sym="showSymbol" :symbol="symbol"/>
+                    </div>
+                    <div v-if="show.symbol">
+                      <SymbolDetails ref="symbolDetailRef" :symbol-code="symbol" @back="show.symbol=false" />
                     </div>
                   </div>
                 </div>
@@ -251,6 +250,7 @@ export default {
     showSymbol (sym) {
       this.show.symbol = true
       this.symbol = sym
+      this.$refs.symbolDetailRef.chooseSymbol(this.symbol)
     },
     isAdmin () {
       const user = this.$store.getters['app/getItem']('user')
