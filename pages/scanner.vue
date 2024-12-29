@@ -101,7 +101,7 @@
                     </div>
 
                     <div :class="'show '+(show.as==='heatmap'?'d-block':'d-none')">
-                      <Heatmap :series="series" />
+                      <Heatmap :series="series" :sym="showSymbol"/>
                     </div>
                   </div>
                 </div>
@@ -249,7 +249,8 @@ export default {
       this.limitChange(this.meta.page)
     },
     showSymbol (sym) {
-      this.$router.push({ name: 'seasonality', query: { sym } })
+      this.show.symbol = true
+      this.symbol = sym
     },
     isAdmin () {
       const user = this.$store.getters['app/getItem']('user')

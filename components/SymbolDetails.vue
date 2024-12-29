@@ -184,6 +184,8 @@
                   :data="chart.pieDatas.q1"
                   :options="chart.pie.options"
                   :results="stats.quarterPies[0]"
+                  :height="200"
+                  :width="200"
                   layout="vertical"
                 />
               </div>

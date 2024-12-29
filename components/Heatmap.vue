@@ -15,6 +15,10 @@
 <script>
 export default {
   props: {
+    sym: {
+      type: Function,
+      required: true
+    },
     series: {
       type: Array,
       default: () => []
@@ -47,6 +51,18 @@ export default {
           layoutAlgorithm: 'squarified',
           data: this.series
         }],
+        plotOptions: {
+          series: {
+            cursor: 'pointer',
+            point: {
+              events: {
+                click: (event) => {
+                  this.sym(event.point.name)
+                }
+              }
+            }
+          }
+        },
         title: {
           text: ''
         },
