@@ -458,18 +458,6 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
               <option disabled="">
-                &nbsp;TNT3
-              </option>
-              <option value="16">
-                &nbsp;&nbsp;&nbsp;&nbsp;All
-              </option>
-              <option value="17">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bull
-              </option>
-              <option value="18">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bear
-              </option>
-              <option disabled="">
                 &nbsp;Yellow
               </option>
               <option value="19">
