@@ -398,7 +398,7 @@
                 Off
               </option>
               <option disabled="">
-                &nbsp;TNT2 Violation
+                &nbsp;TNT2 Real
               </option>
               <option value="1">
                 &nbsp;&nbsp;&nbsp;&nbsp;All
@@ -410,7 +410,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
               <option value="" disabled="">
-                &nbsp;TNT2 Concept
+                &nbsp;TNT2 PBHold
               </option>
               <option value="4">
                 &nbsp;&nbsp;&nbsp;&nbsp;All
@@ -422,7 +422,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
               <option disabled="">
-                &nbsp;TNT2 BO Real
+                &nbsp;TNT2 PB
               </option>
               <option value="7">
                 &nbsp;&nbsp;&nbsp;&nbsp;All
@@ -434,7 +434,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
               <option disabled="">
-                &nbsp;TNT2 BO Fake
+                &nbsp;TNT2 BO
               </option>
               <option value="10">
                 &nbsp;&nbsp;&nbsp;&nbsp;All
