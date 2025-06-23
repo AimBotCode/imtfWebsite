@@ -297,6 +297,21 @@ button {
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   -moz-padding-start: calc(0.75rem - 3px);
 }
+.resetButton2 {
+  display: block;
+  float: right;
+  border-radius: 0.4rem;
+  color: #000444;
+  background-color: #ffffff;
+  border: 1px solid #e8ebf3;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.1rem;  
+}
+
+.resetButton2:hover {
+  background-color: #ef4d56; 
+}
 
 button:focus:not(:focus-visible) {
   outline: 0; }

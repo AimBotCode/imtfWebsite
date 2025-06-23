@@ -4,16 +4,19 @@
       <div class="mx-6">
         <label>Timeframe</label>
         <div class="toolbar row">
-          <div class="col-md-4" >
-            <label for="fileInput" id="profileButton" style="float: left;" class="btn-outline-dark btn btn-sm" @input="profileOpenButton()">
+          <div class="col-md-4">
+            <label for="fileInput" id="profileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
+              @input="profileOpenButton()">
               <span>Open Profile</span>
             </label>
-            <input type="file" id="fileInput" style="display: none;" class="form-control"  @input="profileOpen()">
+            <input type="file" id="fileInput" style="display: none;" class="form-control" @input="profileOpen()">
             <div class="createFileBorder marginalmove" style="border-radius: 0.2rem;">
-              <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn-sm" @input="createProfileOpen()">
+              <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn-sm"
+                @input="createProfileOpen()">
                 Create Profile
               </label>
-              <input id="textInput" type="text" class="btn-sm smaller" style="border: transparent; border-left: 1px solid; border-radius: 1px;" @click="createProfile()">
+              <input id="textInput" type="text" class="btn-sm smaller"
+                style="border: transparent; border-left: 1px solid; border-radius: 1px;" @click="createProfile()">
             </div>
           </div>
           <div class="col-md-4">
@@ -168,7 +171,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear New
               </option>
               <option value="5">
-                &nbsp;&nbsp;&nbsp;&nbsp;Neutral New
+                Neutral New
               </option>
             </select>
           </div>
@@ -178,16 +181,16 @@
             <div class="col">
               <label for="subject">iState</label>
               <select v-model="forms[timeframe].istatefrom" class="form-select" @change="formChanged">
-                <option v-for="(n,i) in 51" :key="i" :value="n-1">
-                  {{ n-1 }}
+                <option v-for="(n, i) in 51" :key="i" :value="n - 1">
+                  {{ n - 1 }}
                 </option>
               </select>
             </div>
             <div class="col">
               <label for="subject" />
               <select v-model="forms[timeframe].istateto" class="form-select" @change="formChanged">
-                <option v-for="(n,i) in 51" :key="i" :value="n-1">
-                  {{ n-1 }}
+                <option v-for="(n, i) in 51" :key="i" :value="n - 1">
+                  {{ n - 1 }}
                 </option>
               </select>
             </div>
@@ -333,25 +336,35 @@
             <select v-model="forms[timeframe].ct" class="form-select" @change="formChanged">
               <option selected="" value="0">
                 Off
-              </option>                  <option value="" disabled="">
+              </option>
+              <option value="" disabled="">
                 &nbsp;Price
-              </option>                  <option value="1">
+              </option>
+              <option value="1">
                 &nbsp;&nbsp;&nbsp;&nbsp;Above All
-              </option>                  <option value="2">
+              </option>
+              <option value="2">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bellow All
-              </option>                <option value="" disabled="">
+              </option>
+              <option value="" disabled="">
                 Touch
-              </option>                  <option value="3">
+              </option>
+              <option value="3">
                 &nbsp;&nbsp;&nbsp;&nbsp;Touch Top
-              </option>                  <option value="4">
+              </option>
+              <option value="4">
                 &nbsp;&nbsp;&nbsp;&nbsp;Touch Bottom
-              </option>                   <option value="5">
+              </option>
+              <option value="5">
                 &nbsp;&nbsp;&nbsp;&nbsp;Any
-              </option>                  <option value="6">
+              </option>
+              <option value="6">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bull Zone
-              </option>                   <option value="7">
+              </option>
+              <option value="7">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear Zone
-              </option>                    <option value="8">
+              </option>
+              <option value="8">
                 Bracket Move
               </option>
             </select>
@@ -490,113 +503,167 @@
             <select v-model="forms[timeframe].vopt" class="form-select" multiple="true" @change="formChanged">
               <option selected="" value="">
                 Off
-              </option>                  <option value="1">
+              </option>
+              <option value="1">
                 &nbsp;&nbsp;Bull Shade
-              </option>                  <option value="2">
+              </option>
+              <option value="2">
                 &nbsp;&nbsp;Bear Shade
-              </option>                 <option disabled="">
+              </option>
+              <option disabled="">
                 vTrend
-              </option>                  <option value="3">
+              </option>
+              <option value="3">
                 &nbsp;&nbsp;Bull
-              </option>                  <option value="4">
+              </option>
+              <option value="4">
                 &nbsp;&nbsp;Bear
-              </option>                  <option value="5">
+              </option>
+              <option value="5">
                 &nbsp;&nbsp;UpFlip
-              </option>                  <option value="6">
+              </option>
+              <option value="6">
                 &nbsp;&nbsp;DnFlip
-              </option>                     <option value="7">
+              </option>
+              <option value="7">
                 &nbsp;&nbsp;UpRealFlip
-              </option>                   <option value="8">
+              </option>
+              <option value="8">
                 &nbsp;&nbsp;DnRealFlip
-              </option>                <option disabled="">
+              </option>
+              <option disabled="">
                 Arrow
-              </option>                  <option value="9">
+              </option>
+              <option value="9">
                 &nbsp;&nbsp;Bull
-              </option>                  <option value="10">
+              </option>
+              <option value="10">
                 &nbsp;&nbsp;Bear
-              </option>                  <option value="11">
+              </option>
+              <option value="11">
                 &nbsp;&nbsp;pBull
-              </option>                  <option value="12">
+              </option>
+              <option value="12">
                 &nbsp;&nbsp;pBear
-              </option>                <option disabled="">
+              </option>
+              <option disabled="">
                 Touch
-              </option>                  <option value="13">
+              </option>
+              <option value="13">
                 &nbsp;&nbsp;T1
-              </option>                 <option disabled="">
+              </option>
+              <option disabled="">
                 Bull Wick
-              </option>                  <option value="14">
+              </option>
+              <option value="14">
                 &nbsp;&nbsp;Bull
-              </option>                  <option disabled="">
+              </option>
+              <option disabled="">
                 Bear Wick
-              </option>                  <option value="15">
+              </option>
+              <option value="15">
                 &nbsp;&nbsp;Bear
-              </option>                  <option disabled="">
+              </option>
+              <option disabled="">
                 Bull Wick
-              </option>                  <option value="16">
+              </option>
+              <option value="16">
                 &nbsp;&nbsp;PB
-              </option>                   <option value="17">
+              </option>
+              <option value="17">
                 &nbsp;&nbsp;Bleep PB
-              </option>                   <option value="18">
+              </option>
+              <option value="18">
                 &nbsp;&nbsp;BO
-              </option>                   <option value="19">
+              </option>
+              <option value="19">
                 &nbsp;&nbsp;Fail PB
-              </option>                   <option value="20">
+              </option>
+              <option value="20">
                 &nbsp;&nbsp;Fail
-              </option>                   <option disabled="">
+              </option>
+              <option disabled="">
                 Bear Wick
-              </option>                  <option value="21">
+              </option>
+              <option value="21">
                 &nbsp;&nbsp;PB
-              </option>                   <option value="22">
+              </option>
+              <option value="22">
                 &nbsp;&nbsp;Bleep PB
-              </option>                   <option value="23">
+              </option>
+              <option value="23">
                 &nbsp;&nbsp;BO
-              </option>                   <option value="24">
+              </option>
+              <option value="24">
                 &nbsp;&nbsp;Fail PB
-              </option>                   <option value="25">
+              </option>
+              <option value="25">
                 &nbsp;&nbsp;Fail
-              </option>                   <option disabled="">
+              </option>
+              <option disabled="">
                 Ideal PB
-              </option>                  <option value="26">
+              </option>
+              <option value="26">
                 &nbsp;&nbsp;TS
-              </option>                   <option value="27">
+              </option>
+              <option value="27">
                 &nbsp;&nbsp;KS
-              </option>                     <option value="28">
+              </option>
+              <option value="28">
                 &nbsp;&nbsp;SKB
-              </option>                      <option disabled="">
+              </option>
+              <option disabled="">
                 Closed Bar Ideal PB
-              </option>                  <option value="29">
+              </option>
+              <option value="29">
                 &nbsp;&nbsp;TS
-              </option>                   <option value="30">
+              </option>
+              <option value="30">
                 &nbsp;&nbsp;KS
-              </option>                     <option value="31">
+              </option>
+              <option value="31">
                 &nbsp;&nbsp;ALL
-              </option>                <option disabled="">
+              </option>
+              <option disabled="">
                 C Div
-              </option>                  <option value="32">
+              </option>
+              <option value="32">
                 &nbsp;&nbsp;Bull
-              </option>                  <option value="33">
+              </option>
+              <option value="33">
                 &nbsp;&nbsp;Bear
-              </option>                  <option value="34">
+              </option>
+              <option value="34">
                 &nbsp;&nbsp;pBull
-              </option>                  <option value="35">
+              </option>
+              <option value="35">
                 &nbsp;&nbsp;pBear
-              </option>                  <option disabled="">
+              </option>
+              <option disabled="">
                 Bleep
-              </option>                  <option value="36">
+              </option>
+              <option value="36">
                 &nbsp;&nbsp;Bull
-              </option>                  <option value="37">
+              </option>
+              <option value="37">
                 &nbsp;&nbsp;Bear
-              </option>                    <option value="38">
+              </option>
+              <option value="38">
                 &nbsp;&nbsp;all
-              </option>        <option disabled="">
+              </option>
+              <option disabled="">
                 Volatility
-              </option>                  <option value="39">
+              </option>
+              <option value="39">
                 &nbsp;&nbsp;Bull
-              </option>                  <option value="40">
+              </option>
+              <option value="40">
                 &nbsp;&nbsp;Bear
-              </option>                  <option value="41">
+              </option>
+              <option value="41">
                 &nbsp;&nbsp;pBull
-              </option>                  <option value="42">
+              </option>
+              <option value="42">
                 &nbsp;&nbsp;pBear
               </option>
             </select>
@@ -713,64 +780,34 @@
                 Off
               </option>
               <option value="" disabled="">
-                &nbsp;Bull Forecast
+                &nbsp;Past advForecast
               </option>
               <option value="1">
-                &nbsp;&nbsp;&nbsp;&nbsp;Gap
+                &nbsp;&nbsp;&nbsp;&nbsp;UpBO
               </option>
               <option value="2">
-                &nbsp;&nbsp;&nbsp;&nbsp;PB
+                &nbsp;&nbsp;&nbsp;&nbsp;UpPB
               </option>
               <option value="3">
-                &nbsp;&nbsp;&nbsp;&nbsp;Violation
+                &nbsp;&nbsp;&nbsp;&nbsp;DnBO
               </option>
               <option value="4">
-                &nbsp;&nbsp;&nbsp;&nbsp;Real
+                &nbsp;&nbsp;&nbsp;&nbsp;DnBO
+              </option>
+              <option value="" disabled="">
+                &nbsp;Current advForecast
               </option>
               <option value="5">
-                &nbsp;&nbsp;&nbsp;&nbsp;PB, Broke, Real
+                &nbsp;&nbsp;&nbsp;&nbsp;UpPB
               </option>
               <option value="6">
-                &nbsp;&nbsp;&nbsp;&nbsp;PB and Broke
+                &nbsp;&nbsp;&nbsp;&nbsp;UpBO
               </option>
               <option value="7">
-                &nbsp;&nbsp;&nbsp;&nbsp;Minor Violation
-              </option>
-              <option value="" disabled="">
-                &nbsp;Bear Forecast
+                &nbsp;&nbsp;&nbsp;&nbsp;DnPB
               </option>
               <option value="8">
-                &nbsp;&nbsp;&nbsp;&nbsp;Gap
-              </option>
-              <option value="9">
-                &nbsp;&nbsp;&nbsp;&nbsp;PB
-              </option>
-              <option value="10">
-                &nbsp;&nbsp;&nbsp;&nbsp;Violation
-              </option>
-              <option value="11">
-                &nbsp;&nbsp;&nbsp;&nbsp;Real
-              </option>
-              <option value="12">
-                &nbsp;&nbsp;&nbsp;&nbsp;PB, Broke, Real
-              </option>
-              <option value="13">
-                &nbsp;&nbsp;&nbsp;&nbsp;PB and Broke
-              </option>
-              <option value="14">
-                &nbsp;&nbsp;&nbsp;&nbsp;Minor Violation
-              </option>
-              <option value="" disabled="">
-                &nbsp;PB Bar
-              </option>
-              <option value="15">
-                &nbsp;&nbsp;&nbsp;&nbsp;All
-              </option>
-              <option value="16">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bull
-              </option>
-              <option value="17">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bear
+                &nbsp;&nbsp;&nbsp;&nbsp;DnPB
               </option>
             </select>
           </div>
@@ -783,7 +820,7 @@
 <script>
 export default {
   emits: ['change'],
-  data () {
+  data() {
     return {
       forms: {
         10: this.getEmptyForm(10),
@@ -800,7 +837,7 @@ export default {
     }
   },
   computed: {
-    isSubscribed () {
+    isSubscribed() {
       if (this.$config.env === 'development') { return true }
       const roles = this.$store.getters['app/getItem']('roles')
       if (roles.includes('memberium_memberships-rtscannerleveliii')) {
@@ -810,7 +847,7 @@ export default {
       return this.$store.getters['app/getItem']('active')
     }
   },
-  mounted () {
+  mounted() {
     // this.emitForm()
     const scannerForm = this.$store.getters['app/getItem']('scannerForm')
     if (scannerForm.action) {
@@ -822,10 +859,10 @@ export default {
     }
   },
   methods: {
-    emitForm () {
+    emitForm() {
       this.$emit('change', this.forms)
     },
-    formChanged () {
+    formChanged() {
       if (this.changed.includes(this.timeframe)) {
         const form = JSON.parse(JSON.stringify(this.forms[this.timeframe]))
         const blank = this.getEmptyForm(this.timeframe)
@@ -851,7 +888,7 @@ export default {
 
       this.emitForm()
     },
-    formChanges (timeframe) {
+    formChanges(timeframe) {
       if (this.changed.includes(timeframe)) {
         const form = JSON.parse(JSON.stringify(this.forms[timeframe]))
         const blank = this.getEmptyForm(timeframe)
@@ -877,7 +914,7 @@ export default {
 
       this.emitForm()
     },
-    profileOpenButton () {
+    profileOpenButton() {
       const fileInput = document.getElementById('fileInput')
       const customButton = document.getElementById('profileButton')
 
@@ -885,7 +922,7 @@ export default {
         fileInput.click()
       })
     },
-    profileOpen () {
+    profileOpen() {
       const fileInput = document.getElementById('fileInput')
       fileInput.addEventListener('change', (event) => {
         const file = event.target.files[0]
@@ -911,7 +948,7 @@ export default {
         fileInput.value = null
       })
     },
-    createProfileOpen () {
+    createProfileOpen() {
       const textInput = document.getElementById('textInput')
       const customButton = document.getElementById('createProfileButton')
 
@@ -919,7 +956,7 @@ export default {
         textInput.click()
       }, { once: true })
     },
-    createProfile () {
+    createProfile() {
       const textInput = document.getElementById('textInput')
       textInput.addEventListener('change', () => {
         const filters = JSON.stringify(this.forms)
@@ -942,7 +979,7 @@ export default {
         textInput.removeEventListener('click', textInput)
       }, { once: true })
     },
-    reset () {
+    reset() {
       this.forms[10] = this.getEmptyForm(10)
       this.forms[30] = this.getEmptyForm(30)
       this.forms[60] = this.getEmptyForm(60)
@@ -954,11 +991,11 @@ export default {
       this.changed.splice(0, 8)
       this.emitForm()
     },
-    setTimeframe (t) {
+    setTimeframe(t) {
       this.timeframe = t
       this.$emit('timeframe', this.timeframe)
     },
-    getEmptyForm (tf) {
+    getEmptyForm(tf) {
       return {
         timeframe: tf,
         strategy: 0,
@@ -978,7 +1015,7 @@ export default {
         vopt: ['']
       }
     },
-    getClass (tf) {
+    getClass(tf) {
       return {
         'btn btn-sm btn-outline-dark': true,
         active: tf === this.timeframe,
