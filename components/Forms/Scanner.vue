@@ -60,56 +60,137 @@
               <option selected="" value="0">
                 None
               </option>
-              <option value="" disabled="">
-                &nbsp;Shaded (Setup): #4
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;vIMTF Yellow Setup
               </option>
-              <option value="1">
-                &nbsp;&nbsp;&nbsp;&nbsp;Trend: Bull (Green): Green shaded Bullish Setup
+              <option v-if="isSubscribed" value="1">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBull
               </option>
-              <option value="2">
-                &nbsp;&nbsp;&nbsp;&nbsp;Trend: Bear (Red): Red shaded Bearish Setup
+              <option v-if="isSubscribed" value="2">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBear
               </option>
-              <option v-if="isSubscribed" value="3" hidden="">
-                &nbsp;&nbsp;&nbsp;&nbsp;Trend: Neutral
-              </option>
-              <option v-if="isSubscribed" value="4">
-                &nbsp;&nbsp;&nbsp;&nbsp;CT: Bull (Green): Green shaded Bullish Setup
-              </option>
-              <option v-if="isSubscribed" value="5">
-                &nbsp;&nbsp;&nbsp;&nbsp;CT: Bear (Red): Red shaded Bearish Setup
-              </option>
-              <option v-if="isSubscribed" value="6">
-                &nbsp;&nbsp;&nbsp;&nbsp;CT: Neutral
-              </option>
-              <option v-if="isSubscribed" value="7">
-                &nbsp;&nbsp;&nbsp;&nbsp;VT: Bull (Green): Green shaded Bullish Setup
-              </option>
-              <option v-if="isSubscribed" value="8">
-                &nbsp;&nbsp;&nbsp;&nbsp;VT: Bear (Red): Red shaded Bearish Setup
-              </option>
-              <option v-if="isSubscribed" value="9">
-                &nbsp;&nbsp;&nbsp;&nbsp;VT: Neutral
+              <option v-if="isSubscribed" value="3">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBull or vBear
               </option>
               <option v-if="isSubscribed" value="" disabled="">
-                &nbsp;Breakout (Trending): #5
+                &nbsp;vIMTF Yellow Trend
+              </option>
+              <option v-if="isSubscribed" value="4">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBull
+              </option>
+              <option v-if="isSubscribed" value="5">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBear
+              </option>
+              <option v-if="isSubscribed" value="6">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBull or vBear
+              </option>
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;vIMTF Purple Setup
+              </option>
+              <option v-if="isSubscribed" value="7">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBull
+              </option>
+              <option v-if="isSubscribed" value="8">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBear
+              </option>
+              <option v-if="isSubscribed" value="9">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBull or vBear
+              </option>
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;vIMTF Purple Trend
+              </option>
+              <option v-if="isSubscribed" value="10">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBull
+              </option>
+              <option v-if="isSubscribed" value="11">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBear
+              </option>
+              <option v-if="isSubscribed" value="12">
+                &nbsp;&nbsp;&nbsp;&nbsp;vBull or vBear
+              </option>
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;cIMTF Test and Break
               </option>
               <option v-if="isSubscribed" value="13">
-                &nbsp;&nbsp;&nbsp;&nbsp;CT: Bull (Green): Green shaded Bullish Setup
+                &nbsp;&nbsp;&nbsp;&nbsp;cBull
               </option>
               <option v-if="isSubscribed" value="14">
-                &nbsp;&nbsp;&nbsp;&nbsp;CT: Bear (Red): Red shaded Bearish Setup
+                &nbsp;&nbsp;&nbsp;&nbsp;cBear
               </option>
               <option v-if="isSubscribed" value="15">
-                &nbsp;&nbsp;&nbsp;&nbsp;CT: Neutral
+                &nbsp;&nbsp;&nbsp;&nbsp;cBoth
+              </option>
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;cIMTF Test, Break and pb
               </option>
               <option v-if="isSubscribed" value="16">
-                &nbsp;&nbsp;&nbsp;&nbsp;VT: Bull (Green): Green shaded Bullish Setup
+                &nbsp;&nbsp;&nbsp;&nbsp;cBull
               </option>
               <option v-if="isSubscribed" value="17">
-                &nbsp;&nbsp;&nbsp;&nbsp;VT: Bear (Red): Red shaded Bearish Setup
+                &nbsp;&nbsp;&nbsp;&nbsp;cBear
               </option>
               <option v-if="isSubscribed" value="18">
-                &nbsp;&nbsp;&nbsp;&nbsp;VT: Neutral
+                &nbsp;&nbsp;&nbsp;&nbsp;cBoth
+              </option>
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;cIMTF Break and Pull Back
+              </option>
+              <option v-if="isSubscribed" value="19">
+                &nbsp;&nbsp;&nbsp;&nbsp;cBull
+              </option>
+              <option v-if="isSubscribed" value="20">
+                &nbsp;&nbsp;&nbsp;&nbsp;cBear
+              </option>
+              <option v-if="isSubscribed" value="21">
+                &nbsp;&nbsp;&nbsp;&nbsp;cBoth
+              </option>
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;cIMTF Break and No Pull Back
+              </option>
+              <option v-if="isSubscribed" value="22">
+                &nbsp;&nbsp;&nbsp;&nbsp;cBull
+              </option>
+              <option v-if="isSubscribed" value="23">
+                &nbsp;&nbsp;&nbsp;&nbsp;cBear
+              </option>
+              <option v-if="isSubscribed" value="24">
+                &nbsp;&nbsp;&nbsp;&nbsp;cBoth
+              </option>
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;iMTF Setup
+              </option>
+              <option v-if="isSubscribed" value="25">
+                &nbsp;&nbsp;&nbsp;&nbsp;Green Shade
+              </option>
+              <option v-if="isSubscribed" value="26">
+                &nbsp;&nbsp;&nbsp;&nbsp;Red Shade
+              </option>
+              <option v-if="isSubscribed" value="27">
+                &nbsp;&nbsp;&nbsp;&nbsp;Any Shade
+              </option>
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;iMTF Trend
+              </option>
+              <option v-if="isSubscribed" value="28">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull
+              </option>
+              <option v-if="isSubscribed" value="29">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear
+              </option>
+              <option v-if="isSubscribed" value="30">
+                &nbsp;&nbsp;&nbsp;&nbsp;Both
+              </option>
+              <option v-if="isSubscribed" value="" disabled="">
+                &nbsp;iMTF Trend Cont.
+              </option>
+              <option v-if="isSubscribed" value="31">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull
+              </option>
+              <option v-if="isSubscribed" value="32">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear
+              </option>
+              <option v-if="isSubscribed" value="33">
+                &nbsp;&nbsp;&nbsp;&nbsp;Both
               </option>
             </select>
           </div>
@@ -209,51 +290,33 @@
                 &nbsp;Timing
               </option>
               <option value="1">
-                &nbsp;&nbsp;&nbsp;&nbsp;All Cross
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull Black
               </option>
               <option value="2">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bull
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear Black
               </option>
               <option value="3">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bear
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull HPB Gray
               </option>
               <option value="4">
-                &nbsp;&nbsp;&nbsp;&nbsp;All Dot
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear HPB Gray
               </option>
               <option value="5">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bull
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull Gray
               </option>
               <option value="6">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bear
-              </option>
-              <option value="" disabled="">
-                &nbsp;HB Investment
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear Gray
               </option>
               <option value="7">
-                &nbsp;&nbsp;&nbsp;&nbsp;All Gray
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull Dot
               </option>
               <option value="8">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bull
-              </option>
-              <option value="9">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bear
-              </option>
-              <option value="" disabled="">
-                &nbsp;All Investment
-              </option>
-              <option value="10">
-                &nbsp;&nbsp;&nbsp;&nbsp;All Gray
-              </option>
-              <option value="11">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bull
-              </option>
-              <option value="12">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bear
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear Dot
               </option>
               <option value="" disabled="">
                 &nbsp;iMTFA
               </option>
-              <option value="13">
+              <option value="9">
                 &nbsp;&nbsp;&nbsp;&nbsp;All
               </option>
             </select>
