@@ -135,6 +135,14 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="mb-3 row">
+            <label for="subject">Reset Filters</label>
+            <button class="resetButton2" style="margin-top: 0.1rem;" type="button" @click="reset()">
+              Reset
+            </button>
+          </div>
+      </div>
     </form>
   </div>
 </template>
@@ -159,8 +167,8 @@ export default {
       },
       dates: {
         years: [],
-        year: '2022',
-        month: '5',
+        year: '2025',
+        month: '6',
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         yearmonth: ''
       },
@@ -206,6 +214,19 @@ export default {
       this.dates.yearmonth = this.dates.year + '' + this.dates.month
       this.form.month = this.dates.yearmonth
       this.form.year = this.dates.year
+    },
+    reset () {
+        this.form.month = 0
+        this.form.market_id =  0
+        this.form.exchange_id = 0
+        this.form.dir =  1
+        this.form.rrmin = 1
+        this.form.rrmax =  100
+        this.form.sivmin =  1
+        this.form.sivmax =  100
+        this.form.confmin =  1
+        this.form.confmax =  100
+        this.form.pattern =  'pattern_2_1'
     }
   }
 

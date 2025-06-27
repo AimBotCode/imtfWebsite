@@ -12,11 +12,11 @@
             <input type="file" id="fileInput" style="display: none;" class="form-control" @input="profileOpen()">
             <div class="createFileBorder marginalmove" style="border-radius: 0.2rem;">
               <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn-sm"
-                @input="createProfileOpen()">
+                @click="createProfile()">
                 Create Profile
-              </label>
+            </label>
               <input id="textInput" type="text" class="btn-sm smaller"
-                style="border: transparent; border-left: 1px solid; border-radius: 1px;" @click="createProfile()">
+                style="border: transparent; border-left: 1px solid; border-radius: 1px;">
             </div>
           </div>
           <div class="col-md-4">
@@ -1011,36 +1011,23 @@ export default {
         fileInput.value = null
       })
     },
-    createProfileOpen() {
-      const textInput = document.getElementById('textInput')
-      const customButton = document.getElementById('createProfileButton')
-
-      customButton.addEventListener('click', () => {
-        textInput.click()
-      }, { once: true })
-    },
     createProfile() {
       const textInput = document.getElementById('textInput')
-      textInput.addEventListener('change', () => {
-        const filters = JSON.stringify(this.forms)
-        if (textInput.value != null) {
-          const file = new File([filters], textInput.value + '.json', { type: 'text/plain:charset=UTF-8' })
+      const filters = JSON.stringify(this.forms)
+      if (textInput.value != null) {
+        const file = new File([filters], textInput.value + '.json', { type: 'text/plain:charset=UTF-8' })
 
-          //  create a ObjectURL in order to download the created file
-          const url = window.URL.createObjectURL(file)
+        //  create a ObjectURL in order to download the created file
+        const url = window.URL.createObjectURL(file)
 
-          //  create a hidden link and set the href and click it
-          const a = document.createElement('a')
-          a.style = 'display: none'
-          a.href = url
-          a.download = file.name
-          a.click()
-          window.URL.revokeObjectURL(url)
-        }
-      }, { once: true })
-      textInput.addEventListener('mouseover', () => {
-        textInput.removeEventListener('click', textInput)
-      }, { once: true })
+        //  create a hidden link and set the href and click it
+        const a = document.createElement('a')
+        a.style = 'display: none'
+        a.href = url
+        a.download = file.name
+        a.click()
+        window.URL.revokeObjectURL(url)
+      }
     },
     reset() {
       this.forms[10] = this.getEmptyForm(10)
