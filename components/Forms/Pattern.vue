@@ -227,6 +227,7 @@ export default {
         this.form.confmin =  1
         this.form.confmax =  100
         this.form.pattern =  'pattern_2_1'
+        this.formChanged()
     }
   }
 
