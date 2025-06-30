@@ -28,11 +28,12 @@ const createUtils = function ({ app, store, redirect }) {
       return subscriptions;
     },
     async userKeapData(email) {
+      let self = this;
       // email = 'autoforex@yahoo.com'
       const userData = await app.$xhr.api
         .post("/api/seasonality", { action: "getUserByEmail", email })
         .then((response) => {
-          return (window.location.href = "scanner");
+          return (window.location.href = "./scanner");
         });
       return userData;
     },
