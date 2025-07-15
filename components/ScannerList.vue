@@ -5,6 +5,9 @@
         <div class="stock-search">
           <form action="#" method="get">
             <select v-model="market" class="form-control" multiple="true" @change="marketChange">
+              <option value="All">
+                All
+              </option>
               <option value="CurrencyHeatmap">
                 Currency
               </option>
@@ -48,14 +51,8 @@
       <div class="card-body">
         <div class="stock-search">
           <form action="#" method="get">
-            <input
-              v-model="query.text"
-              type="search"
-              name="search"
-              class="form-control top-search mb-0"
-              placeholder="Search Stock"
-              @input="getSymbols"
-            >
+            <input v-model="query.text" type="search" name="search" class="form-control top-search mb-0"
+              placeholder="Search Stock" @input="getSymbols">
             <div class="search-icon">
               <i class="ti ti-search" />
             </div>
@@ -63,7 +60,7 @@
         </div>
         <div v-if="show.symbols">
           <ul>
-            <li v-for="(sy,i) in query.symbols" :key="i">
+            <li v-for="(sy, i) in query.symbols" :key="i">
               <a href="javascript:;" @click="addSymbol(sy)">{{ sy.sym }} - {{ sy.description }}</a>
             </li>
           </ul>
@@ -87,7 +84,7 @@
       <div class="card-body p-0">
         <div class="watchlist-body" data-simplebar>
           <div v-if="list" id="watchlist_2" class="accordion">
-            <div v-for="(sym,i) in list" :key="i" class="accordion-item">
+            <div v-for="(sym, i) in list" :key="i" class="accordion-item">
               <div v-if="sym" id="headingTwo" class="accordion-header">
                 <a class=" accordion-button d-block py-2 px-3 collapsed " @click="removeSymbol(i)">
                   <div class="d-flex justify-content-between">
@@ -96,21 +93,25 @@
                       <p class="text-uppercase font-10 mb-0">{{ sym.description }}</p>
                     </div>
                     <div>
-                      <h6 class="m-0 text-uppercase font-11"> {{ sym.close }} <i :class="sym.roc>0?'ti ti-trending-up text-success':'ti ti-trending-down text-danger'" />
+                      <h6 class="m-0 text-uppercase font-11"> {{ sym.close }} <i
+                          :class="sym.roc > 0 ? 'ti ti-trending-up text-success' : 'ti ti-trending-down text-danger'" />
                       </h6>
                       <div class="d-inline-block font-10">
-                        <span :class="sym.roc>0?'text-success':'text-danger'">{{ (sym.close - sym.prevclose).toFixed(2) }}</span>
-                        <span :class="sym.roc>0?'text-success':'text-danger'">(%{{ sym.roc }})</span>
+                        <span :class="sym.roc > 0 ? 'text-success' : 'text-danger'">{{ (sym.close -
+                          sym.prevclose).toFixed(2)
+                        }}</span>
+                        <span :class="sym.roc > 0 ? 'text-success' : 'text-danger'">(%{{ sym.roc }})</span>
                       </div>
                     </div>
                   </div>
                 </a>
               </div>
             </div>
-            <div v-if="$store.state.app.watchlists[wlindex].name!=='Default'" class="d-flex justify-content-center py-2">
+            <div v-if="$store.state.app.watchlists[wlindex].name !== 'Default'"
+              class="d-flex justify-content-center py-2">
               <a href="javascript:;" @click="deleteWatchlist">Delete Watchlist</a>
             </div>
-            <div v-if="market==='custom'" class="d-flex justify-content-center py-2">
+            <div v-if="market === 'custom'" class="d-flex justify-content-center py-2">
               <a href="javascript:;" class="btn btn-danger" @click="scan">Scan</a>
             </div>
           </div>
@@ -124,7 +125,7 @@
 <script>
 export default {
   emits: ['market'],
-  data () {
+  data() {
     return {
       list: [],
       query: { text: '', symbols: [] },
@@ -134,6 +135,7 @@ export default {
       market: ['', 'SP500Heatmap'],
       marketName: ['SP500'],
       markets: [
+        { key: 'All', val: 'All' },
         { key: 'CurrencyHeatmap', val: 'Currency' },
         { key: 'SP500Heatmap', val: 'SP500' },
         { key: 'NASDAQ100Heatmap', val: 'NASDAQ' },
@@ -146,12 +148,17 @@ export default {
       ]
     }
   },
-  mounted () {
+  mounted() {
     this.getSymbolsByMarket()
   },
   methods: {
-    marketChange () {
-      if (this.market[0] === 'custom') {
+    marketChange() {
+      if (this.market[0] === 'All') {
+        this.market = ['CurrencyHeatmap', 'SP500Heatmap', 'NASDAQ100Heatmap',
+          'DOWHeatmap', 'ETFHeatmap', 'dax30Heatmap',
+          'FTSEHeatmap', 'BSE200Heatmap', 'FutureHeatmap']
+        this.marketName = ['All']
+      } else if (this.market[0] === 'custom') {
         this.show.search = true
         const slist = JSON.parse(JSON.stringify(this.$store.state.app.scanlist))
         this.getWatchlistData(slist)
@@ -172,7 +179,7 @@ export default {
 
       this.$emit('market', this.market)
     },
-    marketNameFormat () {
+    marketNameFormat() {
       let name = this.marketName[0]
       if (this.marketName.length > 1) {
         for (let i = 1; i < this.marketName.length; i++) {
@@ -181,7 +188,7 @@ export default {
       }
       return name
     },
-    getSymbolsByMarket () {
+    getSymbolsByMarket() {
       this.$xhr.api.post('/api/seasonality', { action: 'getSymbolsByMarket', market: this.market }).then((response) => {
         const symbols = response.json
         const list = []
@@ -193,13 +200,13 @@ export default {
         this.list = list
       })
     },
-    getSymbols () {
+    getSymbols() {
       this.$xhr.api.post('/api/seasonality', { action: 'getSymbols', query: this.query.text }).then((response) => {
         this.query.symbols = response.data
         this.show.symbols = true
       })
     },
-    async getWatchlistData (symbols) {
+    async getWatchlistData(symbols) {
       const r = await this.$xhr.api.post('/api/seasonality', { action: 'getSymbolData', symbols }).then((response) => {
         return response.data
       })
@@ -212,14 +219,14 @@ export default {
       }
       this.list = syms
     },
-    refresh () {
+    refresh() {
       const wl = this.$store.state.app.watchlists[this.wlindex]
       if (wl.symbols) {
         const slist = wl.symbols.map((o, i) => o.sym)
         this.getWatchlistData(slist)
       }
     },
-    choose () {
+    choose() {
       if (this.wlindex === 'add') {
         this.show.addWatchlist = true
         this.wlindex = 0
@@ -228,7 +235,7 @@ export default {
       this.watchlist = JSON.parse(JSON.stringify(this.$store.state.app.watchlists[this.wlindex]))
       this.getWatchlistData()
     },
-    saveWatchlist (wobj) {
+    saveWatchlist(wobj) {
       wobj.symbols = []
       this.$store.commit('app/createWatchlist', wobj)
       this.closeAddWatchlist()
@@ -236,13 +243,13 @@ export default {
       this.wlindex = len - 1
       this.choose()
     },
-    closeAddWatchlist () {
+    closeAddWatchlist() {
       this.show.addWatchlist = false
     },
-    scan () {
+    scan() {
       this.$emit('scan')
     },
-    addSymbol (symObj) {
+    addSymbol(symObj) {
       const slist = JSON.parse(JSON.stringify(this.$store.state.app.scanlist))
       if (slist.length > 50) {
         alert('Max. 50 items allowed')
@@ -254,15 +261,15 @@ export default {
       this.show.symbols = false
       this.query.text = ''
     },
-    removeSymbol (idx) {
+    removeSymbol(idx) {
       this.$store.commit('app/removeFromScanlist', idx)
       this.list.splice(idx, 1)
     },
-    deleteWatchlist () {
+    deleteWatchlist() {
       this.$store.commit('app/deleteWatchlist', this.wlindex)
       this.wlindex = 0
     },
-    getROC (sym) {
+    getROC(sym) {
       if (!sym.close || !sym.prevclose) { return 0 }
       const diff = sym.close - sym.prevclose
       const roc = (diff / sym.prevclose) * 100

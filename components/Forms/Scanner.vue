@@ -5,18 +5,21 @@
         <label>Timeframe</label>
         <div class="toolbar row">
           <div class="col-md-4">
-            <label for="fileInput" id="profileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
-              @input="profileOpenButton()">
-              <span>Open Profile</span>
-            </label>
-            <input type="file" id="fileInput" style="display: none;" class="form-control" @input="profileOpen()">
             <div class="createFileBorder marginalmove" style="border-radius: 0.2rem;">
-              <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn-sm"
+              <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
+                @click="updateProfile()">
+                Update
+              </label>
+              <label for="fileInput" id="profileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
+                @input="profileOpenButton()">
+                <span>Open</span>
+              </label>
+              <input type="file" id="fileInput" style="display: none;" class="form-control" @input="profileOpen()">
+              <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
                 @click="createProfile()">
-                Create Profile
-            </label>
-              <input id="textInput" type="text" class="btn-sm smaller"
-                style="border: transparent; border-left: 1px solid; border-radius: 1px;">
+                Create
+              </label>
+              <input id="textInput" type="text" class="btn-sm smaller" style="border: transparent;">
             </div>
           </div>
           <div class="col-md-4">
@@ -885,6 +888,7 @@ export default {
   emits: ['change'],
   data() {
     return {
+      file: "",
       forms: {
         10: this.getEmptyForm(10),
         30: this.getEmptyForm(30),
@@ -987,19 +991,18 @@ export default {
     },
     profileOpen() {
       const fileInput = document.getElementById('fileInput')
+      const fs = require('fs')
       fileInput.addEventListener('change', (event) => {
         const file = event.target.files[0]
-
+        this.file = file.name
         const reader = new FileReader()
 
         reader.onload = (event) => {
           try {
             const filters = JSON.parse(event.target.result)
-            console.log(filters)
             Object.entries(filters).forEach(([key, value]) => {
               const input = JSON.stringify(key)
               this.forms[key] = value
-              console.log(key)
               this.formChanges(input)
             })
             this.emitForm()
@@ -1010,6 +1013,18 @@ export default {
         reader.readAsText(file)
         fileInput.value = null
       })
+    },
+    updateProfile() {
+      const file = new File([filters], this.file, { type: 'text/plain:charset=UTF-8' })
+      const url = window.URL.createObjectURL(file)
+
+      //  create a hidden link and set the href and click it
+      const a = document.createElement('a')
+      a.style = 'display: none'
+      a.href = url
+      a.download = file.name
+      a.click()
+      window.URL.revokeObjectURL(url)
     },
     createProfile() {
       const textInput = document.getElementById('textInput')

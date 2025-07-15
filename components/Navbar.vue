@@ -5,23 +5,11 @@
     <div class="brand">
       <NuxtLink to="/scanner" class="logo">
         <span>
-          <img
-            src="~/assets/images/imtflogo.png"
-            alt="logo-small"
-            class="logo-sm"
-          >
+          <img src="~/assets/images/imtflogo.png" alt="logo-small" class="logo-sm">
         </span>
         <span>
-          <img
-            src="~/assets/images/imtflogo.png"
-            alt="logo-large"
-            class="logo-lg logo-light"
-          >
-          <img
-            src="~/assets/images/imtflogo-dark.png"
-            alt="logo-large"
-            class="logo-lg logo-dark"
-          >
+          <img src="~/assets/images/imtflogo.png" alt="logo-large" class="logo-lg logo-light">
+          <img src="~/assets/images/imtflogo-dark.png" alt="logo-large" class="logo-lg logo-dark">
         </span>
       </NuxtLink>
     </div>
@@ -30,52 +18,30 @@
     <nav class="navbar-custom">
       <ul class="list-unstyled topbar-nav float-end mb-0">
         <li class="dropdown">
-          <a
-            class="nav-link dropdown-toggle nav-user"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-haspopup="false"
-            aria-expanded="false"
-            @click="show.usermenu = !show.usermenu"
-          >
+          <a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button"
+            aria-haspopup="false" aria-expanded="false" @click="show.usermenu = !show.usermenu">
             <div class="d-flex align-items-center">
-              <img
-                src="assets/images/users/user-4.jpg"
-                alt=""
-                class="rounded-circle me-0 me-md-2 thumb-xs"
-              >
+              <img src="assets/images/users/user-4.jpg" alt="" class="rounded-circle me-0 me-md-2 thumb-xs">
               <div class="user-name">
                 <small class="d-none d-lg-block font-11">Welcome</small>
-                <span
-                  class="d-none d-lg-block fw-semibold font-12"
-                >{{ $store.state.app.user.display_name }}
-                  <i
-                    class="mdi mdi-chevron-down"
-                  /></span>
+                <span class="d-none d-lg-block fw-semibold font-12">{{ $store.state.app.user.display_name }}
+                  <i class="mdi mdi-chevron-down" /></span>
               </div>
             </div>
           </a>
-          <div
-            v-if="show.usermenu"
-            class="dropdown-menu dropdown-menu-end"
-            style="display: block"
-          >
+          <div v-if="show.usermenu" class="dropdown-menu dropdown-menu-end" style="display: block">
             <!-- <a class="dropdown-item" href="#"><i class="ti ti-user font-16 me-1 align-text-bottom" />
               Profile</a>
             <div class="dropdown-divider mb-0" /> -->
-            <a
-              class="dropdown-item"
-              href="#"
-              @click="logout"
-            ><i class="ti ti-power font-16 me-1 align-text-bottom" />
+            <a class="dropdown-item" href="#" @click="logout"><i class="ti ti-power font-16 me-1 align-text-bottom" />
               Logout</a>
           </div>
         </li>
         <li>
           <div>
             <span v-if="$store.state.app.active" class="badge bg-success">PRO</span>
-            <a v-if="!$store.state.app.active" href="https://qr220.infusionsoft.com/app/orderForms/RT-Scanner-Level-3" target="_blank" class="btn btn-xl btn-primary my-3">Free</a>
+            <a v-if="!$store.state.app.active" href="https://www.imtftrade.com/register/" target="_blank"
+              class="btn btn-xl btn-primary my-3">Free</a>
           </div>
         </li>
       </ul>
@@ -94,9 +60,7 @@
 
             <li class="nav-item parent-menu-item">
               <NuxtLink id="navbarMarket" class="nav-link" to="/seasonality">
-                <span><i
-                  class="ti ti-chart-arrows-vertical menu-icon"
-                />Seasonality</span>
+                <span><i class="ti ti-chart-arrows-vertical menu-icon" />Seasonality</span>
               </NuxtLink>
             </li>
 
@@ -136,24 +100,24 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       subscriptions: [],
       show: { seasonalityMenu: false, usermenu: false, subscriptions: false, mobileMenu: false }
     }
   },
-  mounted () {
+  mounted() {
     this.$store.commit('app/restoreState')
   },
   methods: {
-    logout () {
+    logout() {
       // this.$cookies.removeAll({ path: '/' })
       this.$cookies.remove('imtftkn')
       this.$store.commit('app/user', {})
       this.$store.commit('app/setActive', false)
       this.$router.push({ name: 'login' })
     },
-    toggleMenu () {
+    toggleMenu() {
       this.show.mobileMenu = !this.show.mobileMenu
     }
   }
