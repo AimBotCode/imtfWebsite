@@ -23,7 +23,7 @@
               <option value="NASDAQ100Heatmap">
                 &nbsp;&nbsp;NASDAQ
               </option>
-              <option value="DOW30Heatmap">
+              <option value="dow30Heatmap">
                 &nbsp;&nbsp;DOW
               </option>
               <option value="ETFHeatmap">
@@ -37,6 +37,9 @@
               </option>
               <option value="BSE200Heatmap">
                 Indian NIFTY
+              </option>
+              <option value="CryptoHeatmap">
+                Crypto
               </option>
               <option value="custom">
                 Custom
@@ -139,12 +142,13 @@ export default {
         { key: 'CurrencyHeatmap', val: 'Currency' },
         { key: 'SP500Heatmap', val: 'SP500' },
         { key: 'NASDAQ100Heatmap', val: 'NASDAQ' },
-        { key: 'DOWHeatmap', val: 'DOW' },
+        { key: 'dow30Heatmap', val: 'DOW' },
         { key: 'ETFHeatmap', val: 'ETF' },
         { key: 'dax30Heatmap', val: 'German DAX' },
         { key: 'FTSEHeatmap', val: 'UK FTSE' },
         { key: 'BSE200Heatmap', val: 'Indian NIFTY' },
-        { key: 'FutureHeatmap', val: 'Futures' }
+        { key: 'FutureHeatmap', val: 'Futures' },
+        { key: 'CryptoHeatmap', val: 'Crypto' }
       ]
     }
   },
@@ -155,8 +159,8 @@ export default {
     marketChange() {
       if (this.market[0] === 'All') {
         this.market = ['CurrencyHeatmap', 'SP500Heatmap', 'NASDAQ100Heatmap',
-          'DOWHeatmap', 'ETFHeatmap', 'dax30Heatmap',
-          'FTSEHeatmap', 'BSE200Heatmap', 'FutureHeatmap']
+          'dow30Heatmap', 'ETFHeatmap', 'dax30Heatmap',
+          'FTSEHeatmap', 'BSE200Heatmap', 'FutureHeatmap', 'CryptoHeatmap']
         this.marketName = ['All']
       } else if (this.market[0] === 'custom') {
         this.show.search = true

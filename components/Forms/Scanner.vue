@@ -430,8 +430,20 @@
               <option value="7">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear Zone
               </option>
-              <option value="8">
+              <option value="" disabled="">
                 Bracket Move
+              </option>
+              <option value="8">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bar 1
+              </option>
+              <option value="9">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bar 2-5
+              </option>
+              <option value="10">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bar 6-10
+              </option>
+              <option value="11">
+                &nbsp;&nbsp;&nbsp;&nbsp;All
               </option>
             </select>
           </div>
