@@ -75,26 +75,39 @@
                         </table>
                       </div>
                       <nav aria-label="..." class="float-end d-flex align-items-center justify-content-center w-100">
-                        <ul class="pagination pagination-sm mx-2">
-                          <li :class="'page-item'+(meta.page<2)?' disabled':''">
-                            <a class="page-link" href="#" tabindex="-1" @click="paginate(1)">First</a>
+                        <ul class="pagination pagination-sm me-1">
+                          <li :class="'page-item' + (meta.page < 2 ? ' disabled' : '')">
+                            <a class="page-link" href="#" @click="paginate(1)">First</a>
                           </li>
-                          <li v-if="meta.page>1" class="page-item">
-                            <a class="page-link" href="#" @click="paginate(meta.page - 1)">{{ meta.page-1 }}</a>
+                          <li :class="'page-item' + (meta.page < 2 ? ' disabled' : '')">
+                            <a class="page-link" href="#" @click="paginate(meta.page - 1)">Previous</a>
+                          </li>
+                        </ul>
+
+                        <!-- Page numbers -->
+                        <ul class="pagination pagination-sm me-1">
+                          <li v-if="meta.page > 1" class="page-item">
+                            <a class="page-link" href="#" @click="paginate(meta.page - 1)">{{ meta.page - 1 }}</a>
                           </li>
                           <li class="page-item active">
-                            <a class="page-link" href="#" @click="paginate(meta.page)">{{ meta.page }} <span class="sr-only">(current)</span>
-                            </a>
+                            <a class="page-link" href="#" @click="paginate(meta.page)">{{ meta.page }}</a>
                           </li>
-                          <li v-if="meta.pages>meta.page" class="page-item">
+                          <li v-if="meta.pages > meta.page" class="page-item">
                             <a class="page-link" href="#" @click="paginate(meta.page + 1)">{{ meta.page + 1 }}</a>
                           </li>
-                          <li :class="'page-item'+(meta.page===meta.pages?' disabled':'')">
+                        </ul>
+
+                        <!-- Navigation buttons -->
+                        <ul class="pagination pagination-sm me-2">
+                          <li :class="'page-item' + (meta.page === meta.pages ? ' disabled' : '')">
+                            <a class="page-link" href="#" @click="paginate(meta.page + 1)">Next</a>
+                          </li>
+                          <li :class="'page-item' + (meta.page === meta.pages ? ' disabled' : '')">
                             <a class="page-link" href="#" @click="paginate(meta.pages)">Last</a>
                           </li>
                         </ul>
                         <div class="input-group input-group-sm mb-3" style="max-width:100px;">
-                          <input v-model="meta.page" type="text" class="form-control form-control-sm" placeholder="Page" @input="goto">
+                          <input v-model="meta.page" type="text" class="form-control p-100" placeholder="Page" @input="goto">
                           <span id="basic-addon2" class="input-group-text">{{ meta.pages }}</span>
                         </div>
                       </nav>
