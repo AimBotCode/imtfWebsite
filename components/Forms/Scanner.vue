@@ -3,20 +3,33 @@
     <form class="">
       <div class="mx-6">
         <label>Timeframe</label>
-        <div class="toolbar row">
+        <div class="toolbar row align-items-center mb-4 border-bottom pb-2 pt-2">
           <div class="col-md-4">
-            <div class="createFileBorder marginalmove" style="border-radius: 0.2rem;">
-              <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
-                @click="updateProfile()">
+            <div>
+              <label
+                id="createProfileButton"
+                style="float: left;"
+                class="btn-outline-dark btn btn-sm"
+                @click="updateProfile()"
+              >
                 Update
               </label>
-              <label for="fileInput" id="profileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
-                @input="profileOpenButton()">
+              <label
+                id="profileButton"
+                for="fileInput"
+                style="float: left;"
+                class="btn-outline-dark btn btn-sm mx-1"
+                @input="profileOpenButton()"
+              >
                 <span>Open</span>
               </label>
-              <input type="file" id="fileInput" style="display: none;" class="form-control" @input="profileOpen()">
-              <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
-                @click="createProfile()">
+              <input id="fileInput" type="file" style="display: none;" class="form-control" @input="profileOpen()">
+              <label
+                id="createProfileButton"
+                style="float: left;"
+                class="btn-outline-dark btn btn-sm"
+                @click="createProfile()"
+              >
                 Create
               </label>
               <input id="textInput" type="text" class="btn-sm smaller" style="border: transparent;">
@@ -898,9 +911,9 @@
 <script>
 export default {
   emits: ['change'],
-  data() {
+  data () {
     return {
-      file: "",
+      file: '',
       forms: {
         10: this.getEmptyForm(10),
         30: this.getEmptyForm(30),
@@ -916,7 +929,7 @@ export default {
     }
   },
   computed: {
-    isSubscribed() {
+    isSubscribed () {
       if (this.$config.env === 'development') { return true }
       const roles = this.$store.getters['app/getItem']('roles')
       if (roles.includes('memberium_memberships-rtscannerleveliii')) {
@@ -926,7 +939,7 @@ export default {
       return this.$store.getters['app/getItem']('active')
     }
   },
-  mounted() {
+  mounted () {
     // this.emitForm()
     const scannerForm = this.$store.getters['app/getItem']('scannerForm')
     if (scannerForm.action) {
@@ -937,11 +950,12 @@ export default {
       this.emitForm()
     }
   },
+
   methods: {
-    emitForm() {
+    emitForm () {
       this.$emit('change', this.forms)
     },
-    formChanged() {
+    formChanged () {
       if (this.changed.includes(this.timeframe)) {
         const form = JSON.parse(JSON.stringify(this.forms[this.timeframe]))
         const blank = this.getEmptyForm(this.timeframe)
@@ -967,7 +981,7 @@ export default {
 
       this.emitForm()
     },
-    formChanges(timeframe) {
+    formChanges (timeframe) {
       if (this.changed.includes(timeframe)) {
         const form = JSON.parse(JSON.stringify(this.forms[timeframe]))
         const blank = this.getEmptyForm(timeframe)
@@ -993,7 +1007,7 @@ export default {
 
       this.emitForm()
     },
-    profileOpenButton() {
+    profileOpenButton () {
       const fileInput = document.getElementById('fileInput')
       const customButton = document.getElementById('profileButton')
 
@@ -1001,9 +1015,9 @@ export default {
         fileInput.click()
       })
     },
-    profileOpen() {
+    profileOpen () {
       const fileInput = document.getElementById('fileInput')
-      const fs = require('fs')
+      // const fs = require('fs')
       fileInput.addEventListener('change', (event) => {
         const file = event.target.files[0]
         this.file = file.name
@@ -1026,7 +1040,8 @@ export default {
         fileInput.value = null
       })
     },
-    updateProfile() {
+    updateProfile () {
+      const filters = JSON.stringify(this.forms)
       const file = new File([filters], this.file, { type: 'text/plain:charset=UTF-8' })
       const url = window.URL.createObjectURL(file)
 
@@ -1038,7 +1053,7 @@ export default {
       a.click()
       window.URL.revokeObjectURL(url)
     },
-    createProfile() {
+    createProfile () {
       const textInput = document.getElementById('textInput')
       const filters = JSON.stringify(this.forms)
       if (textInput.value != null) {
@@ -1056,7 +1071,7 @@ export default {
         window.URL.revokeObjectURL(url)
       }
     },
-    reset() {
+    reset () {
       this.forms[10] = this.getEmptyForm(10)
       this.forms[30] = this.getEmptyForm(30)
       this.forms[60] = this.getEmptyForm(60)
@@ -1068,11 +1083,11 @@ export default {
       this.changed.splice(0, 8)
       this.emitForm()
     },
-    setTimeframe(t) {
+    setTimeframe (t) {
       this.timeframe = t
       this.$emit('timeframe', this.timeframe)
     },
-    getEmptyForm(tf) {
+    getEmptyForm (tf) {
       return {
         timeframe: tf,
         strategy: 0,
@@ -1092,7 +1107,7 @@ export default {
         vopt: ['']
       }
     },
-    getClass(tf) {
+    getClass (tf) {
       return {
         'btn btn-sm btn-outline-dark': true,
         active: tf === this.timeframe,
