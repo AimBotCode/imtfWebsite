@@ -18,8 +18,15 @@
     <nav class="navbar-custom">
       <ul class="list-unstyled topbar-nav float-end mb-0">
         <li class="dropdown">
-          <a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button"
-            aria-haspopup="false" aria-expanded="false" @click="show.usermenu = !show.usermenu">
+          <a
+            class="nav-link dropdown-toggle nav-user"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="false"
+            aria-expanded="false"
+            @click="show.usermenu = !show.usermenu"
+          >
             <div class="d-flex align-items-center">
               <img src="assets/images/users/user-4.jpg" alt="" class="rounded-circle me-0 me-md-2 thumb-xs">
               <div class="user-name">
@@ -40,8 +47,12 @@
         <li>
           <div>
             <span v-if="$store.state.app.active" class="badge bg-success">PRO</span>
-            <a v-if="!$store.state.app.active" href="https://www.imtftrade.com/register/" target="_blank"
-              class="btn btn-xl btn-primary my-3">Free</a>
+            <a
+              v-if="!$store.state.app.active"
+              href="https://www.imtftrade.com/register/"
+              target="_blank"
+              class="btn btn-xl btn-primary my-3"
+            >Free</a>
           </div>
         </li>
       </ul>
@@ -100,24 +111,24 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       subscriptions: [],
       show: { seasonalityMenu: false, usermenu: false, subscriptions: false, mobileMenu: false }
     }
   },
-  mounted() {
+  mounted () {
     this.$store.commit('app/restoreState')
   },
   methods: {
-    logout() {
+    logout () {
       // this.$cookies.removeAll({ path: '/' })
       this.$cookies.remove('imtftkn')
       this.$store.commit('app/user', {})
       this.$store.commit('app/setActive', false)
       this.$router.push({ name: 'login' })
     },
-    toggleMenu() {
+    toggleMenu () {
       this.show.mobileMenu = !this.show.mobileMenu
     }
   }
