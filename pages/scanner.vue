@@ -229,7 +229,7 @@ export default {
         { key: 'sym', label: 'Symbol', description: 'Stock ticker symbol', sortKey: 'Sym' },
         { key: 'sector', label: 'Market', description: 'Market sector classification', sortKey: 'sector' },
         { key: 'close', label: 'Close', description: 'Current closing price', sortKey: 'close' },
-        { key: 'change', label: 'Change (%)', description: 'Percentage change from previous close', sortKey: 'change' },
+        { key: 'change', label: 'Change (%)', description: 'Percentage change from previous close', sortKey: 'price_change' },
         { key: 'dtime', label: 'Date/Time', description: 'Last update timestamp', sortKey: 'dtime' },
         { key: 'istate', label: 'IState', description: 'StateBarCount indicator', sortKey: 'istate' },
         { key: 'vstate', label: 'VState', description: 'HasStateBars indicator', sortKey: 'vstate' },

@@ -1,41 +1,30 @@
 <template>
   <div>
     <form class="">
-      <div class="mx-6">
-        <label>Timeframe</label>
-        <div class="toolbar row align-items-center mb-4 border-bottom pb-2 pt-2">
+      <div class="">
+        <div class="toolbar row align-items-end mb-4 border-bottom pb-3">
           <div class="col-md-4">
             <div>
-              <label
-                id="createProfileButton"
-                style="float: left;"
-                class="btn-outline-dark btn btn-sm"
-                @click="updateProfile()"
-              >
-                Update
-              </label>
-              <label
-                id="profileButton"
-                for="fileInput"
-                style="float: left;"
-                class="btn-outline-dark btn btn-sm mx-1"
-                @input="profileOpenButton()"
-              >
-                <span>Open</span>
-              </label>
-              <input id="fileInput" type="file" style="display: none;" class="form-control" @input="profileOpen()">
-              <label
-                id="createProfileButton"
-                style="float: left;"
-                class="btn-outline-dark btn btn-sm"
-                @click="createProfile()"
-              >
-                Create
-              </label>
-              <input id="textInput" type="text" class="btn-sm smaller" style="border: transparent;">
+              <div class="lable">
+                Profiles
+              </div>
+              <div class="float-start">
+                <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('update')">
+                  Save
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('open')">
+                  Open
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('create')">
+                  Create
+                </button>
+              </div>
             </div>
           </div>
           <div class="col-md-4">
+            <div class="lable">
+              Timeframe
+            </div>
             <button type="button" :class="getClass(10)" @click="setTimeframe(10)">
               10
             </button>
@@ -905,6 +894,17 @@
         </div>
       </div>
     </form>
+
+    <!-- Profile Modal -->
+    <ModalsProfile
+      v-if="showProfileModal"
+      :mode="modalMode"
+      :title="modalTitle"
+      :filters="forms"
+      @close="showProfileModal = false"
+      @saved="onProfileSaved"
+      @loaded="onProfileLoaded"
+    />
   </div>
 </template>
 
@@ -925,7 +925,10 @@ export default {
         M: this.getEmptyForm('M')
       },
       timeframe: 'D',
-      changed: []
+      changed: [],
+      showProfileModal: false,
+      modalMode: '',
+      modalTitle: ''
     }
   },
   computed: {
@@ -952,6 +955,24 @@ export default {
   },
 
   methods: {
+    openModal (mode) {
+      this.modalMode = mode
+      this.modalTitle =
+        mode === 'create'
+          ? 'Create Profile'
+          : mode === 'update'
+            ? 'Update Profile'
+            : 'Open Profile'
+      this.showProfileModal = true
+    },
+    onProfileSaved () {
+      this.showProfileModal = false
+    },
+    onProfileLoaded (loadedFilters) {
+      this.forms = loadedFilters
+      this.emitForm() // emit changes
+      this.showProfileModal = false
+    },
     emitForm () {
       this.$emit('change', this.forms)
     },

@@ -59,7 +59,7 @@
       <!--end topbar-nav-->
 
       <div class="navbar-custom-menu">
-        <div id="navigation" style="display:block">
+        <div id="navigation" style="display:block;">
           <!-- Navigation Menu-->
           <ul class="navigation-menu">
             <li class="nav-item parent-menu-item">
