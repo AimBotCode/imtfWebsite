@@ -21,7 +21,7 @@
             Profiles are saved in your browser's local storage and will be automatically removed when you clear your browser cache or browsing data.
           </div>
 
-          <!-- CREATE / UPDATE MODE -->
+          <!-- CREATE MODE -->
           <div v-if="mode === 'create' || mode === 'update'">
             <div class="mb-3">
               <label for="profileName" class="form-label">Profile Name</label>

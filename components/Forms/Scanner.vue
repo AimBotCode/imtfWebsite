@@ -3,25 +3,61 @@
     <form class="">
       <div class="">
         <div class="toolbar row align-items-end mb-4 border-bottom pb-3">
-          <div class="col-md-4">
-            <div>
-              <div class="lable">
-                Profiles
+          <div class="col-lg-6 col-md-6 col-sm-12 col-12 sm-mb-3">
+            <div class="lg-d-flex">
+              <div>
+                <div class="lable">
+                  Profiles
+                </div>
+                <div class="float-start">
+                  <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('update')">
+                    Update
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('open')">
+                    Open
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('create')">
+                    Create
+                  </button>
+                </div>
               </div>
-              <div class="float-start">
-                <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('update')">
-                  Save
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('open')">
-                  Open
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('create')">
-                  Create
-                </button>
+              <div class="lg-mx-5">
+                <div class="lable">
+                  Download
+                </div>
+                <div>
+                  <label
+                    id="createProfileButton"
+                    style="float: left;"
+                    class="btn-outline-dark btn btn-sm"
+                    @click="updateProfile()"
+                  >
+                    Update
+                  </label>
+                  <label
+                    id="profileButton"
+                    for="fileInput"
+                    style="float: left;"
+                    class="btn-outline-dark btn btn-sm mx-1"
+                    @input="profileOpenButton()"
+                  >
+                    <span>Open</span>
+                  </label>
+                  <input id="fileInput" type="file" style="display: none;" class="form-control" @input="profileOpen()">
+                  <label
+                    id="createProfileButton"
+                    style="float: left;"
+                    class="btn-outline-dark btn btn-sm"
+                    @click="createProfile()"
+                  >
+                    Create
+                  </label>
+                  <input id="textInput" type="text" class="btn-sm smaller" style="border: transparent; display: none;">
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 sm-mb-3">
             <div class="lable">
               Timeframe
             </div>
@@ -50,7 +86,7 @@
               M
             </button>
           </div>
-          <div class="col-md-4">
+          <div class="col-lg-2 col-md-2 col-sm-12 col-12 sm-mb-3">
             <button v-if="isSubscribed" class="btn btn-sm btn-outline-dark resetButton" type="button" @click="reset()">
               Reset Filters
             </button>
@@ -905,6 +941,14 @@
       @saved="onProfileSaved"
       @loaded="onProfileLoaded"
     />
+
+    <!-- Update Profile Modal -->
+    <ModalsUpdateProfile
+      v-if="showUpdateModal"
+      :current-filters="forms"
+      @close="showUpdateModal = false"
+      @updated="onProfileUpdated"
+    />
   </div>
 </template>
 
@@ -914,6 +958,7 @@ export default {
   data () {
     return {
       file: '',
+      lastCreatedProfile: '', // Track the most recently created profile
       forms: {
         10: this.getEmptyForm(10),
         30: this.getEmptyForm(30),
@@ -927,6 +972,7 @@ export default {
       timeframe: 'D',
       changed: [],
       showProfileModal: false,
+      showUpdateModal: false,
       modalMode: '',
       modalTitle: ''
     }
@@ -956,22 +1002,27 @@ export default {
 
   methods: {
     openModal (mode) {
-      this.modalMode = mode
-      this.modalTitle =
-        mode === 'create'
-          ? 'Create Profile'
-          : mode === 'update'
-            ? 'Update Profile'
-            : 'Open Profile'
-      this.showProfileModal = true
+      if (mode === 'update') {
+        this.showUpdateModal = true
+      } else {
+        this.modalMode = mode
+        this.modalTitle = mode === 'create' ? 'Save Profile' : 'Open Profile'
+        this.showProfileModal = true
+      }
     },
-    onProfileSaved () {
+
+    onProfileSaved (profileName) {
+      this.lastCreatedProfile = profileName // Store the name of the created profile
       this.showProfileModal = false
     },
     onProfileLoaded (loadedFilters) {
       this.forms = loadedFilters
       this.emitForm() // emit changes
       this.showProfileModal = false
+    },
+
+    onProfileUpdated () {
+      this.showUpdateModal = false
     },
     emitForm () {
       this.$emit('change', this.forms)
