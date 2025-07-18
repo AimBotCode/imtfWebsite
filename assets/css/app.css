@@ -5082,11 +5082,31 @@ ul.listree-submenu-items {
 }
 
 
+.table-column-config-icon {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  z-index: 10;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #6c757d
+}
+
 @media (max-width: 768px) {
 
   .table td,
   .table th {
     padding: 2px;
     font-size: 10px;
+  }
+
+  .table-column-config-icon {
+    position: absolute;
+    top: 2px;
+    right: 15px;
+    z-index: 10;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #6c757d
   }
 }
