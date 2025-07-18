@@ -39,8 +39,7 @@
                   <!-- Configuration icon positioned at top right of table -->
                   <i
                     v-if="show.as === 'table'"
-                    class="las la-cog"
-                    style="position: absolute; top: 10px; right: 15px; z-index: 10; font-size: 1.2rem; cursor: pointer; color: #6c757d;"
+                    class="las la-cog table-column-config-icon"
                     title="Configure Columns"
                     @click="show.columnConfig = true"
                   />
@@ -218,9 +217,14 @@ export default {
         user_email: ''
       },
       symbol: '',
-      show: { filters: true, symbol: false, addWatchlist: true, as: 'heatmap', columnConfig: false },
+      show: {
+        filters: true,
+        symbol: false,
+        addWatchlist: true,
+        as: 'heatmap',
+        columnConfig: false
+      },
       sql: '',
-      // Add these new properties
       availableColumns: [
         { key: 'sym', label: 'Symbol', description: 'Stock ticker symbol', sortKey: 'Sym' },
         { key: 'sector', label: 'Market', description: 'Market sector classification', sortKey: 'sector' },
@@ -234,14 +238,28 @@ export default {
         { key: 'description', label: 'Description', description: 'Company full name', sortKey: 'description' }
       ],
       selectedColumnKeys: ['sym', 'sector', 'close', 'change']
+    }
+  },
 
-    }
-  },
   computed: {
+    // Dynamically compute istate_variable based on selected strategy
+    istateVariable () {
+      const strategy = this.formData.filters[this.formData.timeframe]?.strategy || 0
+      if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(Number(strategy))) {
+        return 'hastatebars'
+      } else if ([13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].includes(Number(strategy))) {
+        return 'cstatecount'
+      }
+      return 'statebarcount'
+    },
+
     selectedColumns () {
-      return this.availableColumns.filter(col => this.selectedColumnKeys.includes(col.key))
+      return this.availableColumns.filter(col =>
+        this.selectedColumnKeys.includes(col.key)
+      )
     }
   },
+
   watch: {
     showColumnConfig (newValue) {
       if (newValue) {
@@ -249,8 +267,9 @@ export default {
       }
     }
   },
+
   mounted () {
-  // Load saved column configuration
+    // Load saved column configuration
     const savedColumns = localStorage.getItem('scannerTableColumns')
     if (savedColumns) {
       try {
@@ -259,7 +278,6 @@ export default {
         console.error('Error loading saved column configuration:', e)
       }
     }
-    // ADD THIS LINE
     this.getData()
   },
 
@@ -273,11 +291,18 @@ export default {
     closeColumnConfig () {
       this.show.columnConfig = false
     },
+
     getData () {
       this.rows = []
       const user = this.$store.getters['app/getItem']('user')
       this.formData.user_email = user.user_email
       this.formData.market = this.market
+
+      // ✅ Dynamically add istate_variable to filters before API call
+      const timeframeFilters = this.formData.filters[this.formData.timeframe] || {}
+      timeframeFilters.istate_variable = this.istateVariable
+      this.formData.filters[this.formData.timeframe] = timeframeFilters
+
       this.$xhr.api.post('/api/scanner', this.formData).then((response) => {
         this.$store.commit('app/setScannerForm', JSON.parse(JSON.stringify(this.formData)))
         this.meta.total = response.total
@@ -289,7 +314,7 @@ export default {
         const symbols = response.data
         const series = []
         if (!symbols) { return }
-        symbols.forEach((obj, i) => {
+        symbols.forEach((obj) => {
           if (!symbols.includes(obj.sym)) {
             symbols.push(obj.sym)
             this.rows.push(obj)
@@ -298,76 +323,91 @@ export default {
 
             const colorVal = this.getColor(val)
             const realVal = Math.abs(val)
-            const row = { name: obj.sym, value: realVal, fakeVal, color: this.colors[colorVal], colorValue: colorVal, description: obj.description }
+            const row = {
+              name: obj.sym,
+              value: realVal,
+              fakeVal,
+              color: this.colors[colorVal],
+              colorValue: colorVal,
+              description: obj.description
+            }
             series.push(row)
           }
         })
         this.series = series
       })
     },
+
+    formChanged (form) {
+      this.formData.filters = form
+      this.getData()
+      console.log('Form changed, filters:', this.formData.filters)
+    },
+
     scan () {
       const slist = JSON.parse(JSON.stringify(this.$store.state.app.scanlist))
       this.formData.scanlist = slist
       this.getData()
     },
-    formChanged (form) {
-      this.formData.filters = form
-      this.getData()
-      console.log('ran')
-    },
+
     setTimeframe (tf) {
       this.formData.timeframe = tf
     },
+
     setMarket (market) {
       this.market = market
       if (this.market !== 'custom') {
         this.getData()
       }
     },
+
     sort (col) {
       const sort = []
       sort[0] = col
       if (this.formData.order[0] === col) {
-        if (this.formData.order[1] === 'ASC') {
-          sort[1] = 'DESC'
-        } else {
-          sort[1] = 'ASC'
-        }
+        sort[1] = this.formData.order[1] === 'ASC' ? 'DESC' : 'ASC'
       } else {
         sort[1] = 'DESC'
       }
       this.formData.order = sort
       this.getData()
     },
+
     makePager () {
       this.meta.pages = Math.ceil(this.meta.total / this.meta.perpage)
     },
+
     paginate (page) {
       this.meta.page = page
       const offset = this.meta.perpage * (page - 1)
       this.formData.limit = [offset, this.meta.perpage]
       this.getData()
     },
+
     limitChange (page) {
       this.meta.page = page
-      const offset = this.meta.perpage * (page - 1)
       if (this.meta.perpage > 20) {
         this.meta.perpage = 20
       }
+      const offset = this.meta.perpage * (page - 1)
       this.formData.limit = [offset, this.meta.perpage]
       this.getData()
     },
+
     goto () {
       this.paginate(this.meta.page)
     },
+
     limit () {
       this.limitChange(this.meta.page)
     },
+
     showSymbol (sym) {
       this.show.symbol = true
       this.symbol = sym
       this.$refs.symbolDetailRef.chooseSymbol(this.symbol)
     },
+
     isAdmin () {
       const user = this.$store.getters['app/getItem']('user')
       if (['seasonaluser', 'eiicapital@gmail.com'].includes(user.user_login)) {
@@ -375,6 +415,7 @@ export default {
       }
       return false
     },
+
     iconClass (col) {
       return {
         las: true,
@@ -383,12 +424,14 @@ export default {
         'la-sort': col !== this.formData.order[0]
       }
     },
+
     getROC (sym) {
       if (!sym.close || !sym.prevclose) { return 0 }
       const diff = sym.close - sym.prevclose
       const roc = (diff / sym.prevclose) * 100
       return roc.toFixed(2)
     },
+
     getColor (val) {
       if (val > 6) { return 0 }
       if (val > 3) { return 1 }
@@ -396,16 +439,12 @@ export default {
       if (val > -6) { return 3 }
       return 4
     },
+
     setView (v) {
-      if (v === 'heatmap') {
-        this.formData.limit = [0, 5000]
-      } else {
-        this.formData.limit = [0, 10]
-      }
+      this.formData.limit = v === 'heatmap' ? [0, 5000] : [0, 10]
       this.show.as = v
       this.getData()
     }
-
   }
 }
 </script>

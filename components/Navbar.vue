@@ -28,7 +28,7 @@
             @click="show.usermenu = !show.usermenu"
           >
             <div class="d-flex align-items-center">
-              <img src="assets/images/users/user-4.jpg" alt="" class="rounded-circle me-0 me-md-2 thumb-xs">
+              <img src="~/assets/images/users/user-4.jpg" alt="" class="rounded-circle me-0 me-md-2 thumb-xs">
               <div class="user-name">
                 <small class="d-none d-lg-block font-11">Welcome</small>
                 <span class="d-none d-lg-block fw-semibold font-12">{{ $store.state.app.user.display_name }}
