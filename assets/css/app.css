@@ -5097,6 +5097,16 @@ ul.listree-submenu-items {
   font-weight: 500;
 }
 
+.lg-d-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.lg-mx-5 {
+  margin-left: 20px;
+}
+
 @media (max-width: 768px) {
 
   .table td,
@@ -5113,5 +5123,20 @@ ul.listree-submenu-items {
     cursor: pointer;
     color: #6c757d;
     z-index: inherit;
+  }
+
+  .lg-d-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  .sm-mb-3 {
+    margin-bottom: 5px;
+  }
+
+  .lg-mx-5 {
+    margin-left: 0px;
   }
 }
