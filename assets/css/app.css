@@ -5086,10 +5086,15 @@ ul.listree-submenu-items {
   position: absolute;
   top: 13px;
   right: 15px;
-  z-index: 10;
   font-size: 1.2rem;
   cursor: pointer;
-  color: #6c757d
+  color: #6c757d;
+  z-index: inherit;
+}
+
+.lable {
+  font-size: 14px;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
@@ -5104,9 +5109,9 @@ ul.listree-submenu-items {
     position: absolute;
     top: 2px;
     right: 15px;
-    z-index: 10;
     font-size: 1.2rem;
     cursor: pointer;
-    color: #6c757d
+    color: #6c757d;
+    z-index: inherit;
   }
 }
