@@ -30,7 +30,7 @@
                     id="createProfileButton"
                     style="float: left;"
                     class="btn-outline-dark btn btn-sm"
-                    @click="updateProfile()"
+                    @click="openModal('update', true)"
                   >
                     Update
                   </label>
@@ -48,7 +48,8 @@
                     id="createProfileButton"
                     style="float: left;"
                     class="btn-outline-dark btn btn-sm"
-                    @click="createProfile()"
+
+                    @click="openModal('create', true)"
                   >
                     Create
                   </label>
@@ -937,6 +938,7 @@
       :mode="modalMode"
       :title="modalTitle"
       :filters="forms"
+      :enable-download="enableDownload"
       @close="showProfileModal = false"
       @saved="onProfileSaved"
       @loaded="onProfileLoaded"
@@ -1001,12 +1003,23 @@ export default {
   },
 
   methods: {
-    openModal (mode) {
+    openModal (mode, enableDownload = false) {
       if (mode === 'update') {
-        this.showUpdateModal = true
+        if (enableDownload) {
+          // Open update modal for download
+          this.modalMode = mode
+          this.modalTitle = 'Update & Download Profile'
+          this.enableDownload = true
+          this.showProfileModal = true
+        } else {
+          // Open update modal for local storage
+          this.showUpdateModal = true
+        }
       } else {
+        // Create or Open modal
         this.modalMode = mode
         this.modalTitle = mode === 'create' ? 'Save Profile' : 'Open Profile'
+        this.enableDownload = enableDownload
         this.showProfileModal = true
       }
     },
