@@ -163,6 +163,8 @@ export default {
           'FTSEHeatmap', 'BSE200Heatmap', 'FutureHeatmap', 'CryptoHeatmap']
         this.marketName = ['All']
       } else if (this.market[0] === 'custom') {
+        this.marketName = ['Custom']
+        this.market = []
         this.show.search = true
         const slist = JSON.parse(JSON.stringify(this.$store.state.app.scanlist))
         this.getWatchlistData(slist)

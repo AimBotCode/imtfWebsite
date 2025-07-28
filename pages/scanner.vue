@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <Navbar />
@@ -37,21 +36,14 @@
                 </div>
                 <div class="card-body p-0" style="position: relative;">
                   <!-- Configuration icon positioned at top right of table -->
-                  <i
-                    v-if="show.as === 'table'"
-                    class="las la-cog table-column-config-icon"
-                    title="Configure Columns"
-                    @click="show.columnConfig = true"
-                  />
+                  <i v-if="show.as === 'table'" class="las la-cog table-column-config-icon" title="Configure Columns"
+                    @click="show.columnConfig = true" />
                   <div id="Amount_history" class="tab-content">
                     <div :class="(show.as === 'table' ? 'd-block' : 'd-none')">
                       <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="Added-tab">
                         <div class="table-responsive p-0">
-                          <table
-                            id="datatable"
-                            class="table table-striped table-bordered table-hover"
-                            style="word-break: break-all;"
-                          >
+                          <table id="datatable" class="table table-striped table-bordered table-hover"
+                            style="word-break: break-all;">
                             <thead class="thead-light sortable">
                               <tr>
                                 <th v-for="column in selectedColumns" :key="column.key" @click="sort(column.sortKey)">
@@ -77,16 +69,16 @@
                                     <span :class="getROC(r) > 0 ? 'text-success' : 'text-danger'">{{ getROC(r) }}</span>
                                   </template>
                                   <template v-else-if="column.key === 'dtime'">
-                                    {{ r.dtime || '-' }}
+                                    {{ r.datetime_added || '-' }}
                                   </template>
                                   <template v-else-if="column.key === 'istate'">
-                                    {{ r.istate || '-' }}
+                                    {{ r.StateBarCount || '-' }}
                                   </template>
                                   <template v-else-if="column.key === 'vstate'">
-                                    {{ r.vstate || '-' }}
+                                    {{ r.hastatebars || '-' }}
                                   </template>
                                   <template v-else-if="column.key === 'cstate'">
-                                    {{ r.cstate || '-' }}
+                                    {{ r.ctstatebars || '-' }}
                                   </template>
                                   <template v-else-if="column.key === 'sectors'">
                                     {{ r.sector }}
@@ -135,24 +127,19 @@
                             </li>
                           </ul>
                           <div class="input-group input-group-sm mb-3" style="max-width:100px;">
-                            <input
-                              v-model="meta.page"
-                              type="text"
-                              class="form-control p-100"
-                              placeholder="Page"
-                              @input="goto"
-                            >
+                            <input v-model="meta.page" type="text" class="form-control p-100" placeholder="Page"
+                              @input="goto">
                             <span id="basic-addon2" class="input-group-text">{{ meta.pages }}</span>
                           </div>
                           <div class="input-group input-group-sm mb-3-mod" style="max-width:100px;">
-                            <input
-                              v-model="meta.perpage"
-                              type="text"
-                              class="form-control p-100"
-                              placeholder="Limit"
-                              @input="limit"
-                            >
+                            <input v-model="meta.perpage" type="text" class="form-control p-100" placeholder="Limit"
+                              @input="limit">
                             <span id="basic-addon2" class="input-group-text">Limit</span>
+                          </div>
+                          <div class="input-group input-group-sm mb-3-mod" style="max-width:100px; margin-top: 1rem;">
+                            <ul class="pagination pagination-sm me-2">
+                              <a class="page-link" href="#" @click="exportTable()">Export</a>
+                            </ul>
                           </div>
                         </nav>
                       </div>
@@ -185,18 +172,14 @@
         <Footer />
       </div>
     </div>
-    <ModalsColumnConfig
-      v-if="show.columnConfig"
-      :current-columns="selectedColumnKeys"
-      @save="saveColumnConfiguration"
-      @close="closeColumnConfig"
-    />
+    <ModalsColumnConfig v-if="show.columnConfig" :current-columns="selectedColumnKeys" @save="saveColumnConfiguration"
+      @close="closeColumnConfig" />
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       rows: [],
       series: [],
@@ -204,7 +187,7 @@ export default {
       market: 'SP500Heatmap',
       meta: {
         total: 0,
-        perpage: 10,
+        perpage: 50,
         pages: 1,
         page: 1
       },
@@ -230,20 +213,20 @@ export default {
         { key: 'sector', label: 'Market', description: 'Market sector classification', sortKey: 'sector' },
         { key: 'close', label: 'Close', description: 'Current closing price', sortKey: 'close' },
         { key: 'change', label: 'Change (%)', description: 'Percentage change from previous close', sortKey: 'price_change' },
-        { key: 'dtime', label: 'Date/Time', description: 'Last update timestamp', sortKey: 'dtime' },
-        { key: 'istate', label: 'IState', description: 'StateBarCount indicator', sortKey: 'istate' },
-        { key: 'vstate', label: 'VState', description: 'HasStateBars indicator', sortKey: 'vstate' },
-        { key: 'cstate', label: 'CState', description: 'CStateCount indicator', sortKey: 'cstate' },
+        { key: 'dtime', label: 'Date/Time', description: 'Last update timestamp', sortKey: 'datetime_added' },
+        { key: 'istate', label: 'IState', description: 'StateBarCount indicator', sortKey: 'StateBarCount' },
+        { key: 'vstate', label: 'VState', description: 'HasStateBars indicator', sortKey: 'hastatebars' },
+        { key: 'cstate', label: 'CState', description: 'CStateCount indicator', sortKey: 'ctstatebars' },
         { key: 'sectors', label: 'Sector', description: 'Industry sector classification', sortKey: 'sectors' },
         { key: 'description', label: 'Description', description: 'Company full name', sortKey: 'description' }
       ],
-      selectedColumnKeys: ['sym', 'sector', 'close', 'change']
+      selectedColumnKeys: ['sym', 'sector', 'close', 'change', 'dtime', 'istate', 'vstate', 'cstate', 'sectors', 'description']
     }
   },
 
   computed: {
     // Dynamically compute istate_variable based on selected strategy
-    istateVariable () {
+    istateVariable() {
       const strategy = this.formData.filters[this.formData.timeframe]?.strategy || 0
       if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(Number(strategy))) {
         return 'hastatebars'
@@ -253,7 +236,7 @@ export default {
       return 'statebarcount'
     },
 
-    selectedColumns () {
+    selectedColumns() {
       return this.availableColumns.filter(col =>
         this.selectedColumnKeys.includes(col.key)
       )
@@ -261,14 +244,14 @@ export default {
   },
 
   watch: {
-    showColumnConfig (newValue) {
+    showColumnConfig(newValue) {
       if (newValue) {
         this.tempSelectedColumns = [...this.selectedColumnKeys]
       }
     }
   },
 
-  mounted () {
+  mounted() {
     // Load saved column configuration
     const savedColumns = localStorage.getItem('scannerTableColumns')
     if (savedColumns) {
@@ -282,17 +265,17 @@ export default {
   },
 
   methods: {
-    saveColumnConfiguration (selectedColumns) {
+    saveColumnConfiguration(selectedColumns) {
       this.selectedColumnKeys = selectedColumns
       localStorage.setItem('scannerTableColumns', JSON.stringify(selectedColumns))
       this.getData() // Refresh data with new columns
     },
 
-    closeColumnConfig () {
+    closeColumnConfig() {
       this.show.columnConfig = false
     },
 
-    getData () {
+    getData() {
       this.rows = []
       const user = this.$store.getters['app/getItem']('user')
       this.formData.user_email = user.user_email
@@ -338,30 +321,30 @@ export default {
       })
     },
 
-    formChanged (form) {
+    formChanged(form) {
       this.formData.filters = form
       this.getData()
       console.log('Form changed, filters:', this.formData.filters)
     },
 
-    scan () {
+    scan() {
       const slist = JSON.parse(JSON.stringify(this.$store.state.app.scanlist))
       this.formData.scanlist = slist
       this.getData()
     },
 
-    setTimeframe (tf) {
+    setTimeframe(tf) {
       this.formData.timeframe = tf
     },
 
-    setMarket (market) {
+    setMarket(market) {
       this.market = market
       if (this.market !== 'custom') {
         this.getData()
       }
     },
 
-    sort (col) {
+    sort(col) {
       const sort = []
       sort[0] = col
       if (this.formData.order[0] === col) {
@@ -373,42 +356,42 @@ export default {
       this.getData()
     },
 
-    makePager () {
+    makePager() {
       this.meta.pages = Math.ceil(this.meta.total / this.meta.perpage)
     },
 
-    paginate (page) {
+    paginate(page) {
       this.meta.page = page
       const offset = this.meta.perpage * (page - 1)
       this.formData.limit = [offset, this.meta.perpage]
       this.getData()
     },
 
-    limitChange (page) {
+    limitChange(page) {
       this.meta.page = page
-      if (this.meta.perpage > 20) {
-        this.meta.perpage = 20
+      if (this.meta.perpage > 200) {
+        this.meta.perpage = 200
       }
       const offset = this.meta.perpage * (page - 1)
       this.formData.limit = [offset, this.meta.perpage]
       this.getData()
     },
 
-    goto () {
+    goto() {
       this.paginate(this.meta.page)
     },
 
-    limit () {
+    limit() {
       this.limitChange(this.meta.page)
     },
 
-    showSymbol (sym) {
+    showSymbol(sym) {
       this.show.symbol = true
       this.symbol = sym
       this.$refs.symbolDetailRef.chooseSymbol(this.symbol)
     },
 
-    isAdmin () {
+    isAdmin() {
       const user = this.$store.getters['app/getItem']('user')
       if (['seasonaluser', 'eiicapital@gmail.com'].includes(user.user_login)) {
         return true
@@ -416,7 +399,7 @@ export default {
       return false
     },
 
-    iconClass (col) {
+    iconClass(col) {
       return {
         las: true,
         'la-sort-down': col === this.formData.order[0] && this.formData.order[1] === 'DESC',
@@ -425,14 +408,14 @@ export default {
       }
     },
 
-    getROC (sym) {
+    getROC(sym) {
       if (!sym.close || !sym.prevclose) { return 0 }
       const diff = sym.close - sym.prevclose
       const roc = (diff / sym.prevclose) * 100
       return roc.toFixed(2)
     },
 
-    getColor (val) {
+    getColor(val) {
       if (val > 6) { return 0 }
       if (val > 3) { return 1 }
       if (val > -3) { return 2 }
@@ -440,10 +423,75 @@ export default {
       return 4
     },
 
-    setView (v) {
-      this.formData.limit = v === 'heatmap' ? [0, 5000] : [0, 10]
+    setView(v) {
+      this.formData.limit = v === 'heatmap' ? [0, 5000] : [0, 50]
       this.show.as = v
       this.getData()
+    },
+
+    exportTable() {
+      const table = []
+      const keys = []
+      this.rows.forEach(r => {
+        const generatedRow = []
+        if (this.selectedColumnKeys.includes("sym")) {
+          generatedRow.push(r.sym)
+          if (!keys.includes('sym')) keys.push('sym')
+        }
+        if (this.selectedColumnKeys.includes('sector')) {
+          generatedRow.push(r.sector)
+          if (!keys.includes('sector')) keys.push('sector')
+        }
+        if (this.selectedColumnKeys.includes('close')) {
+          generatedRow.push(r.close)
+          if (!keys.includes('close')) keys.push('close')
+        }
+        if (this.selectedColumnKeys.includes('change')) {
+          generatedRow.push(this.getROC(r))
+          if (!keys.includes('change')) keys.push('change')
+        }
+        if (this.selectedColumnKeys.includes('dtime')) {
+          generatedRow.push(r.datetime_added || '-')
+          if (!keys.includes('dtime')) keys.push('dtime')
+        }
+        if (this.selectedColumnKeys.includes('istate')) {
+          generatedRow.push(r.StateBarCount)
+          if (!keys.includes('istate')) keys.push('istate')
+        }
+        if (this.selectedColumnKeys.includes('vstate')) {
+          generatedRow.push(r.hastatebars)
+          if (!keys.includes('vstate')) keys.push('vstate')
+        }
+        if (this.selectedColumnKeys.includes('cstate')) {
+          generatedRow.push(r.ctstatebars)
+          if (!keys.includes('cstate')) keys.push('cstate')
+        }
+        if (this.selectedColumnKeys.includes('sectors')) {
+          generatedRow.push(r.sector)
+          if (!keys.includes('sector')) keys.push('sector')
+        }
+        if (this.selectedColumnKeys.includes('description')) {
+          generatedRow.push(r.description)
+          if (!keys.includes('description')) keys.push('description')
+        }
+        table.push(generatedRow)
+      })
+      table.unshift(keys)
+      let csvContent = ['']
+
+      table.forEach(row => {
+        csvContent += row.join(',') + '\n'
+      })
+      const file = new File([csvContent], "table.csv", { type: 'text/plain:charset=UTF-8' })
+      const url = window.URL.createObjectURL(file)
+
+      //  create a hidden link and set the href and click it
+      const a = document.createElement('a')
+      a.style = 'display: none'
+      a.href = url
+      a.download = file.name
+      a.click()
+      window.URL.revokeObjectURL(url)
     }
   }
 }

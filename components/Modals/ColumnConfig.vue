@@ -1,10 +1,7 @@
 <template>
-  <div
-    class="modal fade show"
+  <div class="modal fade show"
     style="display: block; background-color: rgba(0,0,0,0.5); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1050;"
-    tabindex="-1"
-    @click.self="$emit('close')"
-  >
+    tabindex="-1" @click.self="$emit('close')">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 500px;">
       <div class="modal-content">
         <div class="modal-header">
@@ -16,20 +13,14 @@
         <div class="modal-body">
           <div class="alert alert-info">
             <i class="las la-info-circle" />
-            First, check if exactly 4 columns are already selected. Only 4 columns can be selected to display in the table.
+            Please have at least 1 column selected.
           </div>
 
           <div class="row">
             <div class="col-12">
               <div v-for="column in availableColumns" :key="column.key" class="form-check mb-3">
-                <input
-                  :id="'column-' + column.key"
-                  v-model="selectedColumns"
-                  class="form-check-input"
-                  type="checkbox"
-                  :value="column.key"
-                  :disabled="!selectedColumns.includes(column.key) && selectedColumns.length >= 4"
-                >
+                <input :id="'column-' + column.key" v-model="selectedColumns" class="form-check-input" type="checkbox"
+                  :value="column.key">
                 <label class="form-check-label" :for="'column-' + column.key">
                   <strong>{{ column.label }}</strong>
                   <small class="text-muted d-block">{{ column.description }}</small>
@@ -40,7 +31,7 @@
 
           <div class="mt-3">
             <div class="badge bg-primary">
-              {{ selectedColumns.length }} of 4 columns selected
+              {{ selectedColumns.length }} columns selected
             </div>
           </div>
         </div>
@@ -51,12 +42,7 @@
           <button type="button" class="btn btn-outline-secondary" @click="$emit('close')">
             Cancel
           </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            :disabled="selectedColumns.length !== 4"
-            @click="saveConfiguration"
-          >
+          <button type="button" class="btn btn-primary" @click="saveConfiguration">
             Save Configuration
           </button>
         </div>
@@ -74,7 +60,7 @@ export default {
     }
   },
   emits: ['close', 'save'],
-  data () {
+  data() {
     return {
       selectedColumns: [],
       availableColumns: [
@@ -91,18 +77,18 @@ export default {
       ]
     }
   },
-  mounted () {
+  mounted() {
     this.selectedColumns = [...this.currentColumns]
   },
   methods: {
-    saveConfiguration () {
-      if (this.selectedColumns.length === 4) {
+    saveConfiguration() {
+      if (this.selectedColumns.length > 0) {
         this.$emit('save', this.selectedColumns)
         // Close modal after emitting save
         this.$emit('close')
       }
     },
-    resetToDefault () {
+    resetToDefault() {
       this.selectedColumns = ['sym', 'sector', 'close', 'change']
       this.$emit('save', this.selectedColumns)
       // Close modal after emitting save
@@ -116,6 +102,7 @@ export default {
 .modal {
   z-index: 1050;
 }
+
 .modal-dialog {
   margin: 1.75rem auto;
 }
