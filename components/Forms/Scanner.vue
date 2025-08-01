@@ -27,7 +27,7 @@
                 </div>
                 <div>
                   <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
-                    @click="updateProfile()">
+                    @click="openModal('update', true)">
                     Update
                   </label>
                   <label id="profileButton" for="fileInput" style="float: left;"
@@ -36,7 +36,7 @@
                   </label>
                   <input id="fileInput" type="file" style="display: none;" class="form-control" @input="profileOpen()">
                   <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
-                    @click="createProfile()">
+                    @click="openModal('create', true)">
                     Create
                   </label>
                   <input id="textInput" type="text" class="btn-sm smaller" style="border: transparent; display: none;">
@@ -920,7 +920,8 @@
 
     <!-- Profile Modal -->
     <ModalsProfile v-if="showProfileModal" :mode="modalMode" :title="modalTitle" :filters="forms"
-      @close="showProfileModal = false" @saved="onProfileSaved" @loaded="onProfileLoaded" />
+      :enable-download="enableDownload" @close="showProfileModal = false" @saved="onProfileSaved"
+      @loaded="onProfileLoaded" />
 
     <!-- Update Profile Modal -->
     <ModalsUpdateProfile v-if="showUpdateModal" :current-filters="forms" @close="showUpdateModal = false"
@@ -977,12 +978,23 @@ export default {
   },
 
   methods: {
-    openModal(mode) {
+    openModal(mode, enableDownload = false) {
       if (mode === 'update') {
-        this.showUpdateModal = true
+        if (enableDownload) {
+          // Open update modal for download
+          this.modalMode = mode
+          this.modalTitle = 'Update & Download Profile'
+          this.enableDownload = true
+          this.showProfileModal = true
+        } else {
+          // Open update modal for local storage
+          this.showUpdateModal = true
+        }
       } else {
+        // Create or Open modal
         this.modalMode = mode
         this.modalTitle = mode === 'create' ? 'Save Profile' : 'Open Profile'
+        this.enableDownload = enableDownload
         this.showProfileModal = true
       }
     },

@@ -16,7 +16,7 @@
 
         <div class="modal-body">
           <!-- Storage Warning Alert -->
-          <div class="alert alert-info">
+          <div v-if="!enableDownload" class="alert alert-info">
             <i class="las la-info-circle" />
             Profiles are saved in your browser's local storage and will be automatically removed when you clear your browser cache or browsing data.
           </div>
@@ -117,6 +117,10 @@ export default {
     filters: {
       type: Object,
       default: () => ({})
+    },
+    enableDownload: {
+      type: Boolean,
+      default: false // enable download for create/update
     }
   },
   emits: ['close', 'saved', 'loaded'],
@@ -170,11 +174,23 @@ export default {
         saved[this.profileName] = this.filters
         localStorage.setItem('scannerProfiles', JSON.stringify(saved))
 
-        // Show success message
+        // Download the profile if enabled
+        if (this.enableDownload) {
+          const dataStr = JSON.stringify(this.filters, null, 2)
+          const blob = new Blob([dataStr], { type: 'application/json;charset=utf-8' })
+          const link = document.createElement('a')
+          link.href = URL.createObjectURL(blob)
+          link.download = `${this.profileName}.json`
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+          URL.revokeObjectURL(link.href)
+        }
+
         const actionText = this.mode === 'create' ? 'created' : 'updated'
         await this.$utils.success(`Profile "${this.profileName}" ${actionText} successfully!`)
 
-        this.$emit('saved')
+        this.$emit('saved', this.profileName) // send profile name back
         this.$emit('close')
       } catch (error) {
         await this.$utils.error('Failed to save profile. Please try again.')
