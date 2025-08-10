@@ -30,7 +30,9 @@
                 <div class="card-header bg-light">
                   <div class="row align-items-center">
                     <div class="col">
-                      <FormsScanner v-if="show.filters" @change="formChanged" @timeframe="setTimeframe" />
+                      <FormsScanner v-if="show.filters" @createProfile="createProfile" @updateProfile="updateProfile"
+                        @deleteProfile="deleteProfile" @change="formChanged" @timeframe="setTimeframe"
+                        :profiles="this.profile.profiles" @changeProfile="changeProfile" />
                     </div>
                   </div>
                 </div>
@@ -199,6 +201,13 @@ export default {
         order: ['st.sym', 'ASC'],
         user_email: ''
       },
+      profile: {
+        user_email: '',
+        action: 'profiles',
+        cmd: 'get',
+        profiles: []
+      },
+      currentProfile: 'default',
       symbol: '',
       show: {
         filters: true,
@@ -279,6 +288,7 @@ export default {
       this.rows = []
       const user = this.$store.getters['app/getItem']('user')
       this.formData.user_email = user.user_email
+      this.profile.user_email = user.user_email
       this.formData.market = this.market
 
       // ✅ Dynamically add istate_variable to filters before API call
@@ -318,6 +328,10 @@ export default {
           }
         })
         this.series = series
+      })
+
+      this.$xhr.api.post('/api/profiles', this.profile).then((response) => {
+        this.profile.profiles = response.data
       })
     },
 
@@ -492,7 +506,114 @@ export default {
       a.download = file.name
       a.click()
       window.URL.revokeObjectURL(url)
-    }
+    },
+    createProfile(profileName) {
+      const user = this.$store.getters['app/getItem']('user')
+      const arr = Array()
+      const filters = this.formData.filters
+      for (const timeframe in filters) {
+        const tempArr = []
+        for (const filter in filters[timeframe]) {
+          if (filters[timeframe][filter] instanceof Array) {
+            tempArr.push(filters[timeframe][filter].toString())
+          } else {
+            tempArr.push(filters[timeframe][filter])
+          }
+        }
+        arr.push(tempArr)
+      }
+      const data = {
+        cmd: 'create',
+        action: 'profiles',
+        filters: arr,
+        name: profileName,
+        user_email: user.user_email
+      }
+      this.profile.profiles = {}
+      this.$xhr.api.post('/api/profiles', data).then(this.changeProfile('default'))
+    },
+    deleteProfile() {
+      const user = this.$store.getters['app/getItem']('user')
+      const data = {
+        cmd: 'del',
+        action: 'profiles',
+        user_email: user.user_email,
+        name: this.currentProfile
+      }
+      this.profile.profiles = {}
+      this.$xhr.api.post('/api/profiles', data).then(this.changeProfile('default'))
+    },
+    updateProfile() {
+      if (this.profile.profiles.length !== 0) {
+        const array = []
+        array.push([])
+        array.push([])
+        const user = this.$store.getters['app/getItem']('user')
+        const keyArr = []
+        Object.keys(this.profile.profiles[0]).forEach(function (item) {
+          keyArr.push(item)
+        })
+        const profile = this.profile.profiles[this.currentProfile]
+        const filters = this.formData.filters
+        const array1 = []
+        const array2 = []
+        this.profile.profiles.forEach(profile => {
+          if (profile.name == this.currentProfile) {
+            console.log(profile)
+            Object.values(profile).forEach(value => { array1.push(value) })
+          }
+        })
+        for (const timeframe in filters) {
+          for (const filter in filters[timeframe]) {
+            if (filters[timeframe][filter] instanceof Array) {
+              array2.push(filters[timeframe][filter].toString())
+            } else {
+              array2.push(filters[timeframe][filter])
+            }
+          }
+        }
+        array1.splice(0, 3)
+        keyArr.splice(0, 3)
+        array2.splice(96, 1)
+        for (let i = 0; i <= 150; i += 15) {
+          array2.splice(i, 1)
+        }
+        if (!this.areArraysEqual(array1, array2)) {
+          console.log(array1)
+          console.log(array2)
+          for (let i = 0; i < keyArr.length; i++) {
+            if (array2[i] != array1[i]) {
+              array[0].push(keyArr[i])
+              array[1].push(array2[i])
+            }
+          }
+          console.log(array)
+          const data = {
+            cmd: 'update',
+            action: 'profiles',
+            data: array,
+            user_email: user.user_email,
+            name: this.currentProfile,
+          }
+          this.$xhr.api.post('/api/profiles', data).then(this.changeProfile('default'))
+        }
+      }
+    },
+    changeProfile(profile) {
+      this.currentProfile = profile
+      this.getData()
+    },
+    areArraysEqual(arr1, arr2) {
+      if (arr1.length !== arr2.length) {
+        return false;
+      }
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+          return false;
+        }
+      }
+      return true;
+    },
   }
 }
 </script>

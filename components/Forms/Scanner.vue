@@ -3,47 +3,7 @@
     <form class="">
       <div class="">
         <div class="toolbar row align-items-end mb-4 border-bottom pb-3">
-          <div class="col-lg-6 col-md-6 col-sm-12 col-12 sm-mb-3">
-            <div class="lg-d-flex">
-              <div>
-                <div class="lable">
-                  Profiles
-                </div>
-                <div class="float-start">
-                  <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('update')">
-                    Update
-                  </button>
-                  <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('open')">
-                    Open
-                  </button>
-                  <button type="button" class="btn btn-sm btn-outline-dark" @click="openModal('create')">
-                    Create
-                  </button>
-                </div>
-              </div>
-              <div class="lg-mx-5">
-                <div class="lable">
-                  Download
-                </div>
-                <div>
-                  <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
-                    @click="openModal('update', true)">
-                    Update
-                  </label>
-                  <label id="profileButton" for="fileInput" style="float: left;"
-                    class="btn-outline-dark btn btn-sm mx-1" @input="profileOpenButton()">
-                    <span>Open</span>
-                  </label>
-                  <input id="fileInput" type="file" style="display: none;" class="form-control" @input="profileOpen()">
-                  <label id="createProfileButton" style="float: left;" class="btn-outline-dark btn btn-sm"
-                    @click="openModal('create', true)">
-                    Create
-                  </label>
-                  <input id="textInput" type="text" class="btn-sm smaller" style="border: transparent; display: none;">
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 sm-mb-3" />
           <div class="col-lg-4 col-md-4 col-sm-12 col-12 sm-mb-3">
             <div class="lable">
               Timeframe
@@ -69,8 +29,14 @@
             <button type="button" :class="getClass('W')" @click="setTimeframe('W')">
               W
             </button>
+            <button v-if="isAdmin()" type="button" :class="getClass('W3')" @click="setTimeframe('W3')">
+              3W
+            </button>
             <button type="button" :class="getClass('M')" @click="setTimeframe('M')">
               M
+            </button>
+            <button v-if="isAdmin()" type="button" :class="getClass('Q')" @click="setTimeframe('Q')">
+              Q
             </button>
           </div>
           <div class="col-lg-2 col-md-2 col-sm-12 col-12 sm-mb-3">
@@ -916,6 +882,31 @@
           </div>
         </div>
       </div>
+      <div class="toolbar row align-items-end border-top pb-3">
+        <div class="col-md-6">
+          <div class="lable">
+            Profiles
+          </div>
+          <select v-model="profile" class="form-select" @change="profileChanged">
+            <option selected="" value="default">default</option>
+            <option v-for="(r, i) in this.profiles" :key="i" :value="r.name">
+              {{ r.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-sm btn-outline-dark" @click="updateProfile()">
+            Update
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-dark" @click="deleteProfile()">
+            Delete
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-dark" @click="createProfile()">
+            Create
+          </button>
+          <input v-model="profileName" />
+        </div>
+      </div>
     </form>
 
     <!-- Profile Modal -->
@@ -932,6 +923,12 @@
 <script>
 export default {
   emits: ['change'],
+  props: {
+    profiles: {},
+    currentProfile: {
+      type: String
+    }
+  },
   data() {
     return {
       file: '',
@@ -944,8 +941,12 @@ export default {
         240: this.getEmptyForm(240),
         D: this.getEmptyForm('D'),
         W: this.getEmptyForm('W'),
-        M: this.getEmptyForm('M')
+        W3: this.getEmptyForm('3W'),
+        M: this.getEmptyForm('M'),
+        Q: this.getEmptyForm('Q')
       },
+      profileName: '',
+      profile: 'default',
       timeframe: 'D',
       changed: [],
       showProfileModal: false,
@@ -978,27 +979,6 @@ export default {
   },
 
   methods: {
-    openModal(mode, enableDownload = false) {
-      if (mode === 'update') {
-        if (enableDownload) {
-          // Open update modal for download
-          this.modalMode = mode
-          this.modalTitle = 'Update & Download Profile'
-          this.enableDownload = true
-          this.showProfileModal = true
-        } else {
-          // Open update modal for local storage
-          this.showUpdateModal = true
-        }
-      } else {
-        // Create or Open modal
-        this.modalMode = mode
-        this.modalTitle = mode === 'create' ? 'Save Profile' : 'Open Profile'
-        this.enableDownload = enableDownload
-        this.showProfileModal = true
-      }
-    },
-
     onProfileSaved(profileName) {
       this.lastCreatedProfile = profileName // Store the name of the created profile
       this.showProfileModal = false
@@ -1041,6 +1021,224 @@ export default {
 
       this.emitForm()
     },
+    profileChanged() {
+      if (this.profile != 'default') {
+        const profiles = JSON.parse(JSON.stringify(this.profiles))
+        profiles.forEach(profile => {
+          console.log(profile)
+          if (profile.name = this.profile) {
+            this.formUpdate(profile)
+            return
+          }
+        })
+      } else {
+        this.reset()
+      }
+    },
+    formUpdate(profile) {
+      this.changed.splice(0, 10)
+      this.profile10(profile)
+      this.profile30(profile)
+      this.profile60(profile)
+      this.profile120(profile)
+      this.profile240(profile)
+      this.profileD(profile)
+      this.profileW(profile)
+      this.profile3W(profile)
+      this.profileM(profile)
+      this.profileQ(profile)
+      this.$emit('changeProfile', this.profile)
+    },
+    profile10(profile) {
+      this.forms[10].strategy = profile.strategy_10
+      this.forms[10].priceimtf = profile.priceImtf_10
+      this.forms[10].istatefrom = profile.iStateFrom_10
+      this.forms[10].istateto = profile.iStateTo_10
+      this.forms[10].momentum = profile.momentum_10
+      this.forms[10].optimize = profile.optimize_10
+      this.forms[10].overextension = profile.overExtension_10
+      this.forms[10].forecast = profile.forecast_10
+      this.forms[10].forecastadv = profile.advForecast_10
+      this.forms[10].shortcut = profile.shortcut_10
+      this.forms[10].bar = profile.bar_10
+      this.forms[10].vbar = profile.vBar_10
+      this.forms[10].vtnt = profile.vTnt_10
+      this.forms[10].ct = profile.ct_10
+      if (profile.vOpt_10 instanceof String && profile.vOpt_10 !== '') {
+        this.forms[10].vopt = profile.vOpt_10.split(',')
+      }
+    },
+    profile30(profile) {
+      this.forms[30].strategy = profile.strategy_30
+      this.forms[30].priceimtf = profile.priceImtf_30
+      this.forms[30].istatefrom = profile.iStateFrom_30
+      this.forms[30].istateto = profile.iStateTo_30
+      this.forms[30].momentum = profile.momentum_30
+      this.forms[30].optimize = profile.optimize_30
+      this.forms[30].overextension = profile.overExtension_30
+      this.forms[30].forecast = profile.forecast_30
+      this.forms[30].forecastadv = profile.advForecast_30
+      this.forms[30].shortcut = profile.shortcut_30
+      this.forms[30].bar = profile.bar_30
+      this.forms[30].vbar = profile.vBar_30
+      this.forms[30].vtnt = profile.vTnt_30
+      this.forms[30].ct = profile.ct_30
+      if (profile.vOpt_30 instanceof String && profile.vOpt_30 !== '') {
+        this.forms[30].vopt = profile.vOpt_30.split(',')
+      }
+    },
+    profile60(profile) {
+      this.forms[60].strategy = profile.strategy_60
+      this.forms[60].priceimtf = profile.priceImtf_60
+      this.forms[60].istatefrom = profile.iStateFrom_60
+      this.forms[60].istateto = profile.iStateTo_60
+      this.forms[60].momentum = profile.momentum_60
+      this.forms[60].optimize = profile.optimize_60
+      this.forms[60].overextension = profile.overExtension_60
+      this.forms[60].forecast = profile.forecast_60
+      this.forms[60].forecastadv = profile.advForecast_60
+      this.forms[60].shortcut = profile.shortcut_60
+      this.forms[60].bar = profile.bar_60
+      this.forms[60].vbar = profile.vBar_60
+      this.forms[60].vtnt = profile.vTnt_60
+      this.forms[60].ct = profile.ct_60
+      if (profile.vOpt_60 instanceof String && profile.vOpt_60 !== '') {
+        this.forms[30].vopt = profile.vOpt_60.split(',')
+      }
+    },
+    profile120(profile) {
+      this.forms[120].strategy = profile.strategy_120
+      this.forms[120].priceimtf = profile.priceImtf_120
+      this.forms[120].istatefrom = profile.iStateFrom_120
+      this.forms[120].istateto = profile.iStateTo_120
+      this.forms[120].momentum = profile.momentum_120
+      this.forms[120].optimize = profile.optimize_120
+      this.forms[120].overextension = profile.overExtension_120
+      this.forms[120].forecast = profile.forecast_120
+      this.forms[120].forecastadv = profile.advForecast_120
+      this.forms[120].shortcut = profile.shortcut_120
+      this.forms[120].bar = profile.bar_120
+      this.forms[120].vbar = profile.vBar_120
+      this.forms[120].vtnt = profile.vTnt_120
+      this.forms[120].ct = profile.ct_120
+      if (profile.vOpt_120 instanceof String && profile.vOpt_120 !== '') {
+        this.forms[120].vopt = profile.vOpt_120.split(',')
+      }
+    },
+    profile240(profile) {
+      this.forms[240].strategy = profile.strategy_240
+      this.forms[240].priceimtf = profile.priceImtf_240
+      this.forms[240].istatefrom = profile.iStateFrom_240
+      this.forms[240].istateto = profile.iStateTo_240
+      this.forms[240].momentum = profile.momentum_240
+      this.forms[240].optimize = profile.optimize_240
+      this.forms[240].overextension = profile.overExtension_240
+      this.forms[240].forecast = profile.forecast_240
+      this.forms[240].forecastadv = profile.advForecast_240
+      this.forms[240].shortcut = profile.shortcut_240
+      this.forms[240].bar = profile.bar_240
+      this.forms[240].vbar = profile.vBar_240
+      this.forms[240].vtnt = profile.vTnt_240
+      this.forms[240].ct = profile.ct_240
+      if (profile.vOpt_240 instanceof String && profile.vOpt_240 !== '') {
+        this.forms[240].vopt = profile.vOpt_240.split(',')
+      }
+    },
+    profileD(profile) {
+      this.forms.D.strategy = profile.strategy_D
+      this.forms.D.priceimtf = profile.priceImtf_D
+      this.forms.D.istatefrom = profile.iStateFrom_D
+      this.forms.D.istateto = profile.iStateTo_D
+      this.forms.D.momentum = profile.momentum_D
+      this.forms.D.optimize = profile.optimize_D
+      this.forms.D.overextension = profile.overExtension_D
+      this.forms.D.forecast = profile.forecast_D
+      this.forms.D.forecastadv = profile.advForecast_D
+      this.forms.D.shortcut = profile.shortcut_D
+      this.forms.D.bar = profile.bar_D
+      this.forms.D.vbar = profile.vBar_D
+      this.forms.D.vtnt = profile.vTnt_D
+      this.forms.D.ct = profile.ct_D
+      if (profile.vOpt_D instanceof String && profile.vOpt_D !== '') {
+        this.forms.D.vopt = profile.vOpt_D.split(',')
+      }
+    },
+    profileW(profile) {
+      this.forms.W.strategy = profile.strategy_W
+      this.forms.W.priceimtf = profile.priceImtf_W
+      this.forms.W.istatefrom = profile.iStateFrom_W
+      this.forms.W.istateto = profile.iStateTo_W
+      this.forms.W.momentum = profile.momentum_W
+      this.forms.W.optimize = profile.optimize_W
+      this.forms.W.overextension = profile.overExtension_W
+      this.forms.W.forecast = profile.forecast_W
+      this.forms.W.forecastadv = profile.advForecast_W
+      this.forms.W.shortcut = profile.shortcut_W
+      this.forms.W.bar = profile.bar_W
+      this.forms.W.vbar = profile.vBar_W
+      this.forms.W.vtnt = profile.vTnt_W
+      this.forms.W.ct = profile.ct_W
+      if (profile.vOpt_W instanceof String && profile.vOpt_W !== '') {
+        this.forms.W.vopt = profile.vOpt_W.split(',')
+      }
+    },
+    profile3W(profile) {
+      this.forms.W3.strategy = profile.strategy_3W
+      this.forms.W3.priceimtf = profile.priceImtf_3W
+      this.forms.W3.istatefrom = profile.iStateFrom_3W
+      this.forms.W3.istateto = profile.iStateTo_3W
+      this.forms.W3.momentum = profile.momentum_3W
+      this.forms.W3.optimize = profile.optimize_3W
+      this.forms.W3.overextension = profile.overExtension_3W
+      this.forms.W3.forecast = profile.forecast_3W
+      this.forms.W3.forecastadv = profile.advForecast_3W
+      this.forms.W3.shortcut = profile.shortcut_3W
+      this.forms.W3.bar = profile.bar_3W
+      this.forms.W3.vbar = profile.vBar_3W
+      this.forms.W3.vtnt = profile.vTnt_3W
+      this.forms.W3.ct = profile.ct_3W
+      if (profile.vOpt_3W instanceof String && profile.vOpt_3W !== '') {
+        this.forms.W3.vopt = profile.vOpt_3W.split(',')
+      }
+    },
+    profileM(profile) {
+      this.forms.M.strategy = profile.strategy_M
+      this.forms.M.priceimtf = profile.priceImtf_M
+      this.forms.M.istatefrom = profile.iStateFrom_M
+      this.forms.M.istateto = profile.iStateTo_M
+      this.forms.M.momentum = profile.momentum_M
+      this.forms.M.optimize = profile.optimize_M
+      this.forms.M.overextension = profile.overExtension_M
+      this.forms.M.forecast = profile.forecast_M
+      this.forms.M.forecastadv = profile.advForecast_M
+      this.forms.M.shortcut = profile.shortcut_M
+      this.forms.M.bar = profile.bar_M
+      this.forms.M.vbar = profile.vBar_M
+      this.forms.M.vtnt = profile.vTnt_M
+      this.forms.M.ct = profile.ct_M
+      if (profile.vOpt_M instanceof String && profile.vOpt_M !== '') {
+        this.forms.M.vopt = profile.vOpt_M.split(',')
+      }
+    },
+    profileQ(profile) {
+      this.forms.Q.strategy = profile.strategy_Q
+      this.forms.Q.priceimtf = profile.priceImtf_Q
+      this.forms.Q.istatefrom = profile.iStateFrom_Q
+      this.forms.Q.istateto = profile.iStateTo_Q
+      this.forms.Q.momentum = profile.momentum_Q
+      this.forms.Q.optimize = profile.optimize_Q
+      this.forms.Q.overextension = profile.overExtension_Q
+      this.forms.Q.forecast = profile.forecast_Q
+      this.forms.Q.forecastadv = profile.advForecast_Q
+      this.forms.Q.shortcut = profile.shortcut_Q
+      this.forms.Q.bar = profile.bar_Q
+      this.forms.Q.vbar = profile.vBar_Q
+      this.forms.Q.vtnt = profile.vTnt_Q
+      this.forms.Q.ct = profile.ct_Q
+      if (profile.vOpt_Q instanceof String && profile.vOpt_Q !== '') {
+        this.forms.Q.vopt = profile.vOpt_Q.split(',')
+      }
+    },
     formChanges(timeframe) {
       if (this.changed.includes(timeframe)) {
         const form = JSON.parse(JSON.stringify(this.forms[timeframe]))
@@ -1067,69 +1265,14 @@ export default {
 
       this.emitForm()
     },
-    profileOpenButton() {
-      const fileInput = document.getElementById('fileInput')
-      const customButton = document.getElementById('profileButton')
-
-      customButton.addEventListener('click', () => {
-        fileInput.click()
-      })
-    },
-    profileOpen() {
-      const fileInput = document.getElementById('fileInput')
-      // const fs = require('fs')
-      fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0]
-        this.file = file.name
-        const reader = new FileReader()
-
-        reader.onload = (event) => {
-          try {
-            const filters = JSON.parse(event.target.result)
-            Object.entries(filters).forEach(([key, value]) => {
-              const input = JSON.stringify(key)
-              this.forms[key] = value
-              this.formChanges(input)
-            })
-            this.emitForm()
-          } catch (error) {
-            console.error('Error parsing JSON:', error)
-          }
-        }
-        reader.readAsText(file)
-        fileInput.value = null
-      })
-    },
     updateProfile() {
-      const filters = JSON.stringify(this.forms)
-      const file = new File([filters], this.file, { type: 'text/plain:charset=UTF-8' })
-      const url = window.URL.createObjectURL(file)
-
-      //  create a hidden link and set the href and click it
-      const a = document.createElement('a')
-      a.style = 'display: none'
-      a.href = url
-      a.download = file.name
-      a.click()
-      window.URL.revokeObjectURL(url)
+      this.$emit('updateProfile')
+    },
+    deleteProfile() {
+      this.$emit('deleteProfile')
     },
     createProfile() {
-      const textInput = document.getElementById('textInput')
-      const filters = JSON.stringify(this.forms)
-      if (textInput.value != null) {
-        const file = new File([filters], textInput.value + '.json', { type: 'text/plain:charset=UTF-8' })
-
-        //  create a ObjectURL in order to download the created file
-        const url = window.URL.createObjectURL(file)
-
-        //  create a hidden link and set the href and click it
-        const a = document.createElement('a')
-        a.style = 'display: none'
-        a.href = url
-        a.download = file.name
-        a.click()
-        window.URL.revokeObjectURL(url)
-      }
+      this.$emit('createProfile', this.profileName)
     },
     reset() {
       this.forms[10] = this.getEmptyForm(10)
@@ -1139,8 +1282,10 @@ export default {
       this.forms[240] = this.getEmptyForm(240)
       this.forms.D = this.getEmptyForm('D')
       this.forms.W = this.getEmptyForm('W')
+      this.forms.W3 = this.getEmptyForm('W3')
       this.forms.M = this.getEmptyForm('M')
-      this.changed.splice(0, 8)
+      this.forms.Q = this.getEmptyForm('Q')
+      this.changed.splice(0, 10)
       this.emitForm()
     },
     setTimeframe(t) {
@@ -1174,7 +1319,14 @@ export default {
         active: tf === this.timeframe,
         'bg-info': this.changed.includes(tf)
       }
-    }
+    },
+    isAdmin() {
+      const user = this.$store.getters['app/getItem']('user')
+      if (['seasonaluser', 'eiicapital@gmail.com'].includes(user.user_login)) {
+        return true
+      }
+      return false
+    },
   }
 }
 </script>
