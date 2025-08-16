@@ -2,7 +2,7 @@
   <div>
     <form class="">
       <div class="">
-        <div class="toolbar row align-items-end mb-4 border-bottom pb-3">
+        <div class="toolbar row align-items-end pb-3 border-bottom">
           <div class="col-lg-4 col-md-4 col-sm-12 col-12 sm-mb-3" />
           <div class="col-lg-4 col-md-4 col-sm-12 col-12 sm-mb-3">
             <div class="lable">
@@ -39,12 +39,35 @@
               Q
             </button>
           </div>
-          <div class="col-lg-2 col-md-2 col-sm-12 col-12 sm-mb-3">
-            <button v-if="isSubscribed" class="btn btn-sm btn-outline-dark resetButton" type="button" @click="reset()">
-              Reset Filters
-            </button>
-          </div>
         </div>
+        <div class="toolbar row align-items-end border-bottom pb-3 mb-2">
+        <div class="col-md-6">
+          <div class="lable">
+            Profiles
+          </div>
+          <select v-model="profile" class="form-select" @change="profileChanged">
+            <option selected="" value="default">default</option>
+            <option v-for="(r, i) in this.profiles" :key="i" :value="r.name">
+              {{ r.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-1">
+          <button type="button" class="btn btn-sm btn-outline-dark" @click="updateProfile()">
+            Update
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-dark" @click="deleteProfile()">
+            Delete
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-dark" @click="createProfile()">
+            Create
+          </button>
+          <input v-model="profileName" />
+          <button v-if="isSubscribed" class="btn btn-sm btn-outline-dark resetButton" type="button" @click="reset()">
+            Reset Filters
+          </button>
+        </div>
+      </div>
       </div>
       <div class="row">
         <div class="col-md-3">
@@ -622,54 +645,6 @@
                 &nbsp;&nbsp;T1
               </option>
               <option disabled="">
-                Bull Wick
-              </option>
-              <option value="14">
-                &nbsp;&nbsp;Bull
-              </option>
-              <option disabled="">
-                Bear Wick
-              </option>
-              <option value="15">
-                &nbsp;&nbsp;Bear
-              </option>
-              <option disabled="">
-                Bull Wick
-              </option>
-              <option value="16">
-                &nbsp;&nbsp;PB
-              </option>
-              <option value="17">
-                &nbsp;&nbsp;Bleep PB
-              </option>
-              <option value="18">
-                &nbsp;&nbsp;BO
-              </option>
-              <option value="19">
-                &nbsp;&nbsp;Fail PB
-              </option>
-              <option value="20">
-                &nbsp;&nbsp;Fail
-              </option>
-              <option disabled="">
-                Bear Wick
-              </option>
-              <option value="21">
-                &nbsp;&nbsp;PB
-              </option>
-              <option value="22">
-                &nbsp;&nbsp;Bleep PB
-              </option>
-              <option value="23">
-                &nbsp;&nbsp;BO
-              </option>
-              <option value="24">
-                &nbsp;&nbsp;Fail PB
-              </option>
-              <option value="25">
-                &nbsp;&nbsp;Fail
-              </option>
-              <option disabled="">
                 Ideal PB
               </option>
               <option value="26">
@@ -720,7 +695,7 @@
               <option value="38">
                 &nbsp;&nbsp;all
               </option>
-              <option disabled="">
+              <!-- <option disabled="">
                 Volatility
               </option>
               <option value="39">
@@ -734,7 +709,7 @@
               </option>
               <option value="42">
                 &nbsp;&nbsp;pBear
-              </option>
+              </option> -->
             </select>
           </div>
         </div>
@@ -880,31 +855,6 @@
               </option>
             </select>
           </div>
-        </div>
-      </div>
-      <div class="toolbar row align-items-end border-top pb-3">
-        <div class="col-md-6">
-          <div class="lable">
-            Profiles
-          </div>
-          <select v-model="profile" class="form-select" @change="profileChanged">
-            <option selected="" value="default">default</option>
-            <option v-for="(r, i) in this.profiles" :key="i" :value="r.name">
-              {{ r.name }}
-            </option>
-          </select>
-        </div>
-        <div class="col-md-6">
-          <button type="button" class="btn btn-sm btn-outline-dark" @click="updateProfile()">
-            Update
-          </button>
-          <button type="button" class="btn btn-sm btn-outline-dark" @click="deleteProfile()">
-            Delete
-          </button>
-          <button type="button" class="btn btn-sm btn-outline-dark" @click="createProfile()">
-            Create
-          </button>
-          <input v-model="profileName" />
         </div>
       </div>
     </form>
