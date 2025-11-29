@@ -1041,7 +1041,7 @@ export default {
       this.forms[10].vbar = profile.vBar_10
       this.forms[10].vtnt = profile.vTnt_10
       this.forms[10].ct = profile.ct_10
-      if (profile.vOpt_10 instanceof String && profile.vOpt_10 !== '') {
+      if (profile.vOpt_10.length > 0) {
         this.forms[10].vopt = profile.vOpt_10.split(',')
       }
     },
@@ -1060,7 +1060,7 @@ export default {
       this.forms[30].vbar = profile.vBar_30
       this.forms[30].vtnt = profile.vTnt_30
       this.forms[30].ct = profile.ct_30
-      if (profile.vOpt_30 instanceof String && profile.vOpt_30 !== '') {
+      if (profile.vOpt_30.length > 0) {
         this.forms[30].vopt = profile.vOpt_30.split(',')
       }
     },
@@ -1079,7 +1079,7 @@ export default {
       this.forms[60].vbar = profile.vBar_60
       this.forms[60].vtnt = profile.vTnt_60
       this.forms[60].ct = profile.ct_60
-      if (profile.vOpt_60 instanceof String && profile.vOpt_60 !== '') {
+      if (profile.vOpt_60.length > 0) {
         this.forms[30].vopt = profile.vOpt_60.split(',')
       }
     },
@@ -1098,7 +1098,7 @@ export default {
       this.forms[120].vbar = profile.vBar_120
       this.forms[120].vtnt = profile.vTnt_120
       this.forms[120].ct = profile.ct_120
-      if (profile.vOpt_120 instanceof String && profile.vOpt_120 !== '') {
+      if (profile.vOpt_120.length > 0) {
         this.forms[120].vopt = profile.vOpt_120.split(',')
       }
     },
@@ -1117,7 +1117,7 @@ export default {
       this.forms[240].vbar = profile.vBar_240
       this.forms[240].vtnt = profile.vTnt_240
       this.forms[240].ct = profile.ct_240
-      if (profile.vOpt_240 instanceof String && profile.vOpt_240 !== '') {
+      if (profile.vOpt_240.length > 0) {
         this.forms[240].vopt = profile.vOpt_240.split(',')
       }
     },
@@ -1136,7 +1136,7 @@ export default {
       this.forms.D.vbar = profile.vBar_D
       this.forms.D.vtnt = profile.vTnt_D
       this.forms.D.ct = profile.ct_D
-      if (profile.vOpt_D instanceof String && profile.vOpt_D !== '') {
+      if (profile.vOpt_D.length > 0) {
         this.forms.D.vopt = profile.vOpt_D.split(',')
       }
     },
@@ -1155,7 +1155,7 @@ export default {
       this.forms.W.vbar = profile.vBar_W
       this.forms.W.vtnt = profile.vTnt_W
       this.forms.W.ct = profile.ct_W
-      if (profile.vOpt_W instanceof String && profile.vOpt_W !== '') {
+      if (profile.vOpt_W.length > 0) {
         this.forms.W.vopt = profile.vOpt_W.split(',')
       }
     },
@@ -1174,7 +1174,7 @@ export default {
       this.forms.W3.vbar = profile.vBar_3W
       this.forms.W3.vtnt = profile.vTnt_3W
       this.forms.W3.ct = profile.ct_3W
-      if (profile.vOpt_3W instanceof String && profile.vOpt_3W !== '') {
+      if (profile.vOpt_3W.length > 0) {
         this.forms.W3.vopt = profile.vOpt_3W.split(',')
       }
     },
@@ -1193,7 +1193,7 @@ export default {
       this.forms.M.vbar = profile.vBar_M
       this.forms.M.vtnt = profile.vTnt_M
       this.forms.M.ct = profile.ct_M
-      if (profile.vOpt_M instanceof String && profile.vOpt_M !== '') {
+      if (profile.vOpt_M.length > 0) {
         this.forms.M.vopt = profile.vOpt_M.split(',')
       }
     },
@@ -1212,7 +1212,7 @@ export default {
       this.forms.Q.vbar = profile.vBar_Q
       this.forms.Q.vtnt = profile.vTnt_Q
       this.forms.Q.ct = profile.ct_Q
-      if (profile.vOpt_Q instanceof String && profile.vOpt_Q !== '') {
+      if (profile.vOpt_Q.length > 0) {
         this.forms.Q.vopt = profile.vOpt_Q.split(',')
       }
     },
