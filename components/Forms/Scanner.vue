@@ -647,7 +647,7 @@
                 &nbsp;&nbsp;SKB
               </option>
               <option disabled="">
-                Closed bar
+                Closed bar Ideal PB
               </option>
               <option value="21">
                 &nbsp;&nbsp;TS
