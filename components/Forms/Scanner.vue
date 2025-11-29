@@ -40,34 +40,6 @@
             </button>
           </div>
         </div>
-        <div class="toolbar row align-items-end border-bottom pb-3 mb-2">
-          <div class="col-md-6">
-            <div class="lable">
-              Profiles
-            </div>
-            <select v-model="profile" class="form-select" @change="profileChanged">
-              <option selected="" value="default">default</option>
-              <option v-for="(r, i) in this.profiles" :key="i" :value="r.name">
-                {{ r.name }}
-              </option>
-            </select>
-          </div>
-          <div class="col-md-6 mb-1">
-            <button type="button" class="btn btn-sm btn-outline-dark" @click="updateProfile()">
-              Update
-            </button>
-            <button type="button" class="btn btn-sm btn-outline-dark" @click="deleteProfile()">
-              Delete
-            </button>
-            <button type="button" class="btn btn-sm btn-outline-dark" @click="createProfile()">
-              Create
-            </button>
-            <input v-model="profileName" />
-            <button v-if="isSubscribed" class="btn btn-sm btn-outline-dark resetButton" type="button" @click="reset()">
-              Reset Filters
-            </button>
-          </div>
-        </div>
       </div>
       <div class="row">
         <div class="col-md-3">
@@ -919,6 +891,9 @@
             Create
           </button>
           <input v-model="profileName" />
+          <button v-if="isSubscribed" class="btn btn-sm btn-outline-dark resetButton" type="button" @click="reset()">
+            Reset Filters
+          </button>
         </div>
       </div>
     </form>
