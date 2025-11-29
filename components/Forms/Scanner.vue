@@ -2,7 +2,7 @@
   <div>
     <form class="">
       <div class="">
-        <div class="toolbar row align-items-end mb-4 border-bottom pb-3">
+        <div class="toolbar row align-items-end pb-3 border-bottom">
           <div class="col-lg-4 col-md-4 col-sm-12 col-12 sm-mb-3" />
           <div class="col-lg-4 col-md-4 col-sm-12 col-12 sm-mb-3">
             <div class="lable">
@@ -39,7 +39,30 @@
               Q
             </button>
           </div>
-          <div class="col-lg-2 col-md-2 col-sm-12 col-12 sm-mb-3">
+        </div>
+        <div class="toolbar row align-items-end border-bottom pb-3 mb-2">
+          <div class="col-md-6">
+            <div class="lable">
+              Profiles
+            </div>
+            <select v-model="profile" class="form-select" @change="profileChanged">
+              <option selected="" value="default">default</option>
+              <option v-for="(r, i) in this.profiles" :key="i" :value="r.name">
+                {{ r.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-1">
+            <button type="button" class="btn btn-sm btn-outline-dark" @click="updateProfile()">
+              Update
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-dark" @click="deleteProfile()">
+              Delete
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-dark" @click="createProfile()">
+              Create
+            </button>
+            <input v-model="profileName" />
             <button v-if="isSubscribed" class="btn btn-sm btn-outline-dark resetButton" type="button" @click="reset()">
               Reset Filters
             </button>
