@@ -32,7 +32,7 @@
                     <div class="col">
                       <FormsScanner v-if="show.filters" @createProfile="createProfile" @updateProfile="updateProfile"
                         @deleteProfile="deleteProfile" @change="formChanged" @timeframe="setTimeframe"
-                        :profiles="this.profile.profiles" @changeProfile="changeProfile" />
+                        :profiles="this.profiles" :count="this.profiles.length" @changeProfile="changeProfile" />
                     </div>
                   </div>
                 </div>
@@ -205,8 +205,9 @@ export default {
         user_email: '',
         action: 'profiles',
         cmd: 'get',
-        profiles: []
+        data: []
       },
+      profiles: [],
       currentProfile: 'default',
       symbol: '',
       show: {
@@ -331,7 +332,7 @@ export default {
       })
 
       this.$xhr.api.post('/api/profiles', this.profile).then((response) => {
-        this.profile.profiles = response.data
+        this.profiles = response.data
       })
     },
 
@@ -529,37 +530,33 @@ export default {
         name: profileName,
         user_email: user.user_email
       }
-      this.profile.profiles = {}
-      this.$xhr.api.post('/api/profiles', data).then(this.changeProfile('default'))
+      this.$xhr.api.post('/api/profiles', data).then(this.getData())
     },
-    deleteProfile() {
+    deleteProfile(profileName) {
       const user = this.$store.getters['app/getItem']('user')
       const data = {
         cmd: 'del',
         action: 'profiles',
-        user_email: user.user_email,
-        name: this.currentProfile
+        name: profileName,
+        user_email: user.user_email
       }
-      this.profile.profiles = {}
-      this.$xhr.api.post('/api/profiles', data).then(this.changeProfile('default'))
+      this.$xhr.api.post('/api/profiles', data).then(this.getData())
     },
     updateProfile() {
-      if (this.profile.profiles.length !== 0) {
+      if (this.profiles.length !== 0) {
         const array = []
         array.push([])
         array.push([])
         const user = this.$store.getters['app/getItem']('user')
         const keyArr = []
-        Object.keys(this.profile.profiles[0]).forEach(function (item) {
+        Object.keys(this.profiles[0]).forEach(function (item) {
           keyArr.push(item)
         })
-        const profile = this.profile.profiles[this.currentProfile]
         const filters = this.formData.filters
         const array1 = []
         const array2 = []
-        this.profile.profiles.forEach(profile => {
+        this.profiles.forEach(profile => {
           if (profile.name == this.currentProfile) {
-            console.log(profile)
             Object.values(profile).forEach(value => { array1.push(value) })
           }
         })
@@ -579,15 +576,12 @@ export default {
           array2.splice(i, 1)
         }
         if (!this.areArraysEqual(array1, array2)) {
-          console.log(array1)
-          console.log(array2)
           for (let i = 0; i < keyArr.length; i++) {
             if (array2[i] != array1[i]) {
               array[0].push(keyArr[i])
               array[1].push(array2[i])
             }
           }
-          console.log(array)
           const data = {
             cmd: 'update',
             action: 'profiles',
@@ -595,7 +589,7 @@ export default {
             user_email: user.user_email,
             name: this.currentProfile,
           }
-          this.$xhr.api.post('/api/profiles', data).then(this.changeProfile('default'))
+          this.$xhr.api.post('/api/profiles', data).then(this.getData())
         }
       }
     },

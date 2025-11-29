@@ -573,6 +573,9 @@
               <option selected="" value="">
                 Off
               </option>
+              <option disabled="">
+                Shade
+              </option>
               <option value="1">
                 &nbsp;&nbsp;Bull Shade
               </option>
@@ -594,122 +597,119 @@
               <option value="6">
                 &nbsp;&nbsp;DnFlip
               </option>
-              <option value="7">
-                &nbsp;&nbsp;UpRealFlip
-              </option>
-              <option value="8">
-                &nbsp;&nbsp;DnRealFlip
-              </option>
               <option disabled="">
                 Arrow
               </option>
-              <option value="9">
+              <option value="7">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="10">
+              <option value="8">
                 &nbsp;&nbsp;Bear
               </option>
-              <option value="11">
+              <option value="9">
                 &nbsp;&nbsp;pBull
               </option>
-              <option value="12">
+              <option value="10">
                 &nbsp;&nbsp;pBear
               </option>
               <option disabled="">
                 Touch
               </option>
-              <option value="13">
+              <option value="11">
                 &nbsp;&nbsp;T1
-              </option>
-              <option disabled="">
-                Bull Wick
-              </option>
-              <option value="14">
-                &nbsp;&nbsp;Bull
-              </option>
-              <option disabled="">
-                Bear Wick
-              </option>
-              <option value="15">
-                &nbsp;&nbsp;Bear
-              </option>
-              <option disabled="">
-                Bull Wick
-              </option>
-              <option value="16">
-                &nbsp;&nbsp;PB
-              </option>
-              <option value="17">
-                &nbsp;&nbsp;Bleep PB
-              </option>
-              <option value="18">
-                &nbsp;&nbsp;BO
-              </option>
-              <option value="19">
-                &nbsp;&nbsp;Fail PB
-              </option>
-              <option value="20">
-                &nbsp;&nbsp;Fail
-              </option>
-              <option disabled="">
-                Bear Wick
-              </option>
-              <option value="21">
-                &nbsp;&nbsp;PB
-              </option>
-              <option value="22">
-                &nbsp;&nbsp;Bleep PB
-              </option>
-              <option value="23">
-                &nbsp;&nbsp;BO
-              </option>
-              <option value="24">
-                &nbsp;&nbsp;Fail PB
-              </option>
-              <option value="25">
-                &nbsp;&nbsp;Fail
-              </option>
-              <option disabled="">
-                Ideal PB
-              </option>
-              <option value="26">
-                &nbsp;&nbsp;TS
-              </option>
-              <option value="27">
-                &nbsp;&nbsp;KS
-              </option>
-              <option value="28">
-                &nbsp;&nbsp;SKB
-              </option>
-              <option disabled="">
-                Closed Bar Ideal PB
-              </option>
-              <option value="29">
-                &nbsp;&nbsp;TS
-              </option>
-              <option value="30">
-                &nbsp;&nbsp;KS
-              </option>
-              <option value="31">
-                &nbsp;&nbsp;ALL
               </option>
               <option disabled="">
                 C Div
               </option>
-              <option value="32">
+              <option value="12">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="33">
+              <option value="13">
                 &nbsp;&nbsp;Bear
               </option>
-              <option value="34">
+              <option value="14">
+                &nbsp;&nbsp;All
+              </option>
+              <option value="15">
                 &nbsp;&nbsp;pBull
               </option>
-              <option value="35">
+              <option value="16">
                 &nbsp;&nbsp;pBear
+              </option>
+              <option value="17">
+                &nbsp;&nbsp;pAll
+              </option>
+              <option disabled="">
+                Ideal PB
+              </option>
+              <option value="18">
+                &nbsp;&nbsp;TS
+              </option>
+              <option value="19">
+                &nbsp;&nbsp;KS
+              </option>
+              <option value="20">
+                &nbsp;&nbsp;SKB
+              </option>
+              <option disabled="">
+                Closed bar
+              </option>
+              <option value="21">
+                &nbsp;&nbsp;TS
+              </option>
+              <option value="22">
+                &nbsp;&nbsp;KS
+              </option>
+              <option value="23">
+                &nbsp;&nbsp;ALL
               </option>
               <option disabled="">
                 Bleep
+              </option>
+              <option value="24">
+                &nbsp;&nbsp;Bull
+              </option>
+              <option value="25">
+                &nbsp;&nbsp;Bear
+              </option>
+              <option value="25">
+                &nbsp;&nbsp;All
+              </option>
+              <option disabled="">
+                Volatility
+              </option>
+              <option value="26">
+                &nbsp;&nbsp;pUp
+              </option>
+              <option value="27">
+                &nbsp;&nbsp;pDn
+              </option>
+              <option value="28">
+                &nbsp;&nbsp;Up
+              </option>
+              <option value="29">
+                &nbsp;&nbsp;Dn
+              </option>
+              <option disabled="">
+                R
+              </option>
+              <option value="30">
+                &nbsp;&nbsp;pTranUp
+              </option>
+              <option value="31">
+                &nbsp;&nbsp;pTranDn
+              </option>
+              <option value="32">
+                &nbsp;&nbsp;pBull
+              </option>
+              <option value="33">
+                &nbsp;&nbsp;pBear
+              </option>
+              <option value="34">
+                &nbsp;&nbsp;pFBull
+              </option>
+              <option value="35">
+                &nbsp;&nbsp;pFBear
               </option>
               <option value="36">
                 &nbsp;&nbsp;Bull
@@ -717,23 +717,14 @@
               <option value="37">
                 &nbsp;&nbsp;Bear
               </option>
-              <option value="38">
-                &nbsp;&nbsp;all
-              </option>
               <option disabled="">
-                Volatility
+                PB
+              </option>
+              <option value="38">
+                &nbsp;&nbsp;pBullPB
               </option>
               <option value="39">
-                &nbsp;&nbsp;Bull
-              </option>
-              <option value="40">
-                &nbsp;&nbsp;Bear
-              </option>
-              <option value="41">
-                &nbsp;&nbsp;pBull
-              </option>
-              <option value="42">
-                &nbsp;&nbsp;pBear
+                &nbsp;&nbsp;pBearPB
               </option>
             </select>
           </div>
@@ -894,7 +885,7 @@
             </option>
           </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="margin-bottom: 0.2rem;">
           <button type="button" class="btn btn-sm btn-outline-dark" @click="updateProfile()">
             Update
           </button>
@@ -925,14 +916,15 @@ export default {
   emits: ['change'],
   props: {
     profiles: {},
+    count: {
+      type: Number
+    },
     currentProfile: {
       type: String
     }
   },
   data() {
     return {
-      file: '',
-      lastCreatedProfile: '', // Track the most recently created profile
       forms: {
         10: this.getEmptyForm(10),
         30: this.getEmptyForm(30),
@@ -977,21 +969,12 @@ export default {
       this.emitForm()
     }
   },
-
+  watch: {
+    count(newValue, oldValue) {
+      this.profile = 'default'
+    }
+  },
   methods: {
-    onProfileSaved(profileName) {
-      this.lastCreatedProfile = profileName // Store the name of the created profile
-      this.showProfileModal = false
-    },
-    onProfileLoaded(loadedFilters) {
-      this.forms = loadedFilters
-      this.emitForm() // emit changes
-      this.showProfileModal = false
-    },
-
-    onProfileUpdated() {
-      this.showUpdateModal = false
-    },
     emitForm() {
       this.$emit('change', this.forms)
     },
@@ -1025,29 +1008,25 @@ export default {
       if (this.profile != 'default') {
         const profiles = JSON.parse(JSON.stringify(this.profiles))
         profiles.forEach(profile => {
-          console.log(profile)
-          if (profile.name = this.profile) {
-            this.formUpdate(profile)
+          if (profile.name == this.profile) {
+            this.changed.splice(0, 10)
+            this.profile10(profile)
+            this.profile30(profile)
+            this.profile60(profile)
+            this.profile120(profile)
+            this.profile240(profile)
+            this.profileD(profile)
+            this.profileW(profile)
+            this.profile3W(profile)
+            this.profileM(profile)
+            this.profileQ(profile)
+            this.$emit('changeProfile', this.profile)
             return
           }
         })
       } else {
         this.reset()
       }
-    },
-    formUpdate(profile) {
-      this.changed.splice(0, 10)
-      this.profile10(profile)
-      this.profile30(profile)
-      this.profile60(profile)
-      this.profile120(profile)
-      this.profile240(profile)
-      this.profileD(profile)
-      this.profileW(profile)
-      this.profile3W(profile)
-      this.profileM(profile)
-      this.profileQ(profile)
-      this.$emit('changeProfile', this.profile)
     },
     profile10(profile) {
       this.forms[10].strategy = profile.strategy_10
@@ -1269,7 +1248,7 @@ export default {
       this.$emit('updateProfile')
     },
     deleteProfile() {
-      this.$emit('deleteProfile')
+      this.$emit('deleteProfile', this.profile)
     },
     createProfile() {
       this.$emit('createProfile', this.profileName)
