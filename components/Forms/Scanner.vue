@@ -667,58 +667,58 @@
               <option value="25">
                 &nbsp;&nbsp;Bear
               </option>
-              <option value="25">
+              <option value="26">
                 &nbsp;&nbsp;All
               </option>
               <option disabled="">
                 Volatility
               </option>
-              <option value="26">
+              <option value="27">
                 &nbsp;&nbsp;pUp
               </option>
-              <option value="27">
+              <option value="28">
                 &nbsp;&nbsp;pDn
               </option>
-              <option value="28">
+              <option value="29">
                 &nbsp;&nbsp;Up
               </option>
-              <option value="29">
+              <option value="30">
                 &nbsp;&nbsp;Dn
               </option>
               <option disabled="">
                 R
               </option>
-              <option value="30">
+              <option value="31">
                 &nbsp;&nbsp;pTranUp
               </option>
-              <option value="31">
+              <option value="32">
                 &nbsp;&nbsp;pTranDn
               </option>
-              <option value="32">
+              <option value="33">
                 &nbsp;&nbsp;pBull
               </option>
-              <option value="33">
+              <option value="34">
                 &nbsp;&nbsp;pBear
               </option>
-              <option value="34">
+              <option value="35">
                 &nbsp;&nbsp;pFBull
               </option>
-              <option value="35">
+              <option value="36">
                 &nbsp;&nbsp;pFBear
               </option>
-              <option value="36">
+              <option value="37">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="37">
+              <option value="38">
                 &nbsp;&nbsp;Bear
               </option>
               <option disabled="">
                 PB
               </option>
-              <option value="38">
+              <option value="39">
                 &nbsp;&nbsp;pBullPB
               </option>
-              <option value="39">
+              <option value="40">
                 &nbsp;&nbsp;pBearPB
               </option>
             </select>
