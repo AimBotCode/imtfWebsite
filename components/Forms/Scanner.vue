@@ -3,9 +3,8 @@
     <form class="">
       <div class="">
         <div class="toolbar row align-items-end pb-3 border-bottom">
-          <div class="col-lg-4 col-md-4 col-sm-12 col-12 sm-mb-3" />
-          <div class="col-lg-4 col-md-4 col-sm-12 col-12 sm-mb-3">
-            <div class="lable">
+          <div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
+            <div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
               Timeframe
             </div>
             <button type="button" :class="getClass(10)" @click="setTimeframe(10)">

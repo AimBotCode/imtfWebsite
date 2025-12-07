@@ -71,7 +71,7 @@
                                     <span :class="getROC(r) > 0 ? 'text-success' : 'text-danger'">{{ getROC(r) }}</span>
                                   </template>
                                   <template v-else-if="column.key === 'dtime'">
-                                    {{ r.datetime_added || '-' }}
+                                    {{ r.dtime || '-' }}
                                   </template>
                                   <template v-else-if="column.key === 'istate'">
                                     {{ r.StateBarCount || '-' }}
@@ -223,7 +223,7 @@ export default {
         { key: 'sector', label: 'Market', description: 'Market sector classification', sortKey: 'sector' },
         { key: 'close', label: 'Close', description: 'Current closing price', sortKey: 'close' },
         { key: 'change', label: 'Change (%)', description: 'Percentage change from previous close', sortKey: 'price_change' },
-        { key: 'dtime', label: 'Date/Time', description: 'Last update timestamp', sortKey: 'datetime_added' },
+        { key: 'dtime', label: 'Date/Time', description: 'Last update timestamp', sortKey: 'dtime' },
         { key: 'istate', label: 'IState', description: 'StateBarCount indicator', sortKey: 'StateBarCount' },
         { key: 'vstate', label: 'VState', description: 'HasStateBars indicator', sortKey: 'hastatebars' },
         { key: 'cstate', label: 'CState', description: 'CStateCount indicator', sortKey: 'ctstatebars' },
@@ -466,7 +466,7 @@ export default {
           if (!keys.includes('change')) keys.push('change')
         }
         if (this.selectedColumnKeys.includes('dtime')) {
-          generatedRow.push(r.datetime_added || '-')
+          generatedRow.push(r.dtime || '-')
           if (!keys.includes('dtime')) keys.push('dtime')
         }
         if (this.selectedColumnKeys.includes('istate')) {
