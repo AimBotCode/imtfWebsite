@@ -317,29 +317,32 @@
               <option selected="" value="0">
                 &nbsp;Off
               </option>
+              <option value="" disabled="">
+                &nbsp;Type
+              </option>
               <option value="1">
-                &nbsp;R Bull
+                &nbsp;&nbsp;&nbsp;&nbsp;R Bull
               </option>
               <option value="2">
-                &nbsp;R Bear
+                &nbsp;&nbsp;&nbsp;&nbsp;R Bear
               </option>
               <option value="3">
-                &nbsp;F Bull
+                &nbsp;&nbsp;&nbsp;&nbsp;F Bull
               </option>
               <option value="4">
-                &nbsp;F Bear
+                &nbsp;&nbsp;&nbsp;&nbsp;F Bear
               </option>
               <option value="5">
-                &nbsp;pRBull
+                &nbsp;&nbsp;&nbsp;&nbsp;pRBull
               </option>
               <option value="6">
-                &nbsp;pRBear
+                &nbsp;&nbsp;&nbsp;&nbsp;pRBear
               </option>
               <option value="7">
-                &nbsp;pRFBull
+                &nbsp;&nbsp;&nbsp;&nbsp;pRFBull
               </option>
               <option value="8">
-                &nbsp;pRFBear
+                &nbsp;&nbsp;&nbsp;&nbsp;pRFBear
               </option>
               <option value="" disabled="">
                 &nbsp;Bars
