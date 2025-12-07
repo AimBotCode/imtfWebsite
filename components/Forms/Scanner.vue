@@ -318,45 +318,63 @@
                 &nbsp;Off
               </option>
               <option value="1">
-                &nbsp;Real Bull Bar
+                &nbsp;R Bull
               </option>
               <option value="2">
-                &nbsp;Real Bear Bar
+                &nbsp;R Bear
+              </option>
+              <option value="3">
+                &nbsp;F Bull
+              </option>
+              <option value="4">
+                &nbsp;F Bear
+              </option>
+              <option value="5">
+                &nbsp;pRBull
+              </option>
+              <option value="6">
+                &nbsp;pRBear
+              </option>
+              <option value="7">
+                &nbsp;pRFBull
+              </option>
+              <option value="8">
+                &nbsp;pRFBear
               </option>
               <option value="" disabled="">
                 &nbsp;Bars
               </option>
-              <option value="3">
+              <option value="9">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bull Flip
               </option>
-              <option value="4">
+              <option value="10">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear Flip
               </option>
-              <option value="5">
+              <option value="11">
                 &nbsp;&nbsp;&nbsp;&nbsp;LDD
               </option>
-              <option value="6">
+              <option value="12">
                 &nbsp;&nbsp;&nbsp;&nbsp;HDD
               </option>
-              <option value="7">
+              <option value="13">
                 &nbsp;&nbsp;&nbsp;&nbsp;Fake Low
               </option>
-              <option value="8">
+              <option value="14">
                 &nbsp;&nbsp;&nbsp;&nbsp;Fake High
               </option>
               <option value="" disabled="">
                 &nbsp;Optimize
               </option>
-              <option value="9">
+              <option value="15">
                 &nbsp;&nbsp;&nbsp;&nbsp;cbull false
               </option>
-              <option value="10">
+              <option value="16">
                 &nbsp;&nbsp;&nbsp;&nbsp;cbear false
               </option>
-              <option value="11">
+              <option value="17">
                 &nbsp;&nbsp;&nbsp;&nbsp;cLDD
               </option>
-              <option value="12">
+              <option value="18">
                 &nbsp;&nbsp;&nbsp;&nbsp;cHDD
               </option>
             </select>
@@ -612,113 +630,86 @@
               <option value="11">
                 &nbsp;&nbsp;T1
               </option>
-              <option disabled="">
-                C Div
-              </option>
               <option value="12">
-                &nbsp;&nbsp;Bull
-              </option>
-              <option value="13">
-                &nbsp;&nbsp;Bear
-              </option>
-              <option value="14">
-                &nbsp;&nbsp;All
-              </option>
-              <option value="15">
-                &nbsp;&nbsp;pBull
-              </option>
-              <option value="16">
-                &nbsp;&nbsp;pBear
-              </option>
-              <option value="17">
-                &nbsp;&nbsp;pAll
-              </option>
-              <option disabled="">
-                Ideal PB
-              </option>
-              <option value="18">
                 &nbsp;&nbsp;TS
               </option>
-              <option value="19">
+              <option value="13">
                 &nbsp;&nbsp;KS
               </option>
-              <option value="20">
+              <option value="14">
                 &nbsp;&nbsp;SKB
               </option>
               <option disabled="">
-                Closed bar Ideal PB
+                C Div
               </option>
-              <option value="21">
-                &nbsp;&nbsp;TS
-              </option>
-              <option value="22">
-                &nbsp;&nbsp;KS
-              </option>
-              <option value="23">
-                &nbsp;&nbsp;ALL
-              </option>
-              <option disabled="">
-                Bleep
-              </option>
-              <option value="24">
+              <option value="15">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="25">
+              <option value="16">
                 &nbsp;&nbsp;Bear
               </option>
-              <option value="26">
+              <option value="17">
                 &nbsp;&nbsp;All
               </option>
-              <option disabled="">
-                Volatility
-              </option>
-              <option value="27">
-                &nbsp;&nbsp;pUp
-              </option>
-              <option value="28">
-                &nbsp;&nbsp;pDn
-              </option>
-              <option value="29">
-                &nbsp;&nbsp;Up
-              </option>
-              <option value="30">
-                &nbsp;&nbsp;Dn
-              </option>
-              <option disabled="">
-                R
-              </option>
-              <option value="31">
-                &nbsp;&nbsp;pTranUp
-              </option>
-              <option value="32">
-                &nbsp;&nbsp;pTranDn
-              </option>
-              <option value="33">
+              <option value="18">
                 &nbsp;&nbsp;pBull
               </option>
-              <option value="34">
+              <option value="19">
                 &nbsp;&nbsp;pBear
               </option>
-              <option value="35">
-                &nbsp;&nbsp;pFBull
+              <option value="20">
+                &nbsp;&nbsp;pAll
               </option>
-              <option value="36">
-                &nbsp;&nbsp;pFBear
+              <option disabled="">
+                ShadeFlip
               </option>
-              <option value="37">
+              <option value="21">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="38">
+              <option value="22">
                 &nbsp;&nbsp;Bear
+              </option>
+              <option value="23">
+                &nbsp;&nbsp;Bull 0
+              </option>
+              <option value="24">
+                &nbsp;&nbsp;Bear 0
+              </option>
+              <option value="25">
+                &nbsp;&nbsp;pBull
+              </option>
+              <option value="26">
+                &nbsp;&nbsp;pBear
+              </option>
+              <option value="27">
+                &nbsp;&nbsp;pBull0
+              </option>
+              <option value="28">
+                &nbsp;&nbsp;pBear0
               </option>
               <option disabled="">
                 PB
               </option>
-              <option value="39">
+              <option value="29">
                 &nbsp;&nbsp;pBullPB
               </option>
-              <option value="40">
+              <option value="30">
                 &nbsp;&nbsp;pBearPB
+              </option>
+              <option disabled="">
+                Vclose
+              </option>
+              <option value="31">
+                &nbsp;&nbsp;Bull
+              </option>
+              <option value="32">
+                &nbsp;&nbsp;Bear
+              </option>
+              <option disabled="">
+                Distort
+              </option>
+              <option value="33">
+                &nbsp;&nbsp;Bar
               </option>
             </select>
           </div>
