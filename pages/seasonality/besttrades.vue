@@ -292,7 +292,7 @@ export default {
       show: { results: false, symbols: false },
       dates: {
         years: [],
-        year: '2022',
+        year: '2026',
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
       },
       formData: {

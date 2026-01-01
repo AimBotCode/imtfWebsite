@@ -712,7 +712,10 @@
                 Distort
               </option>
               <option value="33">
-                &nbsp;&nbsp;Bar
+                &nbsp;&nbsp;Bull
+              </option>
+              <option value="34">
+                &nbsp;&nbsp;Bear
               </option>
             </select>
           </div>

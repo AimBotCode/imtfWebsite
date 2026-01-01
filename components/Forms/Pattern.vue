@@ -167,8 +167,8 @@ export default {
       },
       dates: {
         years: [],
-        year: '2025',
-        month: '6',
+        year: '2026',
+        month: '1',
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         yearmonth: ''
       },
