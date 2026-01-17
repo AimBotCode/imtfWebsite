@@ -721,10 +721,10 @@
                 Vclose
               </option>
               <option value="35">
-                &nbsp;&nbsp;Bearx.xxx
+                &nbsp;&nbsp;Bullx.xxx
               </option>
               <option value="36">
-                &nbsp;&nbsp;Bullx.xxx
+                &nbsp;&nbsp;Bearx.xxx
               </option>
             </select>
           </div>
@@ -873,7 +873,7 @@
           </div>
         </div>
         <div v-if="isSubscribed" class="col-md-3">
-          <label for="subject">Trend Bar Count (Bear)</label>
+          <label for="subject">Trend Bar Count (Bull)</label>
           <select v-model="forms[timeframe].bullbarcount" class="form-select" @change="formChanged">
             <option v-for="(n, i) in 51" :key="i" :value="n - 1">
               {{ n - 1 }}
