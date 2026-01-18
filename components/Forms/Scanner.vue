@@ -718,7 +718,7 @@
                 &nbsp;&nbsp;Bear
               </option>
               <option disabled="">
-                Vclose
+                Trend
               </option>
               <option value="35">
                 &nbsp;&nbsp;Bullx.xxx
