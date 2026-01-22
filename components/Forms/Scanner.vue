@@ -875,7 +875,7 @@
         <div v-if="isSubscribed" class="col-md-3">
           <label for="subject">Trend Bar Count (Bull)</label>
           <select v-model="forms[timeframe].bullbarcount" class="form-select" @change="formChanged">
-            <option v-for="(n, i) in 51" :key="i" :value="n - 1">
+            <option v-for="(n, i) in 20" :key="i" :value="n - 1">
               {{ n - 1 }}
             </option>
           </select>
@@ -883,7 +883,7 @@
         <div v-if="isSubscribed" class="col-md-3">
           <label for="subject">Trend Bar Count (Bear)</label>
           <select v-model="forms[timeframe].bearbarcount" class="form-select" @change="formChanged">
-            <option v-for="(n, i) in 51" :key="i" :value="n - 1">
+            <option v-for="(n, i) in 20" :key="i" :value="n - 1">
               {{ n - 1 }}
             </option>
           </select>
@@ -1315,6 +1315,8 @@ export default {
       return {
         timeframe: tf,
         strategy: 0,
+        bearbarcount: 0,
+        bullbarcount: 0,
         istatefrom: 0,
         istateto: 0,
         priceimtf: 0,
@@ -1328,8 +1330,6 @@ export default {
         vbar: 0,
         vtnt: 0,
         ct: 0,
-        bearbarcount: 0,
-        bullbarcount: 0,
         vopt: ['']
       }
     },
