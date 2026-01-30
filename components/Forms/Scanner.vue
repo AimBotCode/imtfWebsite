@@ -366,19 +366,25 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;Fake High
               </option>
               <option value="" disabled="">
-                &nbsp;Optimize
+                &nbsp;Previous
               </option>
               <option value="15">
-                &nbsp;&nbsp;&nbsp;&nbsp;cbull false
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull Flip
               </option>
               <option value="16">
-                &nbsp;&nbsp;&nbsp;&nbsp;cbear false
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear Flip
               </option>
               <option value="17">
-                &nbsp;&nbsp;&nbsp;&nbsp;cLDD
+                &nbsp;&nbsp;&nbsp;&nbsp;LDD
               </option>
               <option value="18">
-                &nbsp;&nbsp;&nbsp;&nbsp;cHDD
+                &nbsp;&nbsp;&nbsp;&nbsp;HDD
+              </option>
+              <option value="19">
+                &nbsp;&nbsp;&nbsp;&nbsp;Fake Low
+              </option>
+              <option value="20">
+                &nbsp;&nbsp;&nbsp;&nbsp;Fake High
               </option>
             </select>
           </div>
@@ -709,7 +715,7 @@
                 &nbsp;&nbsp;Bear
               </option>
               <option disabled="">
-                Distort
+                V Close Direction
               </option>
               <option value="33">
                 &nbsp;&nbsp;Bull
