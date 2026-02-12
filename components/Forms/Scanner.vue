@@ -879,16 +879,8 @@
           </div>
         </div>
         <div v-if="isSubscribed" class="col-md-3">
-          <label for="subject">Trend Bar Count (Bull)</label>
-          <select v-model="forms[timeframe].bullbarcount" class="form-select" @change="formChanged">
-            <option v-for="(n, i) in 20" :key="i" :value="n - 1">
-              {{ n - 1 }}
-            </option>
-          </select>
-        </div>
-        <div v-if="isSubscribed" class="col-md-3">
-          <label for="subject">Trend Bar Count (Bear)</label>
-          <select v-model="forms[timeframe].bearbarcount" class="form-select" @change="formChanged">
+          <label for="subject">Trend Bar Count</label>
+          <select v-model="forms[timeframe].barcount" class="form-select" @change="formChanged">
             <option v-for="(n, i) in 20" :key="i" :value="n - 1">
               {{ n - 1 }}
             </option>
@@ -1068,8 +1060,7 @@ export default {
       this.forms[10].vbar = profile.vBar_10
       this.forms[10].vtnt = profile.vTnt_10
       this.forms[10].ct = profile.ct_10
-      this.forms[10].bullbarcount = profile.bullBarCount_10
-      this.forms[10].bearbarcount = profile.bearBarCount_10
+      this.forms[10].barcount = profile.barCount_10
       if (profile.vOpt_10.length > 0) {
         this.forms[10].vopt = profile.vOpt_10.split(',')
       }
@@ -1089,8 +1080,7 @@ export default {
       this.forms[30].vbar = profile.vBar_30
       this.forms[30].vtnt = profile.vTnt_30
       this.forms[30].ct = profile.ct_30
-      this.forms[30].bullbarcount = profile.bullBarCount_30
-      this.forms[30].bearbarcount = profile.bearBarCount_30
+      this.forms[30].barcount = profile.barCount_30
       if (profile.vOpt_30.length > 0) {
         this.forms[30].vopt = profile.vOpt_30.split(',')
       }
@@ -1110,8 +1100,7 @@ export default {
       this.forms[60].vbar = profile.vBar_60
       this.forms[60].vtnt = profile.vTnt_60
       this.forms[60].ct = profile.ct_60
-      this.forms[60].bullbarcount = profile.bullBarCount_60
-      this.forms[60].bearbarcount = profile.bearBarCount_60
+      this.forms[60].barcount = profile.barCount_60
       if (profile.vOpt_60.length > 0) {
         this.forms[30].vopt = profile.vOpt_60.split(',')
       }
@@ -1131,8 +1120,7 @@ export default {
       this.forms[120].vbar = profile.vBar_120
       this.forms[120].vtnt = profile.vTnt_120
       this.forms[120].ct = profile.ct_120
-      this.forms[120].bullbarcount = profile.bullBarCount_120
-      this.forms[120].bearbarcount = profile.bearBarCount_120
+      this.forms[120].barcount = profile.barCount_120
       if (profile.vOpt_120.length > 0) {
         this.forms[120].vopt = profile.vOpt_120.split(',')
       }
@@ -1152,8 +1140,7 @@ export default {
       this.forms[240].vbar = profile.vBar_240
       this.forms[240].vtnt = profile.vTnt_240
       this.forms[240].ct = profile.ct_240
-      this.forms[240].bullbarcount = profile.bullBarCount_240
-      this.forms[240].bearbarcount = profile.bearBarCount_240
+      this.forms[240].barcount = profile.barCount_240
       if (profile.vOpt_240.length > 0) {
         this.forms[240].vopt = profile.vOpt_240.split(',')
       }
@@ -1173,8 +1160,7 @@ export default {
       this.forms.D.vbar = profile.vBar_D
       this.forms.D.vtnt = profile.vTnt_D
       this.forms.D.ct = profile.ct_D
-      this.forms.D.bullbarcount = profile.bullBarCount_D
-      this.forms.D.bearbarcount = profile.bearBarCount_D
+      this.forms.D.barcount = profile.barCount_D
       if (profile.vOpt_D.length > 0) {
         this.forms.D.vopt = profile.vOpt_D.split(',')
       }
@@ -1194,8 +1180,7 @@ export default {
       this.forms.W.vbar = profile.vBar_W
       this.forms.W.vtnt = profile.vTnt_W
       this.forms.W.ct = profile.ct_W
-      this.forms.W.bullbarcount = profile.bullBarCount_W
-      this.forms.W.bearbarcount = profile.bearBarCount_W
+      this.forms.W.barcount = profile.barCount_W
       if (profile.vOpt_W.length > 0) {
         this.forms.W.vopt = profile.vOpt_W.split(',')
       }
@@ -1215,8 +1200,7 @@ export default {
       this.forms.W3.vbar = profile.vBar_3W
       this.forms.W3.vtnt = profile.vTnt_3W
       this.forms.W3.ct = profile.ct_3W
-      this.forms.W3.bullbarcount = profile.bullBarCount_3W
-      this.forms.W3.bearbarcount = profile.bearBarCount_3W
+      this.forms.W3.barcount = profile.barCount_3W
       if (profile.vOpt_3W.length > 0) {
         this.forms.W3.vopt = profile.vOpt_3W.split(',')
       }
@@ -1236,8 +1220,7 @@ export default {
       this.forms.M.vbar = profile.vBar_M
       this.forms.M.vtnt = profile.vTnt_M
       this.forms.M.ct = profile.ct_M
-      this.forms.M.bullbarcount = profile.bullBarCount_M
-      this.forms.M.bearbarcount = profile.bearBarCount_M
+      this.forms.M.barcount = profile.barCount_M
       if (profile.vOpt_M.length > 0) {
         this.forms.M.vopt = profile.vOpt_M.split(',')
       }
@@ -1257,8 +1240,7 @@ export default {
       this.forms.Q.vbar = profile.vBar_Q
       this.forms.Q.vtnt = profile.vTnt_Q
       this.forms.Q.ct = profile.ct_Q
-      this.forms.Q.bullbarcount = profile.bullBarCount_Q
-      this.forms.Q.bearbarcount = profile.bearBarCount_Q
+      this.forms.Q.barcount = profile.barCount_Q
       if (profile.vOpt_Q.length > 0) {
         this.forms.Q.vopt = profile.vOpt_Q.split(',')
       }
@@ -1321,8 +1303,7 @@ export default {
       return {
         timeframe: tf,
         strategy: 0,
-        bearbarcount: 0,
-        bullbarcount: 0,
+        barcount: 0,
         istatefrom: 0,
         istateto: 0,
         priceimtf: 0,
