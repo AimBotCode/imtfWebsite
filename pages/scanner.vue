@@ -32,7 +32,7 @@
                     <div class="col">
                       <FormsScanner v-if="show.filters" @createProfile="createProfile" @updateProfile="updateProfile"
                         @deleteProfile="deleteProfile" @change="formChanged" @timeframe="setTimeframe"
-                        :profiles="this.profiles" :count="this.profiles.length" @changeProfile="changeProfile" />
+                        :profiles="this.profiles" :key="updateKey" :currentProfile="this.currentProfile" @changeProfile="changeProfile" />
                     </div>
                   </div>
                 </div>
@@ -183,6 +183,7 @@
 export default {
   data() {
     return {
+      updateKey: 0,
       rows: [],
       series: [],
       colors: ['#089950', '#056636', '#313641', '#b22833', '#db3241'],
@@ -509,28 +510,36 @@ export default {
       window.URL.revokeObjectURL(url)
     },
     createProfile(profileName) {
-      const user = this.$store.getters['app/getItem']('user')
-      const arr = Array()
-      const filters = this.formData.filters
-      for (const timeframe in filters) {
-        const tempArr = []
-        for (const filter in filters[timeframe]) {
-          if (filters[timeframe][filter] instanceof Array) {
-            tempArr.push(filters[timeframe][filter].toString())
-          } else {
-            tempArr.push(filters[timeframe][filter])
+      if(profileName == '') {
+        alert('Profile name cannot be empty')
+      } else {
+        const user = this.$store.getters['app/getItem']('user')
+        const arr = Array()
+        const filters = this.formData.filters
+        for (const timeframe in filters) {
+          const tempArr = []
+          for (const filter in filters[timeframe]) {
+            if (filters[timeframe][filter] instanceof Array) {
+              tempArr.push(filters[timeframe][filter].toString())
+            } else {
+              tempArr.push(filters[timeframe][filter])
+            }
           }
+          arr.push(tempArr)
         }
-        arr.push(tempArr)
+        const data = {
+          cmd: 'create',
+          action: 'profiles',
+          filters: arr,
+          name: profileName,
+          user_email: user.user_email
+        }
+        this.$xhr.api.post('/api/profiles', data).then(() => {
+          this.getData().then(() => {
+            this.updateKey += 1
+          })
+        })
       }
-      const data = {
-        cmd: 'create',
-        action: 'profiles',
-        filters: arr,
-        name: profileName,
-        user_email: user.user_email
-      }
-      this.$xhr.api.post('/api/profiles', data).then(this.getData())
     },
     deleteProfile(profileName) {
       const user = this.$store.getters['app/getItem']('user')
@@ -540,7 +549,11 @@ export default {
         name: profileName,
         user_email: user.user_email
       }
-      this.$xhr.api.post('/api/profiles', data).then(this.getData())
+      this.$xhr.api.post('/api/profiles', data).then(() => {
+        this.getData().then(() => {
+          this.updateKey += 1
+        })
+      })
     },
     updateProfile() {
       if (this.profiles.length !== 0) {
@@ -571,8 +584,12 @@ export default {
         }
         array1.splice(0, 3)
         keyArr.splice(0, 3)
-        array2.splice(96, 1)
-        for (let i = 0; i <= 150; i += 15) {
+        for (let i = 0; i <= 160; i += 1) {
+          if(array2[i] === 'statebarcount' || array2[i] === 'hastatebars' || array2[i] === 'ctstatebars') {
+            array2.splice(i, 1)
+          }
+        }
+        for (let i = 0; i <= 160; i += 16) {
           array2.splice(i, 1)
         }
         if (!this.areArraysEqual(array1, array2)) {
@@ -589,7 +606,11 @@ export default {
             user_email: user.user_email,
             name: this.currentProfile,
           }
-          this.$xhr.api.post('/api/profiles', data).then(this.getData())
+          this.$xhr.api.post('/api/profiles', data).then(() => {
+            this.getData().then(() => {
+              this.updateKey += 1
+            })
+          })
         }
       }
     },
