@@ -163,7 +163,7 @@
             <div class="col-lg-3">
               <div class="position-sticky" style="top: 120px">
                 <!--end card-->
-                <ScannerList @market="setMarket" @scan="scan" />
+                <ScannerList @market="setMarket" :marketUpdate="updateKey" @scan="scan" />
                 <!--end card-->
               </div>
               <!--end sticky-->
@@ -355,9 +355,9 @@ export default {
 
     setMarket(market) {
       this.market = market
-      if (this.market !== 'custom') {
+      if(!this.market.includes('custom')) {
         this.getData()
-      }
+      }  
     },
 
     sort(col) {
@@ -532,8 +532,10 @@ export default {
           action: 'profiles',
           filters: arr,
           name: profileName,
-          user_email: user.user_email
+          user_email: user.user_email,
+          market: this.market.toString()
         }
+        console.log(data)
         this.$xhr.api.post('/api/profiles', data).then(() => {
           this.getData().then(() => {
             this.updateKey += 1
@@ -615,7 +617,10 @@ export default {
       }
     },
     changeProfile(profile) {
-      this.currentProfile = profile
+      this.currentProfile = profile.name
+      if(profile.market && profile.market.length > 0) {
+        this.setMarket(profile.market.split(','))
+      }
       this.getData()
     },
     areArraysEqual(arr1, arr2) {

@@ -1032,7 +1032,7 @@ export default {
             this.profile3W(profile)
             this.profileM(profile)
             this.profileQ(profile)
-            this.$emit('changeProfile', this.profile)
+            this.$emit('changeProfile', profile)
             return
           }
         })
