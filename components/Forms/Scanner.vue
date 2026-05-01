@@ -982,6 +982,7 @@ export default {
       })
       if(detectedProfile == false) {
         this.profile = 'default'
+        this.$emit('changeProfile', profile)
         this.reset()
       }
     }
@@ -1039,6 +1040,7 @@ export default {
       }
       else {
         this.reset()
+        this.$emit('changeProfile', 'default')
       }
     },
     profile10(profile) {

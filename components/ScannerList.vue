@@ -4,7 +4,7 @@
       <div class="card-body">
         <div class="stock-search">
           <form action="#" method="get">
-            <select v-model="market" class="form-control" multiple="true" @change="marketChange">
+            <select :key="market.join(',')" v-model="market" class="form-control" multiple="true" @change="marketChange">
               <option value="All">
                 All
               </option>
@@ -128,6 +128,7 @@
 <script>
 export default {
   emits: ['market'],
+  props: ['selectedMarket'],
   data() {
     return {
       list: [],
@@ -135,7 +136,7 @@ export default {
       wlindex: 0,
       watchlist: {},
       show: { symbols: false, addWatchlist: false, search: false },
-      market: ['', 'SP500Heatmap'],
+      market: ['SP500Heatmap'],
       marketName: ['SP500'],
       markets: [
         { key: 'All', val: 'All' },
@@ -152,10 +153,42 @@ export default {
       ]
     }
   },
+  watch: {
+    selectedMarket: {
+      handler(newVal) {
+        if (newVal && Array.isArray(newVal)) {
+          this.market = [...newVal]
+          this.updateMarketName()
+        }
+      },
+      immediate: true
+    }
+  },
   mounted() {
     this.getSymbolsByMarket()
   },
   methods: {
+    updateMarketName() {
+      if (this.market.length === 0) {
+        this.marketName = ['Custom']
+      } else {
+        this.marketName = []
+        for (let i = 0; i < this.market.length; i++) {
+          const obj = this.markets.find(obj => obj.key === this.market[i])
+          if (obj) {
+            this.marketName.push(obj.val)
+          }
+        }
+      }
+    },
+    market: {
+      handler(newVal) {
+        if (newVal && Array.isArray(newVal)) {
+          this.market = [...newVal]
+        }
+      },
+      immediate: true
+    },
     marketChange() {
       if (this.market[0] === 'All') {
         this.market = ['CurrencyHeatmap', 'SP500Heatmap', 'NASDAQ100Heatmap',
@@ -183,7 +216,9 @@ export default {
         }
       }
 
-      this.$emit('market', this.market)
+      if (JSON.stringify(this.market) !== JSON.stringify(this.selectedMarket)) {
+        this.$emit('market', this.market)
+      }
     },
     marketNameFormat() {
       let name = this.marketName[0]
