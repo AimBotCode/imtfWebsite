@@ -65,6 +65,18 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    postcss: {
+      plugins: {
+        'postcss-import': {},
+        'postcss-preset-env': {
+          stage: 1,
+          features: {
+            'nesting-rules': true
+          }
+        },
+        autoprefixer: {}
+      }
+    },
     extend (config, ctx) {
       config.node = {
         fs: 'empty',

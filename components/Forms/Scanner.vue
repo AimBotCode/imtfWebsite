@@ -982,7 +982,7 @@ export default {
       })
       if(detectedProfile == false) {
         this.profile = 'default'
-        this.$emit('changeProfile', profile)
+        this.$emit('changeProfile', this.profile)
         this.reset()
       }
     }

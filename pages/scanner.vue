@@ -253,7 +253,6 @@ export default {
       )
     }
   },
-
   watch: {
     showColumnConfig(newValue) {
       if (newValue) {
@@ -261,7 +260,6 @@ export default {
       }
     }
   },
-
   mounted() {
     // Load saved column configuration
     const savedColumns = localStorage.getItem('scannerTableColumns')
@@ -273,19 +271,9 @@ export default {
       }
     }
     this.getData()
+    this.loadProfiles()
   },
-
   methods: {
-    saveColumnConfiguration(selectedColumns) {
-      this.selectedColumnKeys = selectedColumns
-      localStorage.setItem('scannerTableColumns', JSON.stringify(selectedColumns))
-      this.getData() // Refresh data with new columns
-    },
-
-    closeColumnConfig() {
-      this.show.columnConfig = false
-    },
-
     getData() {
       this.rows = []
       const user = this.$store.getters['app/getItem']('user')
@@ -298,7 +286,7 @@ export default {
       timeframeFilters.istate_variable = this.istateVariable
       this.formData.filters[this.formData.timeframe] = timeframeFilters
 
-      this.$xhr.api.post('/api/scanner', this.formData).then((response) => {
+      return this.$xhr.api.post('/api/scanner', this.formData).then((response) => {
         this.$store.commit('app/setScannerForm', JSON.parse(JSON.stringify(this.formData)))
         this.meta.total = response.total
         if (response.query) {
@@ -331,8 +319,12 @@ export default {
         })
         this.series = series
       })
+    },
 
-      this.$xhr.api.post('/api/profiles', this.profile).then((response) => {
+    loadProfiles() {
+      const user = this.$store.getters['app/getItem']('user')
+      this.profile.user_email = user.user_email
+      return this.$xhr.api.post('/api/profiles', this.profile).then((response) => {
         this.profiles = response.data
       })
     },
@@ -354,10 +346,14 @@ export default {
     },
 
     setMarket(market) {
-      this.market = market
-      if(!this.market.includes('custom')) {
+      if (JSON.stringify(this.market) === JSON.stringify(market)) {
         this.getData()
-      }  
+        return
+      }
+      this.market = market
+      if (!this.market.includes('custom')) {
+        this.getData()
+      }
     },
 
     sort(col) {
@@ -537,7 +533,7 @@ export default {
         }
         console.log(data)
         this.$xhr.api.post('/api/profiles', data).then(() => {
-          this.getData().then(() => {
+          this.loadProfiles().then(() => {
             this.updateKey += 1
           })
         })
@@ -552,7 +548,7 @@ export default {
         user_email: user.user_email
       }
       this.$xhr.api.post('/api/profiles', data).then(() => {
-        this.getData().then(() => {
+        this.loadProfiles().then(() => {
           this.updateKey += 1
         })
       })
@@ -607,9 +603,10 @@ export default {
             data: array,
             user_email: user.user_email,
             name: this.currentProfile,
+            market: this.market.toString()
           }
           this.$xhr.api.post('/api/profiles', data).then(() => {
-            this.getData().then(() => {
+            this.loadProfiles().then(() => {
               this.updateKey += 1
             })
           })
@@ -618,13 +615,13 @@ export default {
     },
     changeProfile(profile) {
       this.currentProfile = profile.name
-      if(profile != 'default') {
-        if(profile.market && profile.market.length > 0) 
+      if (profile != 'default') {
+        if (profile.market && profile.market.length > 0) {
           this.setMarket(profile.market.split(','))
+        }
       } else {
         this.setMarket(['SP500Heatmap'])
       }
-      this.getData()
     },
     areArraysEqual(arr1, arr2) {
       if (arr1.length !== arr2.length) {

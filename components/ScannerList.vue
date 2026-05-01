@@ -181,14 +181,6 @@ export default {
         }
       }
     },
-    market: {
-      handler(newVal) {
-        if (newVal && Array.isArray(newVal)) {
-          this.market = [...newVal]
-        }
-      },
-      immediate: true
-    },
     marketChange() {
       if (this.market[0] === 'All') {
         this.market = ['CurrencyHeatmap', 'SP500Heatmap', 'NASDAQ100Heatmap',
