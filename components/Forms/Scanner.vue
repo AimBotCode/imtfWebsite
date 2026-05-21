@@ -465,11 +465,11 @@
         <div class="col-md-3">
           <div v-if="isSubscribed" class="mb-3">
             <label for="subject">vBar</label>
-            <select v-model="forms[timeframe].vbar" class="form-select" @change="formChanged">
-              <option selected="" value="0">
+            <select v-model="forms[timeframe].vbar" class="form-select" multiple="true" @change="formChanged">
+              <option selected="" value="">
                 Off
               </option>
-              <option value="" disabled="">
+              <option disabled="">
                 &nbsp;Bar Color
               </option>
               <option value="1">
@@ -478,7 +478,7 @@
               <option value="2">
                 &nbsp;&nbsp;&nbsp;&nbsp;Orange 1 Bar
               </option>
-              <option value="" disabled="">
+              <option disabled="">
                 &nbsp;TNT
               </option>
               <option value="3">
@@ -1055,12 +1055,14 @@ export default {
       this.forms[10].forecastadv = profile.advForecast_10
       this.forms[10].shortcut = profile.shortcut_10
       this.forms[10].bar = profile.bar_10
-      this.forms[10].vbar = profile.vBar_10
       this.forms[10].vtnt = profile.vTnt_10
       this.forms[10].ct = profile.ct_10
       this.forms[10].barcount = profile.BarCount_10
       if (profile.vOpt_10.length > 0) {
         this.forms[10].vopt = profile.vOpt_10.split(',')
+      }      
+      if (profile.vBar_10.length > 0) {
+        this.forms[10].vbar = profile.vBar_10.split(',')
       }
     },
     profile30(profile) {
@@ -1075,12 +1077,14 @@ export default {
       this.forms[30].forecastadv = profile.advForecast_30
       this.forms[30].shortcut = profile.shortcut_30
       this.forms[30].bar = profile.bar_30
-      this.forms[30].vbar = profile.vBar_30
       this.forms[30].vtnt = profile.vTnt_30
       this.forms[30].ct = profile.ct_30
       this.forms[30].barcount = profile.BarCount_30
       if (profile.vOpt_30.length > 0) {
         this.forms[30].vopt = profile.vOpt_30.split(',')
+      }
+      if (profile.vBar_30.length > 0) {
+        this.forms[30].vbar = profile.vBar_30.split(',')
       }
     },
     profile60(profile) {
@@ -1095,12 +1099,14 @@ export default {
       this.forms[60].forecastadv = profile.advForecast_60
       this.forms[60].shortcut = profile.shortcut_60
       this.forms[60].bar = profile.bar_60
-      this.forms[60].vbar = profile.vBar_60
       this.forms[60].vtnt = profile.vTnt_60
       this.forms[60].ct = profile.ct_60
       this.forms[60].barcount = profile.BarCount_60
       if (profile.vOpt_60.length > 0) {
-        this.forms[30].vopt = profile.vOpt_60.split(',')
+        this.forms[60].vopt = profile.vOpt_60.split(',')
+      }
+      if (profile.vBar_60.length > 0) {
+        this.forms[60].vbar = profile.vBar_60.split(',')
       }
     },
     profile120(profile) {
@@ -1115,12 +1121,14 @@ export default {
       this.forms[120].forecastadv = profile.advForecast_120
       this.forms[120].shortcut = profile.shortcut_120
       this.forms[120].bar = profile.bar_120
-      this.forms[120].vbar = profile.vBar_120
       this.forms[120].vtnt = profile.vTnt_120
       this.forms[120].ct = profile.ct_120
       this.forms[120].barcount = profile.BarCount_120
       if (profile.vOpt_120.length > 0) {
         this.forms[120].vopt = profile.vOpt_120.split(',')
+      }      
+      if (profile.vBar_120.length > 0) {
+        this.forms[120].vbar = profile.vBar_120.split(',')
       }
     },
     profile240(profile) {
@@ -1135,12 +1143,14 @@ export default {
       this.forms[240].forecastadv = profile.advForecast_240
       this.forms[240].shortcut = profile.shortcut_240
       this.forms[240].bar = profile.bar_240
-      this.forms[240].vbar = profile.vBar_240
       this.forms[240].vtnt = profile.vTnt_240
       this.forms[240].ct = profile.ct_240
       this.forms[240].barcount = profile.BarCount_240
       if (profile.vOpt_240.length > 0) {
         this.forms[240].vopt = profile.vOpt_240.split(',')
+      }
+      if (profile.vBar_240.length > 0) {
+        this.forms[240].vbar = profile.vBar_240.split(',')
       }
     },
     profileD(profile) {
@@ -1155,12 +1165,14 @@ export default {
       this.forms.D.forecastadv = profile.advForecast_D
       this.forms.D.shortcut = profile.shortcut_D
       this.forms.D.bar = profile.bar_D
-      this.forms.D.vbar = profile.vBar_D
       this.forms.D.vtnt = profile.vTnt_D
       this.forms.D.ct = profile.ct_D
       this.forms.D.barcount = profile.BarCount_D
       if (profile.vOpt_D.length > 0) {
         this.forms.D.vopt = profile.vOpt_D.split(',')
+      }
+      if (profile.vBar_D.length > 0) {
+        this.forms.D.vbar = profile.vBar_D.split(',')
       }
     },
     profileW(profile) {
@@ -1175,12 +1187,14 @@ export default {
       this.forms.W.forecastadv = profile.advForecast_W
       this.forms.W.shortcut = profile.shortcut_W
       this.forms.W.bar = profile.bar_W
-      this.forms.W.vbar = profile.vBar_W
       this.forms.W.vtnt = profile.vTnt_W
       this.forms.W.ct = profile.ct_W
       this.forms.W.barcount = profile.BarCount_W
       if (profile.vOpt_W.length > 0) {
         this.forms.W.vopt = profile.vOpt_W.split(',')
+      }
+      if (profile.vBar_W.length > 0) {
+        this.forms.W.vbar = profile.vBar_W.split(',')
       }
     },
     profile3W(profile) {
@@ -1195,12 +1209,14 @@ export default {
       this.forms.W3.forecastadv = profile.advForecast_3W
       this.forms.W3.shortcut = profile.shortcut_3W
       this.forms.W3.bar = profile.bar_3W
-      this.forms.W3.vbar = profile.vBar_3W
       this.forms.W3.vtnt = profile.vTnt_3W
       this.forms.W3.ct = profile.ct_3W
       this.forms.W3.barcount = profile.BarCount_3W
       if (profile.vOpt_3W.length > 0) {
         this.forms.W3.vopt = profile.vOpt_3W.split(',')
+      }
+      if (profile.vBar_3W.length > 0) {
+        this.forms.W3.vbar = profile.vBar_3W.split(',')
       }
     },
     profileM(profile) {
@@ -1222,6 +1238,9 @@ export default {
       if (profile.vOpt_M.length > 0) {
         this.forms.M.vopt = profile.vOpt_M.split(',')
       }
+      if (profile.vBar_M.length > 0) {
+        this.forms.M.vbar = profile.vBar_M.split(',')
+      }
     },
     profileQ(profile) {
       this.forms.Q.strategy = profile.strategy_Q
@@ -1241,6 +1260,9 @@ export default {
       this.forms.Q.barcount = profile.BarCount_Q
       if (profile.vOpt_Q.length > 0) {
         this.forms.Q.vopt = profile.vOpt_Q.split(',')
+      }
+      if (profile.vBar_Q.length > 0) {
+        this.forms.Q.vbar = profile.vBar_Q.split(',')
       }
     },
     formChanges(timeframe) {
@@ -1312,7 +1334,7 @@ export default {
         forecastadv: 0,
         shortcut: 0,
         bar: 0,
-        vbar: 0,
+        vbar: [''],
         vtnt: 0,
         ct: 0,
         vopt: ['']
@@ -1327,7 +1349,7 @@ export default {
     },
     isAdmin() {
       const user = this.$store.getters['app/getItem']('user')
-      if (['seasonaluser', 'eiicapital@gmail.com'].includes(user.user_login)) {
+      if (['eiicapital@gmail.com'].includes(user.user_login)) {
         return true
       }
       return false

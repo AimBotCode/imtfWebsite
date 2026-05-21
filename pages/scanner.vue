@@ -566,6 +566,7 @@ export default {
         const filters = this.formData.filters
         const array1 = []
         const array2 = []
+        array2.push(this.market.toString())
         this.profiles.forEach(profile => {
           if (profile.name == this.currentProfile) {
             Object.values(profile).forEach(value => { array1.push(value) })
@@ -580,16 +581,19 @@ export default {
             }
           }
         }
-        array1.splice(0, 3)
         keyArr.splice(0, 3)
-        for (let i = 0; i <= 160; i += 1) {
+        array1.splice(0, 3)
+        for (let i = 0; i <= 161; i += 1) {
           if(array2[i] === 'statebarcount' || array2[i] === 'hastatebars' || array2[i] === 'ctstatebars') {
             array2.splice(i, 1)
           }
         }
-        for (let i = 0; i <= 160; i += 16) {
+        for (let i = 1; i <= 161; i += 16) {
           array2.splice(i, 1)
         }
+        console.log(keyArr)
+        console.log(array1)
+        console.log(array2)
         if (!this.areArraysEqual(array1, array2)) {
           for (let i = 0; i < keyArr.length; i++) {
             if (array2[i] != array1[i]) {
@@ -603,7 +607,6 @@ export default {
             data: array,
             user_email: user.user_email,
             name: this.currentProfile,
-            market: this.market.toString()
           }
           this.$xhr.api.post('/api/profiles', data).then(() => {
             this.loadProfiles().then(() => {
