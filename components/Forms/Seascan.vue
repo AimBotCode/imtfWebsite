@@ -45,18 +45,17 @@
           <div class="mb-3">
             <label>Market</label>
             <select v-model="form.market_id" class="form-select" @change="formChanged">
-              <option v-for="(m, i) in markets" :key="i" :value="m.id">
-                {{ m.Market }}
+              <option selected="" value="">
+                Off
               </option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="mb-3">
-            <label>Exchange</label>
-            <select v-model="form.exchange_id" class="form-select" @change="formChanged">
-              <option v-for="(e, i) in exchanges" :key="i" :value="e.Exchange_id">
-                {{ e.Exchange }}
+              <option value="9">
+                &nbsp;Indian Stock Exchange
+              </option>
+              <option value="10">
+                &nbsp;UK Stock Exchange
+              </option>
+              <option value="11">
+                &nbsp;US Stock Exchange
               </option>
             </select>
           </div>
@@ -205,7 +204,6 @@ export default {
         quarter: 0,
         month: 0,
         market_id: 0,
-        exchange_id: 0,
         dir: 1,
         rrmin: 1,
         rrmax: 100,
@@ -226,11 +224,9 @@ export default {
         yearmonth: ''
       },
       markets: [],
-      exchanges: []
     }
   },
   mounted() {
-    this.getExchanges()
     this.setDates()
 
     const seascanForm = this.$store.getters['app/getItem']('seascanForm')
@@ -243,12 +239,6 @@ export default {
     }
   },
   methods: {
-    getExchanges() {
-      this.$xhr.api.post('/api/seasonality', { action: 'getExchanges' }).then((response) => {
-        this.markets = response.data.markets
-        this.exchanges = response.data.exchanges
-      })
-    },
     formChanged() {
       this.$emit('change', this.form)
     },
@@ -273,7 +263,6 @@ export default {
       this.form.quarteer = 0
       this.form.month = 0
       this.form.market_id = 0
-      this.form.exchange_id = 0
       this.form.dir = 1
       this.form.rrmin = 1
       this.form.rrmax = 100
