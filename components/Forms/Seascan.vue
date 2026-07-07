@@ -60,6 +60,34 @@
             </select>
           </div>
         </div>
+        <div class="col-md-3">
+          <div class="mb-3">
+            <label>Exchange</label>
+            <select v-model="form.exchange_id" class="form-select" @change="formChanged">
+              <option selected="" value="">
+                Off
+              </option>
+              <option value="42">
+                &nbsp;NYSE
+              </option>
+              <option value="43">
+                &nbsp;NASDAQ
+              </option>
+              <option value="44">
+                &nbsp;SP500
+              </option>
+              <option value="45">
+                &nbsp;ETF
+              </option>
+              <option value="46">
+                &nbsp;US Market Indices
+              </option>
+              <option value="47">
+                &nbsp;MYSE American / Cboe US Equities
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-3">
@@ -83,6 +111,9 @@
             <div class="col">
               <label for="subject">Reward/Risk</label>
               <select v-model="form.rrmin" class="form-select" @change="formChanged">
+                <option selected="" :value=0>
+                  0
+                </option>
                 <option v-for="(n, i) in 100" :key="i" :value="n">
                   {{ n }}
                 </option>
@@ -219,14 +250,16 @@ export default {
       dates: {
         years: [],
         year: '2026',
-        month: '1',
+        month: '20267',
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        yearmonth: ''
+        yearmonth: '20267'
       },
       markets: [],
+      exchanges: []
     }
   },
   mounted() {
+    this.getExchanges()
     this.setDates()
 
     const seascanForm = this.$store.getters['app/getItem']('seascanForm')
@@ -239,6 +272,12 @@ export default {
     }
   },
   methods: {
+    getExchanges() {
+      this.$xhr.api.post('/api/seasonality', { action: 'getExchanges' }).then((response) => {
+        this.markets = response.data.markets
+        this.exchanges = response.data.exchanges
+      })
+    },
     formChanged() {
       this.$emit('change', this.form)
     },
@@ -263,6 +302,7 @@ export default {
       this.form.quarteer = 0
       this.form.month = 0
       this.form.market_id = 0
+      this.form.exchange_id = 0
       this.form.dir = 1
       this.form.rrmin = 1
       this.form.rrmax = 100

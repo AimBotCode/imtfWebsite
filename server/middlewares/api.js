@@ -3,8 +3,8 @@ import { json } from "body-parser";
 const axios = require("axios");
 
 const sendResponse = function (result, res, err) {
-  res.setHeader("Content-Type");
-  res.setHeader("Access-Control-Allow-Origin", process.env.API_URL);
+  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Origin", process.env.API_URL || "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST");
   res.writeHead();
 

@@ -153,9 +153,51 @@ export default {
   methods: {
     getData () {
       this.$xhr.api.post('/api/seasonality', this.formData).then((response) => {
+        let resp = response
+
+        if (typeof resp === 'string') {
+          const trimmed = resp.trim()
+
+          if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
+            resp = JSON.parse(trimmed)
+          } else {
+            const dumpMatch = trimmed.match(/string\(\d+\)\s*"([\s\S]+)"$/)
+            if (dumpMatch) {
+              try {
+                resp = JSON.parse(dumpMatch[1])
+              } catch (e) {
+                console.warn('Seasonality API returned PHP dump string with invalid JSON:', dumpMatch[1])
+              }
+            } else {
+              const jsonMatch = trimmed.match(/(\{[\s\S]*\})/)
+              if (jsonMatch) {
+                try {
+                  resp = JSON.parse(jsonMatch[1])
+                } catch (e) {
+                  console.warn('Seasonality API returned string with embedded JSON parse error:', jsonMatch[1])
+                }
+              }
+            }
+          }
+        }
+
+        if (!resp || typeof resp !== 'object') {
+          console.warn('Seasonality API response could not be parsed as JSON:', response)
+          this.rows = []
+          this.meta.total = 0
+          this.makePager()
+          return
+        }
+
+        const payload = resp.data ?? resp
         this.$store.commit('app/setSeascanForm', JSON.parse(JSON.stringify(this.formData)))
-        this.rows = response.data.results
-        this.meta.total = response.pager.total
+        this.rows = payload.results || []
+        this.meta.total = resp.pager?.total || payload.pager?.total || 0
+        this.makePager()
+      }).catch((error) => {
+        console.error('Seasonality API request failed:', error)
+        this.rows = []
+        this.meta.total = 0
         this.makePager()
       })
     },
