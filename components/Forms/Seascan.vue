@@ -250,9 +250,9 @@ export default {
       dates: {
         years: [],
         year: '2026',
-        month: '20267',
+        month: '7',
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        yearmonth: '20267'
+        yearmonth: '202607'
       },
       markets: [],
       exchanges: []
@@ -304,7 +304,7 @@ export default {
       this.form.market_id = 0
       this.form.exchange_id = 0
       this.form.dir = 1
-      this.form.rrmin = 1
+      this.form.rrmin = 0
       this.form.rrmax = 100
       this.form.pricesel = 'greater'
       this.form.priceval = 0
