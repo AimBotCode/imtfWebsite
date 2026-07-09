@@ -196,7 +196,7 @@ export default {
       },
       formData: {
         filters: {},
-        timeframe: 'D',
+        timeframe: 'W',
         action: 'scanner',
         limit: [0, 500],
         order: ['st.sym', 'ASC'],

@@ -18,13 +18,10 @@
                 US Stock
               </option>
               <option value="SP500Heatmap">
-                &nbsp;&nbsp;SP500
+                &nbsp;&nbsp;NYSE
               </option>
               <option value="NASDAQ100Heatmap">
                 &nbsp;&nbsp;NASDAQ
-              </option>
-              <option value="dow30Heatmap">
-                &nbsp;&nbsp;DOW
               </option>
               <option value="ETFHeatmap">
                 &nbsp;&nbsp;ETF
@@ -136,14 +133,13 @@ export default {
       wlindex: 0,
       watchlist: {},
       show: { symbols: false, addWatchlist: false, search: false },
-      market: ['SP500Heatmap'],
-      marketName: ['SP500'],
+      market: ['SP500Heatmap', 'NASDAQ100Heatmap'],
+      marketName: ['NYSE', 'NASDAQ'],
       markets: [
         { key: 'All', val: 'All' },
         { key: 'CurrencyHeatmap', val: 'Currency' },
-        { key: 'SP500Heatmap', val: 'SP500' },
+        { key: 'SP500Heatmap', val: 'NYSE' },
         { key: 'NASDAQ100Heatmap', val: 'NASDAQ' },
-        { key: 'dow30Heatmap', val: 'DOW' },
         { key: 'ETFHeatmap', val: 'ETF' },
         { key: 'dax30Heatmap', val: 'German DAX' },
         { key: 'FTSEHeatmap', val: 'UK FTSE' },
@@ -184,7 +180,7 @@ export default {
     marketChange() {
       if (this.market[0] === 'All') {
         this.market = ['CurrencyHeatmap', 'SP500Heatmap', 'NASDAQ100Heatmap',
-          'dow30Heatmap', 'ETFHeatmap', 'dax30Heatmap',
+          'ETFHeatmap', 'dax30Heatmap',
           'FTSEHeatmap', 'BSE200Heatmap', 'FutureHeatmap', 'CryptoHeatmap']
         this.marketName = ['All']
       } else if (this.market[0] === 'custom') {

@@ -944,7 +944,7 @@ export default {
       },
       profileName: '',
       profile: 'default',
-      timeframe: 'D',
+      timeframe: 'W',
       changed: [],
     }
   },
