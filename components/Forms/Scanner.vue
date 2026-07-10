@@ -469,13 +469,13 @@
               <option selected="" value="">
                 Off
               </option>
-              <option disabled="">
+              <option v-if="isSubscribed" disabled="">
                 &nbsp;Bar Color
               </option>
-              <option value="1">
+              <option v-if="isSubscribed" value="1">
                 &nbsp;&nbsp;&nbsp;&nbsp;Orange
               </option>
-              <option value="2">
+              <option v-if="isSubscribed" value="2">
                 &nbsp;&nbsp;&nbsp;&nbsp;Orange 1 Bar
               </option>
               <option disabled="">
@@ -487,7 +487,7 @@
               <option value="4">
                 &nbsp;&nbsp;&nbsp;&nbsp;TNT 1 Bar
               </option>
-              <option value="5">
+              <option v-if="isSubscribed" value="5">
                 &nbsp;&nbsp;&nbsp;&nbsp;TNT 2 Bar
               </option>
             </select>
