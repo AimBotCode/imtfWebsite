@@ -463,7 +463,7 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div v-if="isSubscribed" class="mb-3">
+          <div class="mb-3">
             <label for="subject">vBar</label>
             <select v-model="forms[timeframe].vbar" class="form-select" multiple="true" @change="formChanged">
               <option selected="" value="">
