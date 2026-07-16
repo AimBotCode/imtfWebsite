@@ -32,7 +32,7 @@
                     <div class="col">
                       <FormsScanner v-if="show.filters" @createProfile="createProfile" @updateProfile="updateProfile"
                         @deleteProfile="deleteProfile" @change="formChanged" @timeframe="setTimeframe"
-                        :profiles="this.profiles" :key="updateKey" :currentProfile="this.currentProfile" @changeProfile="changeProfile" />
+                        :profiles="this.profiles" :key="updateKey" :tags="this.tags" :currentProfile="this.currentProfile" @changeProfile="changeProfile" />
                     </div>
                   </div>
                 </div>
@@ -209,6 +209,7 @@ export default {
         data: []
       },
       profiles: [],
+      tags: [],
       currentProfile: 'default',
       symbol: '',
       show: {
@@ -272,6 +273,7 @@ export default {
     }
     this.getData()
     this.loadProfiles()
+    this.getTags()
   },
   methods: {
     getData() {
@@ -625,6 +627,45 @@ export default {
       } else {
         this.setMarket(['SP500Heatmap'])
       }
+    },
+    getTags() {
+      let tagValues = []
+      const user = this.$store.getters['app/getItem']('user')
+      const data = {
+        action: 'tags',
+        user_email: user.user_email,
+      }
+      this.$xhr.api.post('/api/tags', data).then((response) => {
+        tagValues = response.data[0].value.split(',')
+        this.tags = this.tagTranslation(tagValues)
+      })
+    },
+    tagTranslation(tagValue) {
+      let tags = []
+      if(tagValue.includes('2845')) {
+        tags.push('f_haBar')
+      }
+      if(tagValue.includes('2851')) {
+        tags.push('f_cimtfstrategy')
+      }
+      if(tagValue.includes('2637')) {
+        tags.push('f_statebars')
+      }
+      if(tagValue.includes('2847')) {
+        tags.push('f_bluedash')
+      }
+      if(tagValue.includes('2755')) {
+        tags.push('f_tsturnadv')
+      }
+      if(tagValue.includes('2612')) {
+        tags.push('f_shadedFlipStrategy')
+      }
+      if(tagValue.includes('2615')) {
+        tags.push('f_imtfaweb')
+      }
+      console.log(tagValue)
+      console.log(tags)
+      return tags
     },
     areArraysEqual(arr1, arr2) {
       if (arr1.length !== arr2.length) {

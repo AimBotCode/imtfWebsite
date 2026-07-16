@@ -61,6 +61,14 @@ export default [
       sendResponse(resp, res);
     },
   },
+    {
+    path: "/api/tags",
+    async handler(req, res) {
+      const url = process.env.API_URL;
+      const resp = await request(url, req, res);
+      sendResponse(resp, res);
+    },
+  },
   {
     path: "/api/scanner",
     async handler(req, res) {

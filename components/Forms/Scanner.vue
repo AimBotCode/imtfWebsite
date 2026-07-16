@@ -48,100 +48,100 @@
               <option selected="" value="0">
                 None
               </option>
-              <option v-if="isSubscribed" value="" disabled="">
+              <option v-if="containsTags(['f_haBar'])" value="" disabled="">
                 &nbsp;vIMTF Yellow Setup
               </option>
-              <option v-if="isSubscribed" value="1">
+              <option v-if="containsTags(['f_haBar'])" value="1">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBull
               </option>
-              <option v-if="isSubscribed" value="2">
+              <option v-if="containsTags(['f_haBar'])" value="2">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBear
               </option>
-              <option v-if="isSubscribed" value="3">
+              <option v-if="containsTags(['f_haBar'])" value="3">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBull or vBear
               </option>
-              <option v-if="isSubscribed" value="" disabled="">
+              <option v-if="containsTags(['f_haBar'])" value="" disabled="">
                 &nbsp;vIMTF Yellow Trend
               </option>
-              <option v-if="isSubscribed" value="4">
+              <option v-if="containsTags(['f_haBar'])" value="4">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBull
               </option>
-              <option v-if="isSubscribed" value="5">
+              <option v-if="containsTags(['f_haBar'])" value="5">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBear
               </option>
-              <option v-if="isSubscribed" value="6">
+              <option v-if="containsTags(['f_haBar'])" value="6">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBull or vBear
               </option>
-              <option v-if="isSubscribed" value="" disabled="">
+              <option v-if="containsTags(['f_haBar'])" value="" disabled="">
                 &nbsp;vIMTF Purple Setup
               </option>
-              <option v-if="isSubscribed" value="7">
+              <option v-if="containsTags(['f_haBar'])" value="7">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBull
               </option>
-              <option v-if="isSubscribed" value="8">
+              <option v-if="containsTags(['f_haBar'])" value="8">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBear
               </option>
-              <option v-if="isSubscribed" value="9">
+              <option v-if="containsTags(['f_haBar'])" value="9">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBull or vBear
               </option>
-              <option v-if="isSubscribed" value="" disabled="">
+              <option v-if="containsTags(['f_haBar'])" value="" disabled="">
                 &nbsp;vIMTF Purple Trend
               </option>
-              <option v-if="isSubscribed" value="10">
+              <option v-if="containsTags(['f_haBar'])" value="10">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBull
               </option>
-              <option v-if="isSubscribed" value="11">
+              <option v-if="containsTags(['f_haBar'])" value="11">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBear
               </option>
-              <option v-if="isSubscribed" value="12">
+              <option v-if="containsTags(['f_haBar'])" value="12">
                 &nbsp;&nbsp;&nbsp;&nbsp;vBull or vBear
               </option>
-              <option v-if="isSubscribed" value="" disabled="">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="" disabled="">
                 &nbsp;cIMTF Test and Break
               </option>
-              <option v-if="isSubscribed" value="13">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="13">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBull
               </option>
-              <option v-if="isSubscribed" value="14">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="14">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBear
               </option>
-              <option v-if="isSubscribed" value="15">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="15">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBoth
               </option>
-              <option v-if="isSubscribed" value="" disabled="">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="" disabled="">
                 &nbsp;cIMTF Test, Break and pb
               </option>
-              <option v-if="isSubscribed" value="16">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="16">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBull
               </option>
-              <option v-if="isSubscribed" value="17">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="17">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBear
               </option>
-              <option v-if="isSubscribed" value="18">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="18">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBoth
               </option>
-              <option v-if="isSubscribed" value="" disabled="">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="" disabled="">
                 &nbsp;cIMTF Break and Pull Back
               </option>
-              <option v-if="isSubscribed" value="19">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="19">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBull
               </option>
-              <option v-if="isSubscribed" value="20">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="20">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBear
               </option>
-              <option v-if="isSubscribed" value="21">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="21">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBoth
               </option>
-              <option v-if="isSubscribed" value="" disabled="">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="" disabled="">
                 &nbsp;cIMTF Break and No Pull Back
               </option>
-              <option v-if="isSubscribed" value="22">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="22">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBull
               </option>
-              <option v-if="isSubscribed" value="23">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="23">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBear
               </option>
-              <option v-if="isSubscribed" value="24">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="24">
                 &nbsp;&nbsp;&nbsp;&nbsp;cBoth
               </option>
               <option v-if="isSubscribed" value="" disabled="">
@@ -246,7 +246,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <div v-if="isSubscribed" class="mb-3 row">
+          <div v-if="containsTags(['f_statebars'])" class="mb-3 row">
             <div class="col">
               <label for="subject">iState</label>
               <select v-model="forms[timeframe].istatefrom" class="form-select" @change="formChanged">
@@ -301,10 +301,10 @@
               <option value="8">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear Dot
               </option>
-              <option value="" disabled="">
+              <option v-if="containsTags(['f_imtfaweb'])" value="" disabled="">
                 &nbsp;iMTFA
               </option>
-              <option value="9">
+              <option v-if="containsTags(['f_imtfaweb'])" value="9">
                 &nbsp;&nbsp;&nbsp;&nbsp;All
               </option>
             </select>
@@ -317,7 +317,7 @@
               <option selected="" value="0">
                 &nbsp;Off
               </option>
-              <option value="" disabled="">
+              <option v-if="containsTags(['f_bluedash'])" value="" disabled="">
                 &nbsp;Type
               </option>
               <option value="1">
@@ -326,22 +326,22 @@
               <option value="2">
                 &nbsp;&nbsp;&nbsp;&nbsp;R Bear
               </option>
-              <option value="3">
+              <option v-if="containsTags(['f_bluedash'])" value="3">
                 &nbsp;&nbsp;&nbsp;&nbsp;F Bull
               </option>
-              <option value="4">
+              <option v-if="containsTags(['f_bluedash'])" value="4">
                 &nbsp;&nbsp;&nbsp;&nbsp;F Bear
               </option>
-              <option value="5">
+              <option v-if="containsTags(['f_bluedash'])" value="5">
                 &nbsp;&nbsp;&nbsp;&nbsp;pRBull
               </option>
-              <option value="6">
+              <option v-if="containsTags(['f_bluedash'])" value="6">
                 &nbsp;&nbsp;&nbsp;&nbsp;pRBear
               </option>
-              <option value="7">
+              <option v-if="containsTags(['f_bluedash'])" value="7">
                 &nbsp;&nbsp;&nbsp;&nbsp;pRFBull
               </option>
-              <option value="8">
+              <option v-if="containsTags(['f_bluedash'])" value="8">
                 &nbsp;&nbsp;&nbsp;&nbsp;pRFBear
               </option>
               <option value="" disabled="">
@@ -365,25 +365,25 @@
               <option value="14">
                 &nbsp;&nbsp;&nbsp;&nbsp;Fake High
               </option>
-              <option value="" disabled="">
+              <option v-if="containsTags(['f_bluedash'])" value="" disabled="">
                 &nbsp;Previous
               </option>
-              <option value="15">
+              <option v-if="containsTags(['f_bluedash'])" value="15">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bull Flip
               </option>
-              <option value="16">
+              <option v-if="containsTags(['f_bluedash'])" value="16">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear Flip
               </option>
-              <option value="17">
+              <option v-if="containsTags(['f_bluedash'])" value="17">
                 &nbsp;&nbsp;&nbsp;&nbsp;LDD
               </option>
-              <option value="18">
+              <option v-if="containsTags(['f_bluedash'])" value="18">
                 &nbsp;&nbsp;&nbsp;&nbsp;HDD
               </option>
-              <option value="19">
+              <option v-if="containsTags(['f_bluedash'])" value="19">
                 &nbsp;&nbsp;&nbsp;&nbsp;Fake Low
               </option>
-              <option value="20">
+              <option v-if="containsTags(['f_bluedash'])" value="20">
                 &nbsp;&nbsp;&nbsp;&nbsp;Fake High
               </option>
             </select>
@@ -409,7 +409,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <div v-if="isSubscribed" class="mb-3">
+          <div v-if="containsTags(['f_cimtfstrategy'])" class="mb-3">
             <label>CT</label>
             <select v-model="forms[timeframe].ct" class="form-select" @change="formChanged">
               <option selected="" value="0">
@@ -469,13 +469,13 @@
               <option selected="" value="">
                 Off
               </option>
-              <option v-if="isSubscribed" disabled="">
+              <option v-if="containsTags(['f_haBar'])" disabled="">
                 &nbsp;Bar Color
               </option>
-              <option v-if="isSubscribed" value="1">
+              <option v-if="containsTags(['f_haBar'])" value="1">
                 &nbsp;&nbsp;&nbsp;&nbsp;Orange
               </option>
-              <option v-if="isSubscribed" value="2">
+              <option v-if="containsTags(['f_haBar'])" value="2">
                 &nbsp;&nbsp;&nbsp;&nbsp;Orange 1 Bar
               </option>
               <option disabled="">
@@ -487,7 +487,7 @@
               <option value="4">
                 &nbsp;&nbsp;&nbsp;&nbsp;TNT 1 Bar
               </option>
-              <option v-if="isSubscribed" value="5">
+              <option v-if="containsTags(['f_haBar'])" value="5">
                 &nbsp;&nbsp;&nbsp;&nbsp;TNT 2 Bar
               </option>
             </select>
@@ -594,149 +594,149 @@
               <option selected="" value="">
                 Off
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_haBar'])" disabled="">
                 Shade
               </option>
-              <option value="1">
+              <option v-if="containsTags(['f_haBar'])" value="1">
                 &nbsp;&nbsp;Bull Shade
               </option>
-              <option value="2">
+              <option v-if="containsTags(['f_haBar'])" value="2">
                 &nbsp;&nbsp;Bear Shade
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_haBar'])" disabled="">
                 vTrend
               </option>
-              <option value="3">
+              <option v-if="containsTags(['f_haBar'])" value="3">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="4">
+              <option v-if="containsTags(['f_haBar'])" value="4">
                 &nbsp;&nbsp;Bear
               </option>
-              <option value="5">
+              <option v-if="containsTags(['f_haBar'])" value="5">
                 &nbsp;&nbsp;UpFlip
               </option>
-              <option value="6">
+              <option v-if="containsTags(['f_haBar'])" value="6">
                 &nbsp;&nbsp;DnFlip
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_haBar'])" disabled="">
                 Arrow
               </option>
-              <option value="7">
+              <option v-if="containsTags(['f_haBar'])" value="7">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="8">
+              <option v-if="containsTags(['f_haBar'])" value="8">
                 &nbsp;&nbsp;Bear
               </option>
-              <option value="9">
+              <option v-if="containsTags(['f_haBar'])" value="9">
                 &nbsp;&nbsp;pBull
               </option>
-              <option value="10">
+              <option v-if="containsTags(['f_haBar'])" value="10">
                 &nbsp;&nbsp;pBear
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_haBar'])" disabled="">
                 Touch
               </option>
-              <option value="11">
+              <option v-if="containsTags(['f_haBar'])" value="11">
                 &nbsp;&nbsp;T1
               </option>
-              <option value="12">
+              <option v-if="containsTags(['f_haBar'])" value="12">
                 &nbsp;&nbsp;TS
               </option>
-              <option value="13">
+              <option v-if="containsTags(['f_haBar'])" value="13">
                 &nbsp;&nbsp;KS
               </option>
-              <option value="14">
+              <option v-if="containsTags(['f_haBar'])" value="14">
                 &nbsp;&nbsp;SKB
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_bluedash'])" disabled="">
                 C Div
               </option>
-              <option value="15">
+              <option v-if="containsTags(['f_bluedash'])" value="15">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="16">
+              <option v-if="containsTags(['f_bluedash'])" value="16">
                 &nbsp;&nbsp;Bear
               </option>
-              <option value="17">
+              <option v-if="containsTags(['f_bluedash'])" value="17">
                 &nbsp;&nbsp;All
               </option>
-              <option value="18">
+              <option v-if="containsTags(['f_bluedash'])" value="18">
                 &nbsp;&nbsp;pBull
               </option>
-              <option value="19">
+              <option v-if="containsTags(['f_bluedash'])" value="19">
                 &nbsp;&nbsp;pBear
               </option>
-              <option value="20">
+              <option v-if="containsTags(['f_bluedash'])" value="20">
                 &nbsp;&nbsp;pAll
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_bluedash'])" disabled="">
                 ShadeFlip
               </option>
-              <option value="21">
+              <option v-if="containsTags(['f_bluedash'])" value="21">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="22">
+              <option v-if="containsTags(['f_bluedash'])" value="22">
                 &nbsp;&nbsp;Bear
               </option>
-              <option value="23">
+              <option v-if="containsTags(['f_bluedash'])" value="23">
                 &nbsp;&nbsp;Bull 0
               </option>
-              <option value="24">
+              <option v-if="containsTags(['f_bluedash'])" value="24">
                 &nbsp;&nbsp;Bear 0
               </option>
-              <option value="25">
+              <option v-if="containsTags(['f_bluedash'])" value="25">
                 &nbsp;&nbsp;pBull
               </option>
-              <option value="26">
+              <option v-if="containsTags(['f_bluedash'])" value="26">
                 &nbsp;&nbsp;pBear
               </option>
-              <option value="27">
+              <option v-if="containsTags(['f_bluedash'])" value="27">
                 &nbsp;&nbsp;pBull0
               </option>
-              <option value="28">
+              <option v-if="containsTags(['f_bluedash'])" value="28">
                 &nbsp;&nbsp;pBear0
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_bluedash'])" disabled="">
                 PB
               </option>
-              <option value="29">
+              <option v-if="containsTags(['f_bluedash'])" value="29">
                 &nbsp;&nbsp;pBullPB
               </option>
-              <option value="30">
+              <option v-if="containsTags(['f_bluedash'])" value="30">
                 &nbsp;&nbsp;pBearPB
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_bluedash'])" disabled="">
                 Vclose
               </option>
-              <option value="31">
+              <option v-if="containsTags(['f_bluedash'])" value="31">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="32">
+              <option v-if="containsTags(['f_bluedash'])" value="32">
                 &nbsp;&nbsp;Bear
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_bluedash'])" disabled="">
                 V Close Direction
               </option>
-              <option value="33">
+              <option v-if="containsTags(['f_bluedash'])" value="33">
                 &nbsp;&nbsp;Bull
               </option>
-              <option value="34">
+              <option v-if="containsTags(['f_bluedash'])" value="34">
                 &nbsp;&nbsp;Bear
               </option>
-              <option disabled="">
+              <option v-if="containsTags(['f_bluedash'])" disabled="">
                 Trend
               </option>
-              <option value="35">
+              <option v-if="containsTags(['f_bluedash'])" value="35">
                 &nbsp;&nbsp;Bullx.xxx
               </option>
-              <option value="36">
+              <option v-if="containsTags(['f_bluedash'])"  value="36">
                 &nbsp;&nbsp;Bearx.xxx
               </option>
             </select>
           </div>
         </div>
         <div class="col-md-3">
-          <div v-if="isSubscribed" class="mb-3">
+          <div v-if="containsTags(['f_haBar'])" class="mb-3">
             <label for="subject">Shortcut</label>
             <select v-model="forms[timeframe].shortcut" class="form-select" @change="formChanged">
               <option selected="" value="0">
@@ -775,22 +775,22 @@
               <option value="8">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
-              <option value="" disabled="">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="" disabled="">
                 &nbsp;pTNT at CIMTF
               </option>
-              <option value="9">
+              <option v-if="containsTags(['f_cimtfstrategy'])"value="9">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bull
               </option>
-              <option value="10">
+              <option v-if="containsTags(['f_cimtfstrategy'])"value="10">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
-              <option value="" disabled="">
+              <option v-if="containsTags(['f_cimtfstrategy'])" value="" disabled="">
                 &nbsp;pvSetup at CIMTF
               </option>
-              <option value="11">
+              <option v-if="containsTags(['f_cimtfstrategy'])"value="11">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bull
               </option>
-              <option value="12">
+              <option v-if="containsTags(['f_cimtfstrategy'])"value="12">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
             </select>
@@ -799,7 +799,7 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div v-if="isSubscribed" class="mb-3">
+          <div v-if="containsTags(['f_shadedFlipStrategy'])" class="mb-3">
             <label for="subject">Forecast</label>
             <select v-model="forms[timeframe].forecast" class="form-select" @change="formChanged">
               <option selected="" value="0">
@@ -839,7 +839,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <div v-if="isSubscribed" class="mb-3">
+          <div v-if="containsTags(['f_bluedash'])" class="mb-3">
             <label for="subject">Forecast Adv</label>
             <select v-model="forms[timeframe].forecastadv" class="form-select" @change="formChanged">
               <option selected="" value="0">
@@ -878,7 +878,7 @@
             </select>
           </div>
         </div>
-        <div v-if="isSubscribed" class="col-md-3">
+        <div v-if="containsTags(['f_bluedash'])" class="col-md-3">
           <label for="subject">Trend Bar Count</label>
           <select v-model="forms[timeframe].barcount" class="form-select" @change="formChanged">
             <option v-for="(n, i) in 20" :key="i" :value="n - 1">
@@ -926,6 +926,9 @@ export default {
     profiles: {},
     currentProfile: {
       type: String
+    },
+    tags: {
+      type: Array
     }
   },
   data() {
@@ -949,14 +952,12 @@ export default {
     }
   },
   computed: {
-    isSubscribed() {
-      if (this.$config.env === 'development') { return true }
-      const roles = this.$store.getters['app/getItem']('roles')
-      if (roles.includes('memberium_memberships-rtscannerleveliii')) {
-        return true
-      }
-
-      return this.$store.getters['app/getItem']('active')
+  isSubscribed() {
+    const roles = this.$store.getters['app/getItem']('roles')
+    if (roles.includes('memberium_memberships-rtscannerleveliii')) {
+      return true
+    }
+    return this.$store.getters['app/getItem']('active')
     }
   },
   mounted() {
@@ -990,7 +991,15 @@ export default {
   methods: {
     emitForm() {
       this.$emit('change', this.forms)
-    },
+    },  
+    containsTags(tags) {
+    for (let i = 0; i < tags.length; i++) {
+      if (this.tags.includes(tags[i])) {
+        return true
+      }
+    }
+    return false
+  },
     formChanged() {
       if (this.changed.includes(this.timeframe)) {
         const form = JSON.parse(JSON.stringify(this.forms[this.timeframe]))
