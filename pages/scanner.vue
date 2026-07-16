@@ -334,7 +334,6 @@ export default {
     formChanged(form) {
       this.formData.filters = form
       this.getData()
-      console.log('Form changed, filters:', this.formData.filters)
     },
 
     scan() {
@@ -533,7 +532,6 @@ export default {
           user_email: user.user_email,
           market: this.market.toString()
         }
-        console.log(data)
         this.$xhr.api.post('/api/profiles', data).then(() => {
           this.loadProfiles().then(() => {
             this.updateKey += 1
@@ -593,9 +591,7 @@ export default {
         for (let i = 1; i <= 161; i += 16) {
           array2.splice(i, 1)
         }
-        console.log(keyArr)
-        console.log(array1)
-        console.log(array2)
+        
         if (!this.areArraysEqual(array1, array2)) {
           for (let i = 0; i < keyArr.length; i++) {
             if (array2[i] != array1[i]) {
@@ -663,8 +659,6 @@ export default {
       if(tagValue.includes('2615')) {
         tags.push('f_imtfaweb')
       }
-      console.log(tagValue)
-      console.log(tags)
       return tags
     },
     areArraysEqual(arr1, arr2) {
