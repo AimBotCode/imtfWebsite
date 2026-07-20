@@ -993,12 +993,18 @@ export default {
       this.$emit('change', this.forms)
     },  
     containsTags(tags) {
+    let counter = 0
     for (let i = 0; i < tags.length; i++) {
       if (this.tags.includes(tags[i])) {
-        return true
+        counter++
       }
     }
-    return false
+    if(counter == tags.length) {
+      console.log('All tags found: ' + tags)
+      return true
+    } else {
+      return false
+    }
   },
     formChanged() {
       if (this.changed.includes(this.timeframe)) {
