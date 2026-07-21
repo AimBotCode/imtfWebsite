@@ -653,7 +653,7 @@ export default {
       if(tagValue.includes('2755')) {
         tags.push('f_tsturnadv')
       }
-      if(tagValue.includes('2612')) {
+      if(tagValue.includes('2614')) {
         tags.push('f_shadedFlipStrategy')
       }
       if(tagValue.includes('2615')) {
