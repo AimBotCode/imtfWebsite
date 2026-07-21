@@ -494,7 +494,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <div v-if="isSubscribed" class="mb-3">
+          <div v-if="containsTags(['f_dvalue'])" class="mb-3">
             <label for="subject">vTNT</label>
             <select v-model="forms[timeframe].vtnt" class="form-select" @change="formChanged">
               <option selected="" value="0">
