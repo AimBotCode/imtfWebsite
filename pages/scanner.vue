@@ -648,7 +648,7 @@ export default {
         tags.push('f_statebars')
       }
       if(tagValue.includes('2847')) {
-        tags.push('f_bluedash')
+        tags.push('f_advstudent')
       }
       if(tagValue.includes('2755')) {
         tags.push('f_tsturnadv')
@@ -658,6 +658,9 @@ export default {
       }
       if(tagValue.includes('2615')) {
         tags.push('f_imtfaweb')
+      }
+      if(tagValue.includes('2835')) {
+        tags.push('f_dvalue')
       }
       return tags
     },
