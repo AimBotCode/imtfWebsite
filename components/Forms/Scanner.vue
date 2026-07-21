@@ -1000,7 +1000,6 @@ export default {
       }
     }
     if(counter == tags.length) {
-      console.log('All tags found: ' + tags)
       return true
     } else {
       return false
