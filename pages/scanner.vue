@@ -654,7 +654,7 @@ export default {
         tags.push('f_tsturnadv')
       }
       if(tagValue.includes('2614')) {
-        tags.push('f_shadedFlipStrategy')
+        tags.push('f_forecast') //shaded flip strategy
       }
       if(tagValue.includes('2615')) {
         tags.push('f_imtfaweb')

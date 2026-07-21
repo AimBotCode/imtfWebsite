@@ -799,7 +799,7 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div v-if="containsTags(['f_shadedFlipStrategy'])" class="mb-3">
+          <div v-if="containsTags(['f_forecast'])" class="mb-3">
             <label for="subject">Forecast</label>
             <select v-model="forms[timeframe].forecast" class="form-select" @change="formChanged">
               <option selected="" value="0">
