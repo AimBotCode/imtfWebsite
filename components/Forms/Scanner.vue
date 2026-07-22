@@ -648,25 +648,25 @@
               <option v-if="containsTags(['f_haBar'])" value="14">
                 &nbsp;&nbsp;SKB
               </option>
-              <option v-if="containsTags(['f_bluedash'])" disabled="">
+              <option v-if="containsTags(['f_advstudent'])" disabled="">
                 C Div
               </option>
-              <option v-if="containsTags(['f_bluedash'])" value="15">
+              <option v-if="containsTags(['f_advstudent'])" value="15">
                 &nbsp;&nbsp;Bull
               </option>
-              <option v-if="containsTags(['f_bluedash'])" value="16">
+              <option v-if="containsTags(['f_advstudent'])" value="16">
                 &nbsp;&nbsp;Bear
               </option>
-              <option v-if="containsTags(['f_bluedash'])" value="17">
+              <option v-if="containsTags(['f_advstudent'])" value="17">
                 &nbsp;&nbsp;All
               </option>
-              <option v-if="containsTags(['f_bluedash'])" value="18">
+              <option v-if="containsTags(['f_advstudent'])" value="18">
                 &nbsp;&nbsp;pBull
               </option>
-              <option v-if="containsTags(['f_bluedash'])" value="19">
+              <option v-if="containsTags(['f_advstudent'])" value="19">
                 &nbsp;&nbsp;pBear
               </option>
-              <option v-if="containsTags(['f_bluedash'])" value="20">
+              <option v-if="containsTags(['f_advstudent'])" value="20">
                 &nbsp;&nbsp;pAll
               </option>
               <option v-if="containsTags(['f_dvalue'])" disabled="">
@@ -839,7 +839,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <div v-if="containsTags(['f_bluedash'])" class="mb-3">
+          <div v-if="containsTags(['f_advstudent'])" class="mb-3">
             <label for="subject">Forecast Adv</label>
             <select v-model="forms[timeframe].forecastadv" class="form-select" @change="formChanged">
               <option selected="" value="0">
