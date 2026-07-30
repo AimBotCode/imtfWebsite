@@ -640,13 +640,13 @@
                 &nbsp;&nbsp;T1
               </option>
               <option v-if="containsTags(['f_haBar'])" value="12">
-                &nbsp;&nbsp;TS
+                &nbsp;&nbsp;> KS
               </option>
               <option v-if="containsTags(['f_haBar'])" value="13">
-                &nbsp;&nbsp;KS
+                &nbsp;&nbsp;< KS
               </option>
               <option v-if="containsTags(['f_haBar'])" value="14">
-                &nbsp;&nbsp;SKB
+                &nbsp;&nbsp;= KS
               </option>
               <option v-if="containsTags(['f_advstudent'])" disabled="">
                 C Div
@@ -858,7 +858,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;DnBO
               </option>
               <option value="4">
-                &nbsp;&nbsp;&nbsp;&nbsp;DnBO
+                &nbsp;&nbsp;&nbsp;&nbsp;DnPB
               </option>
               <option value="" disabled="">
                 &nbsp;Current advForecast
@@ -873,7 +873,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;DnPB
               </option>
               <option value="8">
-                &nbsp;&nbsp;&nbsp;&nbsp;DnPB
+                &nbsp;&nbsp;&nbsp;&nbsp;DnBO
               </option>
             </select>
           </div>
