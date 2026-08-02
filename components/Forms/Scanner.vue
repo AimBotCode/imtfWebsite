@@ -849,16 +849,16 @@
                 &nbsp;Past advForecast
               </option>
               <option value="1">
-                &nbsp;&nbsp;&nbsp;&nbsp;UpBO
-              </option>
-              <option value="2">
                 &nbsp;&nbsp;&nbsp;&nbsp;UpPB
               </option>
+              <option value="2">
+                &nbsp;&nbsp;&nbsp;&nbsp;UpBO
+              </option>
               <option value="3">
-                &nbsp;&nbsp;&nbsp;&nbsp;DnBO
+                &nbsp;&nbsp;&nbsp;&nbsp;DnPB
               </option>
               <option value="4">
-                &nbsp;&nbsp;&nbsp;&nbsp;DnPB
+                &nbsp;&nbsp;&nbsp;&nbsp;DnBO
               </option>
               <option value="" disabled="">
                 &nbsp;Current advForecast
