@@ -724,12 +724,27 @@
                 &nbsp;&nbsp;Bear
               </option>
               <option v-if="containsTags(['f_dvalue'])" disabled="">
-                Trend
+                HShade
               </option>
               <option v-if="containsTags(['f_dvalue'])" value="35">
-                &nbsp;&nbsp;Bullx.xxx
+                &nbsp;&nbsp;iBull
               </option>
               <option v-if="containsTags(['f_dvalue'])"  value="36">
+                &nbsp;&nbsp;Bull
+              </option>
+              <option v-if="containsTags(['f_dvalue'])" value="37">
+                &nbsp;&nbsp;iBear
+              </option>
+              <option v-if="containsTags(['f_dvalue'])"  value="38">
+                &nbsp;&nbsp;Bear
+              </option>
+              <option v-if="containsTags(['f_dvalue'])" disabled="">
+                Trend
+              </option>
+              <option v-if="containsTags(['f_dvalue'])" value="39">
+                &nbsp;&nbsp;Bullx.xxx
+              </option>
+              <option v-if="containsTags(['f_dvalue'])"  value="40">
                 &nbsp;&nbsp;Bearx.xxx
               </option>
             </select>
