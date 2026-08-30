@@ -160,33 +160,39 @@
                 &nbsp;iMTF CT
               </option>
               <option v-if="containsTags(['f_dvalue'])" value="28">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bull
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull1
               </option>
               <option v-if="containsTags(['f_dvalue'])" value="29">
-                &nbsp;&nbsp;&nbsp;&nbsp;Bear
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear1
+              </option>
+              <option v-if="containsTags(['f_dvalue'])" value="30">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull2
+              </option>
+              <option v-if="containsTags(['f_dvalue'])" value="31">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear2
               </option>
               <option v-if="isSubscribed" value="" disabled="">
                 &nbsp;iMTF Trend
               </option>
-              <option v-if="isSubscribed" value="30">
+              <option v-if="isSubscribed" value="32">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bull
               </option>
-              <option v-if="isSubscribed" value="31">
+              <option v-if="isSubscribed" value="33">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
-              <option v-if="isSubscribed" value="32">
+              <option v-if="isSubscribed" value="34">
                 &nbsp;&nbsp;&nbsp;&nbsp;Both
               </option>
               <option v-if="isSubscribed" value="" disabled="">
                 &nbsp;iMTF Trend Cont.
               </option>
-              <option v-if="isSubscribed" value="33">
+              <option v-if="isSubscribed" value="35">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bull
               </option>
-              <option v-if="isSubscribed" value="34">
+              <option v-if="isSubscribed" value="36">
                 &nbsp;&nbsp;&nbsp;&nbsp;Bear
               </option>
-              <option v-if="isSubscribed" value="35">
+              <option v-if="isSubscribed" value="37">
                 &nbsp;&nbsp;&nbsp;&nbsp;Both
               </option>
             </select>
