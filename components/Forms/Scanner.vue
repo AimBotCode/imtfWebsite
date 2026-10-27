@@ -505,6 +505,21 @@
               <option v-if="containsTags(['f_haBar'])" value="5">
                 &nbsp;&nbsp;&nbsp;&nbsp;TNT 2 Bar
               </option>
+              <option disabled="" v-if="containsTags(['f_dvalue'])">
+                &nbsp;uTNT
+              </option>
+              <option v-if="containsTags(['f_dvalue'])" value="6">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull 1
+              </option>
+              <option v-if="containsTags(['f_dvalue'])" value="7">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bull 2
+              </option>
+              <option v-if="containsTags(['f_haBar'])" value="8">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear 1
+              </option>
+              <option v-if="containsTags(['f_haBar'])" value="9">
+                &nbsp;&nbsp;&nbsp;&nbsp;Bear 2
+              </option>
             </select>
           </div>
         </div>
@@ -634,132 +649,117 @@
                 &nbsp;&nbsp;DnFlip
               </option>
               <option v-if="containsTags(['f_haBar'])" disabled="">
-                Arrow
-              </option>
-              <option v-if="containsTags(['f_haBar'])" value="7">
-                &nbsp;&nbsp;Bull
-              </option>
-              <option v-if="containsTags(['f_haBar'])" value="8">
-                &nbsp;&nbsp;Bear
-              </option>
-              <option v-if="containsTags(['f_haBar'])" value="9">
-                &nbsp;&nbsp;pBull
-              </option>
-              <option v-if="containsTags(['f_haBar'])" value="10">
-                &nbsp;&nbsp;pBear
-              </option>
-              <option v-if="containsTags(['f_haBar'])" disabled="">
                 Touch
               </option>
-              <option v-if="containsTags(['f_haBar'])" value="11">
+              <option v-if="containsTags(['f_haBar'])" value="7">
                 &nbsp;&nbsp;T1
               </option>
-              <option v-if="containsTags(['f_haBar'])" value="12">
+              <option v-if="containsTags(['f_haBar'])" value="8">
                 &nbsp;&nbsp;> KS
               </option>
-              <option v-if="containsTags(['f_haBar'])" value="13">
+              <option v-if="containsTags(['f_haBar'])" value="9">
                 &nbsp;&nbsp;< KS
               </option>
-              <option v-if="containsTags(['f_haBar'])" value="14">
+              <option v-if="containsTags(['f_haBar'])" value="10">
                 &nbsp;&nbsp;= KS
               </option>
               <option v-if="containsTags(['f_advstudent'])" disabled="">
                 C Div
               </option>
-              <option v-if="containsTags(['f_advstudent'])" value="15">
+              <option v-if="containsTags(['f_advstudent'])" value="11">
                 &nbsp;&nbsp;Bull
               </option>
-              <option v-if="containsTags(['f_advstudent'])" value="16">
+              <option v-if="containsTags(['f_advstudent'])" value="12">
                 &nbsp;&nbsp;Bear
               </option>
-              <option v-if="containsTags(['f_advstudent'])" value="17">
+              <option v-if="containsTags(['f_advstudent'])" value="13">
                 &nbsp;&nbsp;All
               </option>
-              <option v-if="containsTags(['f_advstudent'])" value="18">
+              <option v-if="containsTags(['f_advstudent'])" value="14">
                 &nbsp;&nbsp;pBull
               </option>
-              <option v-if="containsTags(['f_advstudent'])" value="19">
+              <option v-if="containsTags(['f_advstudent'])" value="15">
                 &nbsp;&nbsp;pBear
               </option>
-              <option v-if="containsTags(['f_advstudent'])" value="20">
+              <option v-if="containsTags(['f_advstudent'])" value="16">
                 &nbsp;&nbsp;pAll
               </option>
               <option v-if="containsTags(['f_dvalue'])" disabled="">
                 ShadeFlip
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="21">
+              <option v-if="containsTags(['f_dvalue'])" value="17">
                 &nbsp;&nbsp;Bull
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="22">
+              <option v-if="containsTags(['f_dvalue'])" value="18">
                 &nbsp;&nbsp;Bear
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="23">
+              <option v-if="containsTags(['f_dvalue'])" value="19">
                 &nbsp;&nbsp;Bull 0
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="24">
+              <option v-if="containsTags(['f_dvalue'])" value="20">
                 &nbsp;&nbsp;Bear 0
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="25">
+              <option v-if="containsTags(['f_dvalue'])" value="21">
                 &nbsp;&nbsp;pBull
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="26">
+              <option v-if="containsTags(['f_dvalue'])" value="22">
                 &nbsp;&nbsp;pBear
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="27">
+              <option v-if="containsTags(['f_dvalue'])" value="23">
                 &nbsp;&nbsp;pBull0
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="28">
+              <option v-if="containsTags(['f_dvalue'])" value="24">
                 &nbsp;&nbsp;pBear0
               </option>
               <option v-if="containsTags(['f_dvalue'])" disabled="">
                 PB
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="29">
+              <option v-if="containsTags(['f_dvalue'])" value="25">
                 &nbsp;&nbsp;pBullPB
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="30">
+              <option v-if="containsTags(['f_dvalue'])" value="26">
                 &nbsp;&nbsp;pBearPB
               </option>
               <option v-if="containsTags(['f_dvalue'])" disabled="">
                 Vclose
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="31">
+              <option v-if="containsTags(['f_dvalue'])" value="27">
                 &nbsp;&nbsp;Bull
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="32">
+              <option v-if="containsTags(['f_dvalue'])" value="28">
                 &nbsp;&nbsp;Bear
               </option>
               <option v-if="containsTags(['f_dvalue'])" disabled="">
                 V Close Direction
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="33">
+              <option v-if="containsTags(['f_dvalue'])" value="29">
                 &nbsp;&nbsp;Bull
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="34">
+              <option v-if="containsTags(['f_dvalue'])" value="30">
                 &nbsp;&nbsp;Bear
               </option>
               <option v-if="containsTags(['f_dvalue'])" disabled="">
                 HShade
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="35">
+              <option v-if="containsTags(['f_dvalue'])" value="31">
                 &nbsp;&nbsp;iBull
               </option>
-              <option v-if="containsTags(['f_dvalue'])"  value="36">
+              <option v-if="containsTags(['f_dvalue'])"  value="32">
                 &nbsp;&nbsp;Bull
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="37">
+              <option v-if="containsTags(['f_dvalue'])" value="33">
                 &nbsp;&nbsp;iBear
               </option>
-              <option v-if="containsTags(['f_dvalue'])"  value="38">
+              <option v-if="containsTags(['f_dvalue'])"  value="34">
                 &nbsp;&nbsp;Bear
               </option>
               <option v-if="containsTags(['f_dvalue'])" disabled="">
                 Trend
               </option>
-              <option v-if="containsTags(['f_dvalue'])" value="39">
+              <option v-if="containsTags(['f_dvalue'])" value="35">
                 &nbsp;&nbsp;Bullx.xxx
               </option>
-              <option v-if="containsTags(['f_dvalue'])"  value="40">
+              <option v-if="containsTags(['f_dvalue'])"  value="36">
                 &nbsp;&nbsp;Bearx.xxx
               </option>
             </select>

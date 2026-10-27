@@ -11,9 +11,6 @@
               <option value="CurrencyHeatmap">
                 Currency
               </option>
-              <option value="FutureHeatmap">
-                Futures
-              </option>
               <option disabled="">
                 US Stock
               </option>
@@ -34,9 +31,6 @@
               </option>
               <option value="BSE200Heatmap">
                 Indian NIFTY
-              </option>
-              <option value="CryptoHeatmap">
-                Crypto
               </option>
               <option value="custom">
                 Custom
@@ -143,9 +137,7 @@ export default {
         { key: 'ETFHeatmap', val: 'ETF' },
         { key: 'dax30Heatmap', val: 'German DAX' },
         { key: 'FTSEHeatmap', val: 'UK FTSE' },
-        { key: 'BSE200Heatmap', val: 'Indian NIFTY' },
-        { key: 'FutureHeatmap', val: 'Futures' },
-        { key: 'CryptoHeatmap', val: 'Crypto' }
+        { key: 'BSE200Heatmap', val: 'Indian NIFTY' }
       ]
     }
   },
