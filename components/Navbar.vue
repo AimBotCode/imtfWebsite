@@ -31,7 +31,7 @@
               <img src="~/assets/images/users/user-4.jpg" alt="" class="rounded-circle me-0 me-md-2 thumb-xs">
               <div class="user-name">
                 <small class="d-none d-lg-block font-11">Welcome</small>
-                <span class="d-none d-lg-block fw-semibold font-12">{{ $store.state.app.user.display_name }}
+                <span class="d-none d-lg-block fw-semibold font-12">{{ userDisplayName }}
                   <i class="mdi mdi-chevron-down" /></span>
               </div>
             </div>
@@ -115,6 +115,12 @@ export default {
     return {
       subscriptions: [],
       show: { seasonalityMenu: false, usermenu: false, subscriptions: false, mobileMenu: false }
+    }
+  },
+  computed: {
+    userDisplayName () {
+      const user = this.$store.state.app.user || {}
+      return user.display_name || user.user_login || user.user_email || ''
     }
   },
   mounted () {

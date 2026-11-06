@@ -625,14 +625,25 @@ export default {
       }
     },
     getTags() {
-      let tagValues = []
       const user = this.$store.getters['app/getItem']('user')
+      if (!user || !user.user_email) {
+        console.error('Cannot load tags: logged-in user email is missing from app state.')
+        return
+      }
+
       const data = {
         action: 'tags',
-        user_email: user.user_email,
+        user_email: user.user_email
       }
       this.$xhr.api.post('/api/tags', data).then((response) => {
-        tagValues = response.data[0].value.split(',')
+        const tagValue = response && response.data && response.data[0] && response.data[0].value
+        if (typeof tagValue !== 'string') {
+          console.error('Cannot load tags: API response did not contain a tag value for this user.')
+          return
+        }
+
+        const tagValues = tagValue.split(',').map(tag => tag.trim())
+        this.$store.commit('app/setActive', tagValues.includes('2582'))
         this.tags = this.tagTranslation(tagValues)
       })
     },

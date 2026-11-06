@@ -105,13 +105,11 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueCookies from 'vue-cookies'
-
 export default {
   data () {
     return {
       form: {
+        action: 'login',
         username: '',
         password: ''
       },
@@ -119,17 +117,21 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$store.state.app.loggedIn)
-    if (this.$store.state.app.loggedIn === true) {
+    if (this.$cookies.get('imtftkn')) {
       this.$router.push({ name: 'scanner' })
     }
   },
   methods: {
-    tryLogin () {
+    async tryLogin () {
+      this.show.error = false
       this.$store.commit('app/showLottie')
-      this.$xhr.wordpress.post('https://www.imtftrade.com/index.php/wp-json/custom-plugin/login', this.form).then((resp) => {
-        if (resp.ID) {
-          Vue.use(VueCookies, { expires: '1d' })
+      try {
+        const resp = await this.$xhr.api.post('/api/login', this.form)
+        const loginResponse = resp && resp.data && resp.data.success !== undefined
+          ? resp.data
+          : resp
+
+        if (loginResponse && loginResponse.success === true && loginResponse.data && loginResponse.data.authenticated === true) {
           this.$cookies.set('imtftkn', 'Pxw5JSEDu7KVgT2', {
             path: '/',
             maxAge: 60 * 60 * 24,
@@ -137,28 +139,17 @@ export default {
             sameSite: true,
             secure: process.env.NODE_ENV !== 'development'
           })
-          this.$store.commit('app/user', resp)
-
-          this.checkSubscriptions(resp.data)
+          this.$store.commit('app/user', loginResponse)
+          this.$router.push({ name: 'scanner' })
         } else {
           this.show.error = true
         }
+      } catch (error) {
+        this.show.error = true
+        throw error
+      } finally {
         this.$store.commit('app/hideLottie')
-
-        // get subscriptions // autoforex@yahoo.com // resp.data.user_email // tradingathlete@gmail.com
-        // this.$imtf.subscriberFlow('tradingathlete@gmail.com')
-      })
-    },
-    checkSubscriptions (user) {
-      const email = user.user_email
-      // email = 'eiicapital@gmail.com'
-      this.$imtf.subscriberFlow(email).then((active) => {
-        console.log(active)
-        if (active) {
-          this.$store.commit('app/setActive', true)
-        }
-        this.$router.push({ name: 'scanner' })
-      })
+      }
     }
   }
 }
