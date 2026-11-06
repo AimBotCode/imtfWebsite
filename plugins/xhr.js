@@ -50,8 +50,7 @@ const createUtils = function ({ app }) {
     },
     api: {
       async get (endpoint, data) {
-        const url = app.$config.API_URL
-        const result = await xhr.get(url, data).then((rsp) => {
+        const result = await xhr.get(endpoint, data).then((rsp) => {
           if (rsp.error && rsp.error.message) {
             app.$utils.error(rsp.error.message)
           }
@@ -65,8 +64,7 @@ const createUtils = function ({ app }) {
       },
       async post (endpoint, data) {
         const options = { body: data }
-        const url = app.$config.API_URL
-        const result = await xhr.post(url, options).then((rsp) => {
+        const result = await xhr.post(endpoint, options).then((rsp) => {
           if (rsp.error && rsp.error.message) {
             app.$utils.error(rsp.error.message)
           }
